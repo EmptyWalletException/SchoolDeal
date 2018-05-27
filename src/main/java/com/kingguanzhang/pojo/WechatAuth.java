@@ -2,30 +2,20 @@ package com.kingguanzhang.pojo;
 
 import java.util.Date;
 
-/**
- * 微信用户,和personInfo类关联
- */
 public class WechatAuth {
-    private Long wechatAuthId;
+    private Integer wechatAuthId;
+
     private String openId;
+
     private Date createTime;
-    private PersonInfo personInfo;
 
-    public WechatAuth() {
-    }
+    private Integer userId;
 
-    public WechatAuth(Long wechatAuthId, String openId, Date createTime, PersonInfo personInfo) {
-        this.wechatAuthId = wechatAuthId;
-        this.openId = openId;
-        this.createTime = createTime;
-        this.personInfo = personInfo;
-    }
-
-    public Long getWechatAuthId() {
+    public Integer getWechatAuthId() {
         return wechatAuthId;
     }
 
-    public void setWechatAuthId(Long wechatAuthId) {
+    public void setWechatAuthId(Integer wechatAuthId) {
         this.wechatAuthId = wechatAuthId;
     }
 
@@ -34,7 +24,7 @@ public class WechatAuth {
     }
 
     public void setOpenId(String openId) {
-        this.openId = openId;
+        this.openId = openId == null ? null : openId.trim();
     }
 
     public Date getCreateTime() {
@@ -45,11 +35,11 @@ public class WechatAuth {
         this.createTime = createTime;
     }
 
-    public PersonInfo getPersonInfo() {
-        return personInfo;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setPersonInfo(PersonInfo personInfo) {
-        this.personInfo = personInfo;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }

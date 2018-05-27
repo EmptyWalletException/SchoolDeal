@@ -1,35 +1,49 @@
-package com.kingguanzhang.pojo;
+package com.kingguanzhang.entity;
 
 import java.util.Date;
+import java.util.List;
 
+/**
+ * 商品
+ */
 public class Product {
     private Integer productId;
-
     private String productName;
-
     private Integer productCategoryId;
-
     private String productDesc;
-
-    private String imgAddr;
-
-    private Integer normalPrice;
-
+    private String imgAddr;//商品的封面图;
+    private String normalPrice;//平常价格;
     private Integer priority;
-
     private Date createTime;
-
     private Date editTime;
+    private Integer enableStatus;//-1不可用,0下架,1正在展示,2审核中;
 
-    private Integer enableStatus;
+    private List<ProductImg> productImgList;
+    private ProductCategory productCategory;
+    private Shop shop;
 
-    private Integer productImgListId;
+    public Product() {
+    }
 
-    private Integer productCategory;
+    public Product(Integer productId, String productName, Integer productCategoryId, String productDesc, String imgAddr, String normalPrice, Integer priority, Date createTime, Date editTime, Integer enableStatus, List<ProductImg> productImgList, ProductCategory productCategory, Shop shop) {
 
-    private Integer shopId;
+        this.productId = productId;
+        this.productName = productName;
+        this.productCategoryId = productCategoryId;
+        this.productDesc = productDesc;
+        this.imgAddr = imgAddr;
+        this.normalPrice = normalPrice;
+        this.priority = priority;
+        this.createTime = createTime;
+        this.editTime = editTime;
+        this.enableStatus = enableStatus;
+        this.productImgList = productImgList;
+        this.productCategory = productCategory;
+        this.shop = shop;
+    }
 
     public Integer getProductId() {
+
         return productId;
     }
 
@@ -42,7 +56,7 @@ public class Product {
     }
 
     public void setProductName(String productName) {
-        this.productName = productName == null ? null : productName.trim();
+        this.productName = productName;
     }
 
     public Integer getProductCategoryId() {
@@ -58,7 +72,7 @@ public class Product {
     }
 
     public void setProductDesc(String productDesc) {
-        this.productDesc = productDesc == null ? null : productDesc.trim();
+        this.productDesc = productDesc;
     }
 
     public String getImgAddr() {
@@ -66,14 +80,14 @@ public class Product {
     }
 
     public void setImgAddr(String imgAddr) {
-        this.imgAddr = imgAddr == null ? null : imgAddr.trim();
+        this.imgAddr = imgAddr;
     }
 
-    public Integer getNormalPrice() {
+    public String getNormalPrice() {
         return normalPrice;
     }
 
-    public void setNormalPrice(Integer normalPrice) {
+    public void setNormalPrice(String normalPrice) {
         this.normalPrice = normalPrice;
     }
 
@@ -109,27 +123,27 @@ public class Product {
         this.enableStatus = enableStatus;
     }
 
-    public Integer getProductImgListId() {
-        return productImgListId;
+    public List<ProductImg> getProductImgList() {
+        return productImgList;
     }
 
-    public void setProductImgListId(Integer productImgListId) {
-        this.productImgListId = productImgListId;
+    public void setProductImgList(List<ProductImg> productImgList) {
+        this.productImgList = productImgList;
     }
 
-    public Integer getProductCategory() {
+    public ProductCategory getProductCategory() {
         return productCategory;
     }
 
-    public void setProductCategory(Integer productCategory) {
+    public void setProductCategory(ProductCategory productCategory) {
         this.productCategory = productCategory;
     }
 
-    public Integer getShopId() {
-        return shopId;
+    public Shop getShop() {
+        return shop;
     }
 
-    public void setShopId(Integer shopId) {
-        this.shopId = shopId;
+    public void setShop(Shop shop) {
+        this.shop = shop;
     }
 }

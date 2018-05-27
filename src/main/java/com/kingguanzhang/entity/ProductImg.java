@@ -1,25 +1,36 @@
-package com.kingguanzhang.pojo;
+package com.kingguanzhang.entity;
 
 import java.util.Date;
 
+/**
+ * 商品图片
+ */
 public class ProductImg {
-    private Integer productImgId;
-
+    private Long productImgId;
     private String imgAddr;
-
     private String imgDesc;
-
     private Integer priority;
-
     private Date createTime;
+    private Long productId;//图片所属的商品id;
 
-    private Integer productId;
+    public ProductImg() {
+    }
 
-    public Integer getProductImgId() {
+    public ProductImg(Long productImgId, String imgAddr, String imgDesc, Integer priority, Date createTime, Long productId) {
+
+        this.productImgId = productImgId;
+        this.imgAddr = imgAddr;
+        this.imgDesc = imgDesc;
+        this.priority = priority;
+        this.createTime = createTime;
+        this.productId = productId;
+    }
+
+    public Long getProductImgId() {
         return productImgId;
     }
 
-    public void setProductImgId(Integer productImgId) {
+    public void setProductImgId(Long productImgId) {
         this.productImgId = productImgId;
     }
 
@@ -28,7 +39,7 @@ public class ProductImg {
     }
 
     public void setImgAddr(String imgAddr) {
-        this.imgAddr = imgAddr == null ? null : imgAddr.trim();
+        this.imgAddr = imgAddr;
     }
 
     public String getImgDesc() {
@@ -36,7 +47,7 @@ public class ProductImg {
     }
 
     public void setImgDesc(String imgDesc) {
-        this.imgDesc = imgDesc == null ? null : imgDesc.trim();
+        this.imgDesc = imgDesc;
     }
 
     public Integer getPriority() {
@@ -55,11 +66,11 @@ public class ProductImg {
         this.createTime = createTime;
     }
 
-    public Integer getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(Integer productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 }

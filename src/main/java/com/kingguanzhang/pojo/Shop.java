@@ -2,50 +2,40 @@ package com.kingguanzhang.pojo;
 
 import java.util.Date;
 
-/**
- * 店铺的实体类
- */
 public class Shop {
-    private Long shopId;
+    private Integer shopId;
+
     private String shopName;
+
     private String shopDesc;
+
     private String shopAddr;
-    private String phone;
+
+    private Integer phone;
+
     private String shopImg;
+
     private Integer priority;
+
     private Date createTime;
+
     private Date editTime;
-    private Integer enableStatus;//-1代表店铺不可用,0代表正在审核,1代表可用;
+
+    private Integer enableStatus;
+
     private String advice;
-    private Area area;
-    private PersonInfo owner;
-    private ShopCategory shopCategory;
 
-    public Shop() {
-    }
+    private Integer areaId;
 
-    public Shop(Long shopId, String shopName, String shopDesc, String shopAddr, String phone, String shopImg, Integer priority, Date createTime, Date editTime, Integer enableStatus, String advice, Area area, PersonInfo owner, ShopCategory shopCategory) {
-        this.shopId = shopId;
-        this.shopName = shopName;
-        this.shopDesc = shopDesc;
-        this.shopAddr = shopAddr;
-        this.phone = phone;
-        this.shopImg = shopImg;
-        this.priority = priority;
-        this.createTime = createTime;
-        this.editTime = editTime;
-        this.enableStatus = enableStatus;
-        this.advice = advice;
-        this.area = area;
-        this.owner = owner;
-        this.shopCategory = shopCategory;
-    }
+    private Integer ownerId;
 
-    public Long getShopId() {
+    private Integer shopCategoryId;
+
+    public Integer getShopId() {
         return shopId;
     }
 
-    public void setShopId(Long shopId) {
+    public void setShopId(Integer shopId) {
         this.shopId = shopId;
     }
 
@@ -54,7 +44,7 @@ public class Shop {
     }
 
     public void setShopName(String shopName) {
-        this.shopName = shopName;
+        this.shopName = shopName == null ? null : shopName.trim();
     }
 
     public String getShopDesc() {
@@ -62,7 +52,7 @@ public class Shop {
     }
 
     public void setShopDesc(String shopDesc) {
-        this.shopDesc = shopDesc;
+        this.shopDesc = shopDesc == null ? null : shopDesc.trim();
     }
 
     public String getShopAddr() {
@@ -70,14 +60,14 @@ public class Shop {
     }
 
     public void setShopAddr(String shopAddr) {
-        this.shopAddr = shopAddr;
+        this.shopAddr = shopAddr == null ? null : shopAddr.trim();
     }
 
-    public String getPhone() {
+    public Integer getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(Integer phone) {
         this.phone = phone;
     }
 
@@ -86,7 +76,7 @@ public class Shop {
     }
 
     public void setShopImg(String shopImg) {
-        this.shopImg = shopImg;
+        this.shopImg = shopImg == null ? null : shopImg.trim();
     }
 
     public Integer getPriority() {
@@ -126,30 +116,30 @@ public class Shop {
     }
 
     public void setAdvice(String advice) {
-        this.advice = advice;
+        this.advice = advice == null ? null : advice.trim();
     }
 
-    public Area getArea() {
-        return area;
+    public Integer getAreaId() {
+        return areaId;
     }
 
-    public void setArea(Area area) {
-        this.area = area;
+    public void setAreaId(Integer areaId) {
+        this.areaId = areaId;
     }
 
-    public PersonInfo getOwner() {
-        return owner;
+    public Integer getOwnerId() {
+        return ownerId;
     }
 
-    public void setOwner(PersonInfo owner) {
-        this.owner = owner;
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
 
-    public ShopCategory getShopCategory() {
-        return shopCategory;
+    public Integer getShopCategoryId() {
+        return shopCategoryId;
     }
 
-    public void setShopCategory(ShopCategory shopCategory) {
-        this.shopCategory = shopCategory;
+    public void setShopCategoryId(Integer shopCategoryId) {
+        this.shopCategoryId = shopCategoryId;
     }
 }

@@ -1,31 +1,42 @@
-package com.kingguanzhang.pojo;
+package com.kingguanzhang.entity;
 
 import java.util.Date;
 
+/**
+ * 用于记录用户信息的实体类
+ */
 public class PersonInfo {
-    private Integer userId;
 
-    private String name;
+    private Long userId;//用户id
+    private String name;//用户名
+    private String profileImg;//用户头像图片
+    private String email;//用户邮箱
+    private String gender;//性别
+    private Integer enableStatus;//适用的状态,主要用于权限管理
+    private Integer userType;//用户类别,主要用于区分是否为商家
+    private Date createTime;//创建时间
+    private Date editTime;//修改时间
 
-    private String profileImg;
+    public PersonInfo() {
+    }
 
-    private String email;
+    public PersonInfo(Long userId, String name, String profileImg, String email, String gender, Integer enableStatus, Integer userType, Date createTime, Date editTime) {
+        this.userId = userId;
+        this.name = name;
+        this.profileImg = profileImg;
+        this.email = email;
+        this.gender = gender;
+        this.enableStatus = enableStatus;
+        this.userType = userType;
+        this.createTime = createTime;
+        this.editTime = editTime;
+    }
 
-    private String gender;
-
-    private Integer enableStatus;
-
-    private Integer userType;
-
-    private Date createTime;
-
-    private Date editTime;
-
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -34,7 +45,7 @@ public class PersonInfo {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public String getProfileImg() {
@@ -42,7 +53,7 @@ public class PersonInfo {
     }
 
     public void setProfileImg(String profileImg) {
-        this.profileImg = profileImg == null ? null : profileImg.trim();
+        this.profileImg = profileImg;
     }
 
     public String getEmail() {
@@ -50,7 +61,7 @@ public class PersonInfo {
     }
 
     public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+        this.email = email;
     }
 
     public String getGender() {
@@ -58,7 +69,7 @@ public class PersonInfo {
     }
 
     public void setGender(String gender) {
-        this.gender = gender == null ? null : gender.trim();
+        this.gender = gender;
     }
 
     public Integer getEnableStatus() {
@@ -93,3 +104,4 @@ public class PersonInfo {
         this.editTime = editTime;
     }
 }
+

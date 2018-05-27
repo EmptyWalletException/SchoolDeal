@@ -2,41 +2,30 @@ package com.kingguanzhang.pojo;
 
 import java.util.Date;
 
-/*
- *   商品类别实体类
- */
 public class ProductCategory {
+    private Integer productCategoryId;
 
-    private Long productCategoryId;
-    private Long shopId;
+    private Integer shopId;
+
     private String productCategoryName;
-    private Integer priority;//权重
+
+    private Integer priority;
+
     private Date createTime;
 
-    public ProductCategory() {
-    }
-
-    public ProductCategory(Long productCategoryId, Long shopId, String productCategoryName, Integer priority, Date createTime) {
-        this.productCategoryId = productCategoryId;
-        this.shopId = shopId;
-        this.productCategoryName = productCategoryName;
-        this.priority = priority;
-        this.createTime = createTime;
-    }
-
-    public Long getProductCategoryId() {
+    public Integer getProductCategoryId() {
         return productCategoryId;
     }
 
-    public void setProductCategoryId(Long productCategoryId) {
+    public void setProductCategoryId(Integer productCategoryId) {
         this.productCategoryId = productCategoryId;
     }
 
-    public Long getShopId() {
+    public Integer getShopId() {
         return shopId;
     }
 
-    public void setShopId(Long shopId) {
+    public void setShopId(Integer shopId) {
         this.shopId = shopId;
     }
 
@@ -45,7 +34,7 @@ public class ProductCategory {
     }
 
     public void setProductCategoryName(String productCategoryName) {
-        this.productCategoryName = productCategoryName;
+        this.productCategoryName = productCategoryName == null ? null : productCategoryName.trim();
     }
 
     public Integer getPriority() {

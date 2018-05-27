@@ -1,18 +1,32 @@
-package com.kingguanzhang.pojo;
+package com.kingguanzhang.entity;
 
 import java.util.Date;
 
-
+/**
+ * 区域实体类
+ */
 public class Area {
-    private Integer areaId;
 
-    private String areaName;
+    private Integer areaId;//区域id
 
-    private Integer priority;
+    private String areaName;//区域名字
 
-    private Date createTime;
+    private Integer priority;//权重,用于排序
 
-    private Date editTime;
+    private Date createTime;//创建时间
+
+    private Date editTime;//最后更新时间
+
+    public Area() {
+    }
+
+    public Area(Integer areaId, String areaName, Integer priority, Date createTime, Date editTime) {
+        this.areaId = areaId;
+        this.areaName = areaName;
+        this.priority = priority;
+        this.createTime = createTime;
+        this.editTime = editTime;
+    }
 
     public Integer getAreaId() {
         return areaId;
@@ -27,7 +41,7 @@ public class Area {
     }
 
     public void setAreaName(String areaName) {
-        this.areaName = areaName == null ? null : areaName.trim();
+        this.areaName = areaName;
     }
 
     public Integer getPriority() {

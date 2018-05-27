@@ -1,37 +1,29 @@
 package com.kingguanzhang.pojo;
 
-/**
- * 店铺类别的实体类
- */
+import java.util.Date;
+
 public class ShopCategory {
-    private Long shopCategoryId;
+    private Integer shopCategoryId;
+
     private String shopCategoryName;
+
     private String shopCategoryDesc;
+
     private String shopCategoryImg;
-    private Integer priority;//权重
-    private Deprecated createTime;
-    private Deprecated editTime;
-    private ShopCategory parent;//上级分类
 
-    public ShopCategory() {
-    }
+    private Integer priority;
 
-    public ShopCategory(Long shopCategoryId, String shopCategoryName, String shopCategoryDesc, String shopCategoryImg, Integer priority, Deprecated createTime, Deprecated editTime, ShopCategory parent) {
-        this.shopCategoryId = shopCategoryId;
-        this.shopCategoryName = shopCategoryName;
-        this.shopCategoryDesc = shopCategoryDesc;
-        this.shopCategoryImg = shopCategoryImg;
-        this.priority = priority;
-        this.createTime = createTime;
-        this.editTime = editTime;
-        this.parent = parent;
-    }
+    private Date createTime;
 
-    public Long getShopCategoryId() {
+    private Date editTime;
+
+    private Integer parentId;
+
+    public Integer getShopCategoryId() {
         return shopCategoryId;
     }
 
-    public void setShopCategoryId(Long shopCategoryId) {
+    public void setShopCategoryId(Integer shopCategoryId) {
         this.shopCategoryId = shopCategoryId;
     }
 
@@ -40,7 +32,7 @@ public class ShopCategory {
     }
 
     public void setShopCategoryName(String shopCategoryName) {
-        this.shopCategoryName = shopCategoryName;
+        this.shopCategoryName = shopCategoryName == null ? null : shopCategoryName.trim();
     }
 
     public String getShopCategoryDesc() {
@@ -48,7 +40,7 @@ public class ShopCategory {
     }
 
     public void setShopCategoryDesc(String shopCategoryDesc) {
-        this.shopCategoryDesc = shopCategoryDesc;
+        this.shopCategoryDesc = shopCategoryDesc == null ? null : shopCategoryDesc.trim();
     }
 
     public String getShopCategoryImg() {
@@ -56,7 +48,7 @@ public class ShopCategory {
     }
 
     public void setShopCategoryImg(String shopCategoryImg) {
-        this.shopCategoryImg = shopCategoryImg;
+        this.shopCategoryImg = shopCategoryImg == null ? null : shopCategoryImg.trim();
     }
 
     public Integer getPriority() {
@@ -67,27 +59,27 @@ public class ShopCategory {
         this.priority = priority;
     }
 
-    public Deprecated getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Deprecated createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    public Deprecated getEditTime() {
+    public Date getEditTime() {
         return editTime;
     }
 
-    public void setEditTime(Deprecated editTime) {
+    public void setEditTime(Date editTime) {
         this.editTime = editTime;
     }
 
-    public ShopCategory getParent() {
-        return parent;
+    public Integer getParentId() {
+        return parentId;
     }
 
-    public void setParent(ShopCategory parent) {
-        this.parent = parent;
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 }

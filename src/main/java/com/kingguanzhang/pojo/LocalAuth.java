@@ -2,35 +2,24 @@ package com.kingguanzhang.pojo;
 
 import java.util.Date;
 
-/**
- * 本地帐户,一般与微信帐户二选一作为登录账号;
- */
 public class LocalAuth {
+    private Integer localAuthId;
 
-    private Long localAuthId;
     private String username;
+
     private String password;
+
     private Date createTime;
+
     private Date editTime;
-    private PersonInfo personInfo;
 
-    public LocalAuth() {
-    }
+    private Integer userId;
 
-    public LocalAuth(Long localAuthId, String username, String password, Date createTime, Date editTime, PersonInfo personInfo) {
-        this.localAuthId = localAuthId;
-        this.username = username;
-        this.password = password;
-        this.createTime = createTime;
-        this.editTime = editTime;
-        this.personInfo = personInfo;
-    }
-
-    public Long getLocalAuthId() {
+    public Integer getLocalAuthId() {
         return localAuthId;
     }
 
-    public void setLocalAuthId(Long localAuthId) {
+    public void setLocalAuthId(Integer localAuthId) {
         this.localAuthId = localAuthId;
     }
 
@@ -39,7 +28,7 @@ public class LocalAuth {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username == null ? null : username.trim();
     }
 
     public String getPassword() {
@@ -47,7 +36,7 @@ public class LocalAuth {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
     public Date getCreateTime() {
@@ -66,11 +55,11 @@ public class LocalAuth {
         this.editTime = editTime;
     }
 
-    public PersonInfo getPersonInfo() {
-        return personInfo;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setPersonInfo(PersonInfo personInfo) {
-        this.personInfo = personInfo;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }

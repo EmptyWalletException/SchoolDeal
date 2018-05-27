@@ -1,29 +1,39 @@
-package com.kingguanzhang.pojo;
+package com.kingguanzhang.entity;
 
 import java.util.Date;
 
+/**
+ * 头条的实体类
+ */
 public class HeadLine {
-    private Integer lineId;
-
+    private  Long lineId;
     private String lineName;
-
     private String lineLink;
-
     private String lineImg;
-
-    private String priority;
-
-    private Integer enableStatus;
-
+    private String priority;//权重
+    private Integer enableStatus;//头条状态,0代表不可用,1代表可用;
     private Date createTime;
-
     private Date editTime;
 
-    public Integer getLineId() {
+    public HeadLine() {
+    }
+
+    public HeadLine(Long lineId, String lineName, String lineLink, String lineImg, String priority, Integer enableStatus, Date createTime, Date editTime) {
+        this.lineId = lineId;
+        this.lineName = lineName;
+        this.lineLink = lineLink;
+        this.lineImg = lineImg;
+        this.priority = priority;
+        this.enableStatus = enableStatus;
+        this.createTime = createTime;
+        this.editTime = editTime;
+    }
+
+    public Long getLineId() {
         return lineId;
     }
 
-    public void setLineId(Integer lineId) {
+    public void setLineId(Long lineId) {
         this.lineId = lineId;
     }
 
@@ -32,7 +42,7 @@ public class HeadLine {
     }
 
     public void setLineName(String lineName) {
-        this.lineName = lineName == null ? null : lineName.trim();
+        this.lineName = lineName;
     }
 
     public String getLineLink() {
@@ -40,7 +50,7 @@ public class HeadLine {
     }
 
     public void setLineLink(String lineLink) {
-        this.lineLink = lineLink == null ? null : lineLink.trim();
+        this.lineLink = lineLink;
     }
 
     public String getLineImg() {
@@ -48,7 +58,7 @@ public class HeadLine {
     }
 
     public void setLineImg(String lineImg) {
-        this.lineImg = lineImg == null ? null : lineImg.trim();
+        this.lineImg = lineImg;
     }
 
     public String getPriority() {
@@ -56,7 +66,7 @@ public class HeadLine {
     }
 
     public void setPriority(String priority) {
-        this.priority = priority == null ? null : priority.trim();
+        this.priority = priority;
     }
 
     public Integer getEnableStatus() {

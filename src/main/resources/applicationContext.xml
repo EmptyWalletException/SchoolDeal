@@ -50,7 +50,14 @@
     <!-- 配置一个可以用于批量操作数据库的sqlSession -->
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg name="sqlSessionFactory" ref="sqlSession"></constructor-arg>
-        <constructor-arg name="executorType" value="BATCH"></constructor-arg>
+        <!--这里发现一个问题,执行器如果设置成batch(批量的意思),虽然能提高缓存性能但是就不会返回受影响的行数了.
+            当这个值为BATCH时， mapper方法返回结果就只有-2147482646 这一个值。defaultExecutorType一共有三个值：BATCH, REUSE, SIMPLE。这三个值分别的特点如下：
+名称         描述
+SIMPLE     执行器执行其它语句，默认值。
+REUSE     可能重复使用prepared statements 语句
+BATCH     可以重复执行语句和批量更新
+        -->
+        <constructor-arg name="executorType" value="SIMPLE"></constructor-arg>
     </bean>
 
     <!-- 配置扫描器,将mybatis接口的实现加入到ioc容器中 -->
