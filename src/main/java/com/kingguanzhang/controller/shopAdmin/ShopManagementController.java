@@ -1,12 +1,9 @@
 package com.kingguanzhang.controller.shopAdmin;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kingguanzhang.dto.ShopExecution;
 import com.kingguanzhang.pojo.Shop;
 import com.kingguanzhang.service.ShopService;
-import com.kingguanzhang.util.ImgUtil;
 import com.kingguanzhang.util.RequestUtil;
 import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +27,7 @@ public class ShopManagementController {
 
     @RequestMapping("/index")
     public String showIndex(){
-        return "/shop/index";
+        return "shop/index";
     }
 
     @RequestMapping("/register")
