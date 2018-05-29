@@ -20,6 +20,14 @@
         <property name="suffix" value=".html" />
     </bean>
 
+    <!-- 文件上传解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"></property>
+        <!--20971520 = 20M大小-->
+        <property name="maxUploadSize" value="209715200"></property>
+        <property name="maxInMemorySize" value="209715200"></property>
+    </bean>
+
     <!-- 将springMVC不能处理的请求交给tomcat,例如web-app下的resources文件夹用于存放js和css,这个不能让mvc拦截 -->
     <mvc:resources mapping="/resources/**" location="/resources/"></mvc:resources>
     <mvc:default-servlet-handler/>

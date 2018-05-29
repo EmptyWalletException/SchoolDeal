@@ -4,6 +4,7 @@ import com.kingguanzhang.dao.ShopMapper;
 import com.kingguanzhang.dto.ShopExecution;
 import com.kingguanzhang.enums.ShopSateEnum;
 import com.kingguanzhang.pojo.Shop;
+import com.kingguanzhang.pojo.ShopCategory;
 import com.kingguanzhang.service.ShopService;
 import com.kingguanzhang.util.ImgUtil;
 import com.kingguanzhang.util.PathUtil;
@@ -12,7 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ShopServiceImpl implements ShopService {
@@ -22,7 +25,7 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     @Transactional
-    public ShopExecution addShop(Shop shop, File shopImg) {
+    public ShopExecution addShop(Shop shop, InputStream shopImgInputStream,String fileName) {
         if (null == shop){
             return new ShopExecution(ShopSateEnum.NULL_SHOP);
         }
@@ -37,11 +40,12 @@ public class ShopServiceImpl implements ShopService {
 
                 throw new RuntimeException("店铺创建失败");
             }else{
-                if (null != shopImg){
+                if (null != shopImgInputStream){
                     try{
-                        String shopImgAddr = addShopImg(shop, shopImg);
+                        String shopImgAddr = addShopImg(shop, shopImgInputStream,fileName);
                     }catch (Exception e){
                         throw new RuntimeException("设置图片地址错误 : " + e.getMessage());
+
                     }
                     
                 }
@@ -59,9 +63,11 @@ public class ShopServiceImpl implements ShopService {
         return new ShopExecution(ShopSateEnum.CHECK,shop);
     }
 
-    private String addShopImg(Shop shop, File shopImg) {
+
+
+    private String addShopImg(Shop shop, InputStream shopImgInputStream,String fileName) {
         String shopImagePath = PathUtil.getShopImagePath(shop.getShopId());
-        String shopImgAddr = ImgUtil.generateThumbnail(shopImg,shopImagePath);
+        String shopImgAddr = ImgUtil.generateThumbnail(shopImgInputStream,shopImagePath,fileName);
         shop.setShopImg(shopImgAddr);
         return shopImgAddr;
     }

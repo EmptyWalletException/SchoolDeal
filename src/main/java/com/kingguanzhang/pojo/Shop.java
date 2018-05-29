@@ -11,7 +11,7 @@ public class Shop {
 
     private String shopAddr;
 
-    private Integer phone;
+    private Long phone;
 
     private String shopImg;
 
@@ -63,11 +63,11 @@ public class Shop {
         this.shopAddr = shopAddr == null ? null : shopAddr.trim();
     }
 
-    public Integer getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 

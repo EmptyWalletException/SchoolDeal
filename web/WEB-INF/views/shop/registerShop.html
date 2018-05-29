@@ -27,13 +27,13 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">网站首页 <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/index">网站首页 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">跳蚤市场 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">卖家板块 </a>
+                <a class="nav-link disabled" href="/register">卖家板块 </a>
             </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
@@ -123,7 +123,6 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
-
             <div class="container">
                 <div class="py-5 text-center">
                     <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
@@ -133,11 +132,10 @@
                 <hr/>
 
                 <div class="row">
-
-
                     <div class="col-md-8 order-md-1">
                         <h4 class="mb-3">注册店铺</h4>
-                        <form class="needs-validation" novalidate>
+
+                        <div class="needs-validation" id="registerShopForm"  novalidate>
                             <div class="mb-3">
                                 <label for="shopName">招牌名字</label>
                                 <input type="text" class="form-control" id="shopName" name="shopName" placeholder="街角的咖啡馆" required>
@@ -148,7 +146,7 @@
 
                             <div class="mb-3">
                                 <label for="shopDesc">店铺描述</label>
-                                <input type="text" class="form-control" id="shopDesc" name="shopDesc" placeholder="今天心情不错哟,来喝杯咖啡吧!" required>
+                                <textarea  class="form-control" id="shopDesc" name="shopDesc" placeholder="今天心情不错哟,来喝杯咖啡吧!" required></textarea>
                                 <div class="invalid-feedback">
                                     请输入店铺描述.
                                 </div>
@@ -156,7 +154,7 @@
 
                             <div class="mb-3">
                                 <label for="phone">手机号码</label>
-                                <input type="email" class="form-control" id="phone" name="phone" placeholder="181xxxxxxxx">
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="181xxxxxxxx">
                                 <div class="invalid-feedback">
                                     请输入正确的手机号码.
                                 </div>
@@ -171,9 +169,9 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-5 mb-3">
-                                    <label for="areaId">选择店铺区域</label>
-                                    <select class="custom-select d-block w-100" id="areaId" name="areaId"required>
+                                <div class="col-md-6 mb-3">
+                                    <label for="areaSel">选择店铺区域</label>
+                                    <select class="custom-select d-block w-100" id="areaSel" name="areaId"required>
                                         <option value="">选择店铺区域</option>
                                         <option>华东</option>
                                         <option>华西</option>
@@ -184,9 +182,9 @@
                                         请选择店铺区域.
                                     </div>
                                 </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="shopCategoryId">选择店铺分类</label>
-                                    <select class="custom-select d-block w-100" id="shopCategoryId" name="shopCategoryId" required>
+                                <div class="col-md-6 mb-3">
+                                    <label for="shopCategorySel">选择店铺分类</label>
+                                    <select class="custom-select d-block w-100" id="shopCategorySel" name="shopCategoryId" required>
                                         <option value="">选择店铺分类</option>
                                         <option>私人店铺</option>
                                         <option>企业店铺</option>
@@ -201,21 +199,22 @@
 
                             <hr class="mb-4">
                             <div class="form-group">
-                                <label for="exampleInputFile">上传一张店铺主页图片</label>
-                                <input type="file" id="exampleInputFile">
+                                <label for="inputFile">上传一张店铺主页图片</label>
+                                <input type="file" id="inputFile" >
                                 <p class="help-block">一张漂亮的店铺图片更能吸引顾客来前来光临您的店铺.</p>
                             </div>
                             <hr class="mb-4">
-                            <button class="btn btn-primary btn-lg btn-block " type="submit">提交注册申请</button>
-                        </form>
+
+                        </div>
+                            <button class="btn btn-primary btn-lg btn-block "  id="submit_RegisterShop">提交注册申请</button>
                     </div>
                 </div>
 
 
                 <!-- FOOTER -->
                 <footer class="container">
-                    <p class="float-right"><a href="https://getbootstrap.com/docs/4.1/examples/carousel/#">Back to top</a></p>
-                    <p>© 2017-2018 Company, Inc. · <a href="https://getbootstrap.com/docs/4.1/examples/carousel/#">Privacy</a> · <a href="https://getbootstrap.com/docs/4.1/examples/carousel/#">Terms</a></p>
+                    <p class="float-right"><a href="#">Back to top</a></p>
+                    <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="https://getbootstrap.com/docs/4.1/examples/carousel/#">Terms</a></p>
                 </footer>
         </main>
     </div>
@@ -224,10 +223,10 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/resources/js/jquery-slim.min.js"><\/script>')</script>
+<script src="/resources/js/jquery.min.js"></script>
+<!--user-defined-js-->
+<script src="/resources/js/func.js" charset="UTF-8"></script>
+
 <script src="/resources/js/popper.min.js"></script>
 <script src="/resources/js/bootstrap.min.js"></script>
 <script src="/resources/js/holder.min.js"></script>
@@ -238,11 +237,11 @@
     feather.replace()
 </script>
 
-<!-- Graphs -->
-<script src="/resources/js/Chart.min.js"></script>
-<script>
+<!--;----- Graphs -----;-->
+<script src="/resources/js/Chart.min.js"></script>&ndash;&gt;
 
-</script>
+
+
 
 <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" preserveAspectRatio="none"
      style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;">

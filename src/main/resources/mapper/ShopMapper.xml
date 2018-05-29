@@ -6,7 +6,7 @@
     <result column="shop_name" jdbcType="VARCHAR" property="shopName" />
     <result column="shop_desc" jdbcType="VARCHAR" property="shopDesc" />
     <result column="shop_addr" jdbcType="VARCHAR" property="shopAddr" />
-    <result column="phone" jdbcType="INTEGER" property="phone" />
+    <result column="phone" jdbcType="BIGINT" property="phone" />
     <result column="shop_img" jdbcType="VARCHAR" property="shopImg" />
     <result column="priority" jdbcType="INTEGER" property="priority" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -116,7 +116,7 @@
       enable_status, advice, area_id, 
       owner_id, shop_category_id)
     values ( #{shopName,jdbcType=VARCHAR}, #{shopDesc,jdbcType=VARCHAR},
-      #{shopAddr,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER}, #{shopImg,jdbcType=VARCHAR}, 
+      #{shopAddr,jdbcType=VARCHAR}, #{phone,jdbcType=BIGINT}, #{shopImg,jdbcType=VARCHAR},
       #{priority,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{editTime,jdbcType=TIMESTAMP}, 
       #{enableStatus,jdbcType=INTEGER}, #{advice,jdbcType=VARCHAR}, #{areaId,jdbcType=INTEGER}, 
       #{ownerId,jdbcType=INTEGER}, #{shopCategoryId,jdbcType=INTEGER})
@@ -177,7 +177,7 @@
         #{shopAddr,jdbcType=VARCHAR},
       </if>
       <if test="phone != null">
-        #{phone,jdbcType=INTEGER},
+        #{phone,jdbcType=BIGINT},
       </if>
       <if test="shopImg != null">
         #{shopImg,jdbcType=VARCHAR},
@@ -230,7 +230,7 @@
         shop_addr = #{record.shopAddr,jdbcType=VARCHAR},
       </if>
       <if test="record.phone != null">
-        phone = #{record.phone,jdbcType=INTEGER},
+        phone = #{record.phone,jdbcType=BIGINT},
       </if>
       <if test="record.shopImg != null">
         shop_img = #{record.shopImg,jdbcType=VARCHAR},
@@ -270,7 +270,7 @@
       shop_name = #{record.shopName,jdbcType=VARCHAR},
       shop_desc = #{record.shopDesc,jdbcType=VARCHAR},
       shop_addr = #{record.shopAddr,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=INTEGER},
+      phone = #{record.phone,jdbcType=BIGINT},
       shop_img = #{record.shopImg,jdbcType=VARCHAR},
       priority = #{record.priority,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -297,7 +297,7 @@
         shop_addr = #{shopAddr,jdbcType=VARCHAR},
       </if>
       <if test="phone != null">
-        phone = #{phone,jdbcType=INTEGER},
+        phone = #{phone,jdbcType=BIGINT},
       </if>
       <if test="shopImg != null">
         shop_img = #{shopImg,jdbcType=VARCHAR},
@@ -334,7 +334,7 @@
     set shop_name = #{shopName,jdbcType=VARCHAR},
       shop_desc = #{shopDesc,jdbcType=VARCHAR},
       shop_addr = #{shopAddr,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=BIGINT},
       shop_img = #{shopImg,jdbcType=VARCHAR},
       priority = #{priority,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},

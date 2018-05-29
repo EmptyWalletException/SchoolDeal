@@ -1,5 +1,6 @@
 package com.kingguanzhang.util;
 
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -46,6 +47,7 @@ public class RequestUtil {
     //获取请求参数并转化成String类型;
     public static String parserString(HttpServletRequest request,String key){
         try{
+
 
             String result = request.getParameter(key);
             if (null != result){

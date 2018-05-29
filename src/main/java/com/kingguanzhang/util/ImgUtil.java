@@ -5,6 +5,7 @@ import net.coobird.thumbnailator.Thumbnails;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -21,26 +22,28 @@ public class ImgUtil {
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
     private static final Random r = new Random();
 
-    public static String generateThumbnail(File thumbnail, String targetAddr){
+    public static String generateThumbnail(InputStream shopImgInputStream, String targetAddr,String fileName){
         String realFileName = getRandomFileName();
-        String extension = getFileExtension(thumbnail);
+        String extension = fileName.substring(fileName.lastIndexOf("."));
         makeDirPath(targetAddr);
         String relativeAddr = targetAddr + realFileName +extension;
         String imgAddr = PathUtil.getImgBasePath() + relativeAddr;
         File dest = new File (imgAddr);
 
+        System.out.print(dest.getPath());
         try{
             //将Thumbnail传入进来的图片流写入到指定的文件夹路径里;
-            Thumbnails.of(thumbnail).size(200,200).toFile(dest);
-
-        }catch (IOException e){
-            e.printStackTrace();
+           // File dest2 = new File ("D:/test.jpg");
+           // Thumbnails.of(dest2).size(200,200).toFile(dest);
+            //Thumbnails.of(dest2).size(200,200).toFile("D:/1.jgp");
+            Thumbnails.of(shopImgInputStream).size(200,200).toFile(dest);
+           // Thumbnails.of(shopImgInputStream).toFile(dest);
+        }catch (IOException e) {
             //如果图片文件保存失败则返回一个默认的图片路径;
-            imgAddr= "D:test.jpg";
-        }finally {
-            return imgAddr;
+            imgAddr = "D:/test.jpg";
+            e.printStackTrace();
         }
-
+        return imgAddr;
     }
 
     /**
@@ -59,12 +62,12 @@ public class ImgUtil {
      * @param thumbnailFile
      * @return
      */
-    private static String getFileExtension(File thumbnailFile) {
+    /*private static String getFileExtension(File thumbnailFile) {
         String originalFileName = thumbnailFile.getPath();
         //截取最后一个"."号之后的字符串,也就是文件的扩展名,例如".jpg"
         String extension =originalFileName.substring(originalFileName.lastIndexOf("."));
         return extension;
-    }
+    }*/
 
     /**
      * 生成文件路径所涉及到的目录;
