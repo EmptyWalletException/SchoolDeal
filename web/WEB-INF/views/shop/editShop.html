@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>编辑店铺</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
@@ -126,19 +126,18 @@
             <div class="container">
                 <div class="py-5 text-center">
                     <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-                    <h2>注册你的店铺</h2>
-                    <p class="lead">想加入卖家阵营吗,现在就来开通一个店铺吧!</p>
+                    <h2>编辑您的店铺</h2>
+                    <p class="lead">您可以随时更新您的店铺信息,但是记得仔细校对哟!</p>
                 </div>
                 <hr/>
 
                 <div class="row">
                     <div class="col-md-8 order-md-1">
-                        <h4 class="mb-3">注册店铺</h4>
-
+                        <h4 class="mb-3">编辑店铺</h4>
                         <div class="needs-validation" id="registerShopForm"  novalidate>
                             <div class="mb-3">
                                 <label for="shopName">招牌名字</label>
-                                <input type="text" class="form-control" id="shopName" name="shopName" placeholder="街角的咖啡馆" required>
+                                <input type="text" class="form-control" id="shopName" name="shopName"  required>
                                 <div class="invalid-feedback">
                                     请输入一个可使用的店铺名字.
                                 </div>
@@ -146,7 +145,7 @@
 
                             <div class="mb-3">
                                 <label for="shopDesc">店铺描述</label>
-                                <textarea  class="form-control" id="shopDesc" name="shopDesc" placeholder="今天心情不错哟,来喝杯咖啡吧!" required></textarea>
+                                <textarea  class="form-control" id="shopDesc" name="shopDesc" required></textarea>
                                 <div class="invalid-feedback">
                                     请输入店铺描述.
                                 </div>
@@ -154,7 +153,7 @@
 
                             <div class="mb-3">
                                 <label for="phone">手机号码</label>
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="181xxxxxxxx">
+                                <input type="text" class="form-control" id="phone" name="phone" >
                                 <div class="invalid-feedback">
                                     请输入正确的手机号码.
                                 </div>
@@ -162,7 +161,7 @@
 
                             <div class="mb-3">
                                 <label for="shopAddr">店铺地址</label>
-                                <input type="text" class="form-control" id="shopAddr" name="shopAddr" placeholder="上海市黄浦区xxx街xxx号" required>
+                                <input type="text" class="form-control" id="shopAddr" name="shopAddr"  required>
                                 <div class="invalid-feedback">
                                     请输入您的店铺地址.
                                 </div>
@@ -201,12 +200,12 @@
                             <div class="form-group">
                                 <label for="inputFile">上传一张店铺主页图片</label>
                                 <input type="file" id="inputFile" >
-                                <p class="help-block">一张漂亮的店铺图片更能吸引顾客来前来光临您的店铺.</p>
+                                <p class="help-block">如果您不需要重新更换店铺图片,请跳过上传图片的步骤.</p>
                             </div>
                             <hr class="mb-4">
 
                         </div>
-                            <button class="btn btn-primary btn-lg btn-block "  id="submit_RegisterShop">提交注册申请</button>
+                            <button class="btn btn-primary btn-lg btn-block "  id="submit_EditShop">提交更新</button>
                     </div>
                 </div>
 
@@ -225,7 +224,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="/resources/js/jquery.min.js"></script>
 <!--user-defined-js-->
-<script src="/resources/js/registerShop.js" charset="UTF-8"></script>
+<script src="/resources/js/editShop.js" charset="UTF-8"></script>
 
 <script src="/resources/js/popper.min.js"></script>
 <script src="/resources/js/bootstrap.min.js"></script>

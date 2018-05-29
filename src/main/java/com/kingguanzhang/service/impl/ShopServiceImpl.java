@@ -63,6 +63,17 @@ public class ShopServiceImpl implements ShopService {
         return new ShopExecution(ShopSateEnum.CHECK,shop);
     }
 
+    @Override
+    public Shop getShop(Integer shopId) {
+        Shop shop = shopMapper.selectByPrimaryKey(shopId);
+        return shop;
+    }
+
+    @Override
+    public int updateShop(Shop shop) {
+        int i = shopMapper.updateByPrimaryKeySelective(shop);
+        return i;
+    }
 
 
     private String addShopImg(Shop shop, InputStream shopImgInputStream,String fileName) {

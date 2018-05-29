@@ -14,4 +14,7 @@ public interface ShopService {
     public ShopExecution addShop(Shop shop, InputStream shopImgInputStream,String fileName);
 
 
+    public Shop getShop(Integer shopId);
+
+    public int updateShop(Shop shop);
 }
