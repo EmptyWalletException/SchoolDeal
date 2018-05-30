@@ -55,7 +55,7 @@ function getShop(){
     $.ajax({
         url:"/getShop",
         type:"POST",
-        data:{"shopId":2},//这里先写死id,后期实现了店铺页面再从页面获取
+        data:{"shopId":2},//这里先写死id,后期再实现后端直接从session中的用户id来查询出店铺id,而前端就不要暴露商店id
         success:function(result){
 
             /* 这里要检查一下后端是否返回了错误报告信息 */

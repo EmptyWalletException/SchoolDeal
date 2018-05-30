@@ -31,4 +31,14 @@ public class PathUtil {
         String imagePath="upload/item/shop/" + shopId + "/";
         return imagePath.replace("/",seperator);
     }
+
+    /**
+     * 获取商品对应的图片路径;
+     * @param productId
+     * @return
+     */
+    public static String getProductImagePath(long productId){
+        String imagePath="upload/item/product/" + productId + "/";
+        return imagePath.replace("/",seperator);
+    }
 }

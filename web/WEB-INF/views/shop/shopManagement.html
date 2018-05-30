@@ -55,7 +55,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/productManagement">
                             <span data-feather="shopping-cart"></span>
                             商品管理
                         </a>
@@ -121,7 +121,7 @@
             </div>
         </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <main role="main" class="col-md-auto ml-sm-auto col-lg-10 px-4">
 
             <div class="container">
                 <div class="py-5 text-center">
@@ -130,93 +130,72 @@
                     <p class="lead">想加入卖家阵营吗,现在就来开通一个店铺吧!</p>
                 </div>
                 <hr/>
+            </div>
 
-                <div class="row">
-                    <div class="col-md-8 order-md-1">
-                        <h4 class="mb-3">注册店铺</h4>
-
-                        <div class="needs-validation" id="registerShopForm"  novalidate>
-                            <div class="mb-3">
-                                <label for="shopName">招牌名字</label>
-                                <input type="text" class="form-control" id="shopName" name="shopName" placeholder="街角的咖啡馆" required>
-                                <div class="invalid-feedback">
-                                    请输入一个可使用的店铺名字.
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="shopDesc">店铺描述</label>
-                                <textarea  class="form-control" id="shopDesc" name="shopDesc" placeholder="今天心情不错哟,来喝杯咖啡吧!" required></textarea>
-                                <div class="invalid-feedback">
-                                    请输入店铺描述.
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="phone">手机号码</label>
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="181xxxxxxxx">
-                                <div class="invalid-feedback">
-                                    请输入正确的手机号码.
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="shopAddr">店铺地址</label>
-                                <input type="text" class="form-control" id="shopAddr" name="shopAddr" placeholder="上海市黄浦区xxx街xxx号" required>
-                                <div class="invalid-feedback">
-                                    请输入您的店铺地址.
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="areaSel">选择店铺区域</label>
-                                    <select class="custom-select d-block w-100" id="areaSel" name="areaId"required>
-                                        <option value="">选择店铺区域</option>
-                                        <option>华东</option>
-                                        <option>华西</option>
-                                        <option>华南</option>
-                                        <option>华北</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        请选择店铺区域.
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="shopCategorySel">选择店铺分类</label>
-                                    <select class="custom-select d-block w-100" id="shopCategorySel" name="shopCategoryId" required>
-                                        <option value="">选择店铺分类</option>
-                                        <option>私人店铺</option>
-                                        <option>企业店铺</option>
-                                        <option>组织店铺</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        请选择店铺分类.
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <hr class="mb-4">
-                            <div class="form-group">
-                                <label for="inputFile">上传一张店铺主页图片</label>
-                                <input type="file" id="inputFile" >
-                                <p class="help-block">一张漂亮的店铺图片更能吸引顾客来前来光临您的店铺.</p>
-                            </div>
-                            <hr class="mb-4">
-
+                    <div class="col-md-auto order-md-1">
+                        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                            <h1 class="display-4">管理您的店铺</h1>
+                            <p class="lead">您可以在下方的功能选择框里预览您可以执行的操作,然后根据需要选择操作.</p>
                         </div>
-                            <button class="btn btn-primary btn-lg btn-block "  id="submit_RegisterShop">提交注册申请</button>
+
+                        <div class="container">
+                            <div class="card-deck mb-3 text-center">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <a type="button" class="btn btn-lg btn-block btn-primary" href="/register">注册店铺</a>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-title pricing-card-title">注意事项</p>
+                                        <ul class="list-unstyled mt-3 mb-4">
+                                            <li>每个用户只能注册一个店铺;</li>
+                                            <li>您可以同时拥有买家和卖家两种身份;</li>
+                                            <li>注册需要等待约3个工作日的审核时间;</li>
+                                            <li>注册成功后请仔细阅读店铺运营规范;</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <a type="button" class="btn btn-lg btn-block btn-primary" href="/editShop">编辑店铺</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-title pricing-card-title">注意事项</p>
+                                        <ul class="list-unstyled mt-3 mb-4">
+                                            <li>需要您已经拥有了一个已通过审核的店铺;</li>
+                                            <li>您可以再次修改店铺的所有信息;</li>
+                                            <li>您每个月只有一次修改机会;</li>
+                                            <li>请等待约3个工作日的审核时间;</li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <a type="button" class="btn btn-lg btn-block btn-outline-primary" href="/see">查看店铺</a>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-title pricing-card-title">功能说明</p>
+                                        <ul class="list-unstyled mt-3 mb-4">
+                                            <li>您可以通过顾客视角来浏览您的店铺;</li>
+                                            <li>进入顾客视角后您无法执行购买和收藏操作;</li>
+                                            <li>客制化店铺主页的功能在以后会上线;</li>
+                                            <li>如果您有好的建议请联系我们;</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
-
 
                 <!-- FOOTER -->
                 <footer class="container">
                     <p class="float-right"><a href="#">Back to top</a></p>
                     <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="https://getbootstrap.com/docs/4.1/examples/carousel/#">Terms</a></p>
                 </footer>
-            </div>
+
+
         </main>
     </div>
 </div>
@@ -226,7 +205,6 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="/resources/js/jquery.min.js"></script>
 <!--user-defined-js-->
-<script src="/resources/js/registerShop.js" charset="UTF-8"></script>
 
 <script src="/resources/js/popper.min.js"></script>
 <script src="/resources/js/bootstrap.min.js"></script>

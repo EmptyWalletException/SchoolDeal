@@ -23,9 +23,10 @@ public class ShopManagementController {
     @Autowired
     private ShopService shopService;
 
+
     @RequestMapping("/index")
     public String showIndex(){
-        return "shop/index";
+        return "/shop/index";
     }
 
     @RequestMapping("/register")
@@ -43,10 +44,18 @@ public class ShopManagementController {
         return "/shop/editShop";
     }
 
-    @RequestMapping("/getShop")//这里的shopId严格来说不能通过url传递,防止用户修改;
+    @RequestMapping("/shopManagement")
+    public String showShopManagement(){
+        return "/shop/shopManagement";
+    }
+
+
+    @RequestMapping(value = "/getShop",method = RequestMethod.POST)//这里的shopId严格来说不能通过url传递,防止用户修改;后期需要修改成通过session中用户id来查询绑定的商店id
     @ResponseBody
     public Msg getShop(@RequestParam("shopId") Integer shopId, HttpServletRequest request){
+
         Shop shop = shopService.getShop(shopId);
+        //将商店id写入到session而不是url,页面和js中也不要暴露商店id,防止用户修改id
         request.getSession().setAttribute("shopId",shop.getShopId());
         return Msg.success().add("shop",shop);
     }
@@ -69,8 +78,9 @@ public class ShopManagementController {
             //将前端传来的商店信息转换为shop实体类;
             System.out.print("shopStr的值是:" + shopStr);
             shop = objectMapper.readValue(shopStr, Shop.class);
+
             /*这里需要注意,shopId需要小心处理,建议页面上一步查询时就写入session,防止用户在前端修改id导致处理了错误的数据;*/
-            int shopId = (int)request.getSession().getAttribute("shopId");
+            int shopId = (int)request.getSession().getAttribute("shopId");//从session中取出商店id
             shop.setShopId(shopId);
 
         } catch (Exception e) {

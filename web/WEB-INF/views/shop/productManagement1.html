@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>编辑商品</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
@@ -123,100 +123,102 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
-            <div class="container">
-                <div class="py-5 text-center">
-                    <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-                    <h2>注册你的店铺</h2>
-                    <p class="lead">想加入卖家阵营吗,现在就来开通一个店铺吧!</p>
-                </div>
-                <hr/>
-
-                <div class="row">
-                    <div class="col-md-8 order-md-1">
-                        <h4 class="mb-3">注册店铺</h4>
-
-                        <div class="needs-validation" id="registerShopForm"  novalidate>
-                            <div class="mb-3">
-                                <label for="shopName">招牌名字</label>
-                                <input type="text" class="form-control" id="shopName" name="shopName" placeholder="街角的咖啡馆" required>
-                                <div class="invalid-feedback">
-                                    请输入一个可使用的店铺名字.
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="shopDesc">店铺描述</label>
-                                <textarea  class="form-control" id="shopDesc" name="shopDesc" placeholder="今天心情不错哟,来喝杯咖啡吧!" required></textarea>
-                                <div class="invalid-feedback">
-                                    请输入店铺描述.
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="phone">手机号码</label>
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="181xxxxxxxx">
-                                <div class="invalid-feedback">
-                                    请输入正确的手机号码.
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="shopAddr">店铺地址</label>
-                                <input type="text" class="form-control" id="shopAddr" name="shopAddr" placeholder="上海市黄浦区xxx街xxx号" required>
-                                <div class="invalid-feedback">
-                                    请输入您的店铺地址.
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="areaSel">选择店铺区域</label>
-                                    <select class="custom-select d-block w-100" id="areaSel" name="areaId"required>
-                                        <option value="">选择店铺区域</option>
-                                        <option>华东</option>
-                                        <option>华西</option>
-                                        <option>华南</option>
-                                        <option>华北</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        请选择店铺区域.
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="shopCategorySel">选择店铺分类</label>
-                                    <select class="custom-select d-block w-100" id="shopCategorySel" name="shopCategoryId" required>
-                                        <option value="">选择店铺分类</option>
-                                        <option>私人店铺</option>
-                                        <option>企业店铺</option>
-                                        <option>组织店铺</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        请选择店铺分类.
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <hr class="mb-4">
-                            <div class="form-group">
-                                <label for="inputFile">上传一张店铺主页图片</label>
-                                <input type="file" id="inputFile" >
-                                <p class="help-block">一张漂亮的店铺图片更能吸引顾客来前来光临您的店铺.</p>
-                            </div>
-                            <hr class="mb-4">
-
+            <section class="jumbotron text-center" style="background-color: #ffffff">
+                <div class="container">
+                    <h1 class="jumbotron-heading">选择浏览方式</h1>
+                    <p class="lead text-left">您可以选择两种浏览方式来管理您的商品:
+                        1,使用带图片的简单预览方式(默认方式);
+                        2,使用不带图片的表格预览方式;
+                        移动端建议切到横屏浏览</p>
+                    <p>
+                        <a href="/productManagement" class="btn btn-primary my-2">使用预览方式1</a>
+                        <a href="/productManagement2" class="btn btn-secondary my-2">使用预览方式2</a>
+                    </p>
+                    <p>
+                    <h4 class="mb-3">选择商品状态</h4>
+                    <div class=" my-3 row" >
+                        <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
+                            <input id="credit" name="chooseShopState" type="radio" class="custom-control-input" checked required>
+                            <label class="custom-control-label" for="credit">全部的商品</label>
                         </div>
-                            <button class="btn btn-primary btn-lg btn-block "  id="submit_RegisterShop">提交注册申请</button>
+                        <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
+                            <input id="debit" name="chooseShopState" type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label" for="debit">上架中商品</label>
+                        </div>
+                        <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
+                            <input id="paypal" name="chooseShopState" type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label" for="paypal">已下架商品</label>
+                        </div>
+                    </div>
+                    </p>
+                </div>
+            </section>
+
+            <div class="album py-5 bg-light">
+                <div class="container" >
+
+                    <div class="row" id="shopListRow">
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <img class="card-img-top" src="/resources/images/product.jpg" alt="商品标题">
+                                <div class="card-body">
+                                    <h1>商品标题</h1>
+                                    <div>
+                                        <span>$ 54.00</span>
+                                    </div>
+                                    <div>
+                                    <small class="text-muted">商品上架时间 : 2018/5/30</small>
+                                    </div>
+                                    <div>
+                                    <small class="text-muted">最后编辑时间 : 2018/5/30</small>
+                                    </div>
+                                    <p class="card-text">此处是商品的简单描述,为了界面美观应该设置字数上限.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary edit" produtyId="2">编辑</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">下架</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <img class="card-img-top" src="/resources/images/product.jpg" alt="商品标题">
+                                <div class="card-body">
+                                    <h1>商品标题</h1>
+                                    <div>
+                                        <span>$ 54.00</span>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted">商品上架时间 : 2018/5/30</small>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted">最后编辑时间 : 2018/5/30</small>
+                                    </div>
+                                    <p class="card-text">此处是商品的简单描述,为了界面美观应该设置字数上限.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary edit" produtyId="2">编辑</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">下架</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
 
-                <!-- FOOTER -->
+
+            <!-- FOOTER -->
                 <footer class="container">
                     <p class="float-right"><a href="#">Back to top</a></p>
                     <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="https://getbootstrap.com/docs/4.1/examples/carousel/#">Terms</a></p>
                 </footer>
-            </div>
         </main>
     </div>
 </div>
@@ -226,7 +228,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="/resources/js/jquery.min.js"></script>
 <!--user-defined-js-->
-<script src="/resources/js/registerShop.js" charset="UTF-8"></script>
+<script src="/resources/js/productManagement1.js"></script>
 
 <script src="/resources/js/popper.min.js"></script>
 <script src="/resources/js/bootstrap.min.js"></script>
