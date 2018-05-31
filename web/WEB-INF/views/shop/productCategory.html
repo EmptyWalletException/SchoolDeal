@@ -125,102 +125,56 @@
 
             <section class="jumbotron text-center" style="background-color: #ffffff">
                 <div class="container">
-                    <h1 class="jumbotron-heading">选择浏览方式</h1>
-                    <p class="lead text-left">您可以选择两种浏览方式来管理您的商品:
-                        1,使用带图片的简单预览方式(默认方式);
-                        2,使用不带图片的表格预览方式;
-                        移动端建议切到横屏浏览</p>
-                    <p>
-                        <a href="/productManagement" class="btn btn-primary my-2">使用预览方式1</a>
-                        <a href="/productManagement2" class="btn btn-secondary my-2">使用预览方式2</a>
-                    </p>
-                    <p>
-                    <h4 class="mb-3">选择商品状态</h4>
-                    <div class=" my-3 row" >
-                        <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
-                            <input id="credit" name="chooseShopState" type="radio" class="custom-control-input" checked required>
-                            <label class="custom-control-label" for="credit">全部的商品</label>
-                        </div>
-                        <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
-                            <input id="debit" name="chooseShopState" type="radio" class="custom-control-input" required>
-                            <label class="custom-control-label" for="debit">上架中商品</label>
-                        </div>
-                        <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
-                            <input id="paypal" name="chooseShopState" type="radio" class="custom-control-input" required>
-                            <label class="custom-control-label" for="paypal">已下架商品</label>
-                        </div>
-                    </div>
-                    </p>
+                    <h1 class="jumbotron-heading">商品分类管理</h1>
+                    <p class="lead text-center">请选择您需要编辑的商品分类进行管理</p>
                 </div>
             </section>
 
-            <div class="album py-5 bg-light">
-                <div class="text-center">
-                    <a type="button" class="btn btn-sm btn-primary " href="/addProduct">新增一个商品</a>
-                </div>
-                <hr/>
-                <div class="container" >
-                    <div class="row" id="shopListRow">
-                        <div class="col-md-4">
-                            <div class="card mb-4 box-shadow">
-                                <img class="card-img-top" src="/resources/images/product.jpg" alt="商品标题">
-                                <div class="card-body">
-                                    <h1>商品标题</h1>
-                                    <div>
-                                        <span>$ 54.00</span>
-                                    </div>
-                                    <div>
-                                    <small class="text-muted">商品上架时间 : 2018/5/30</small>
-                                    </div>
-                                    <div>
-                                    <small class="text-muted">最后编辑时间 : 2018/5/30</small>
-                                    </div>
-                                    <div>
-                                        <small class="text-muted">零食</small>
-                                    </div>
-                                    <p class="card-text">此处是商品的简单描述,为了界面美观应该设置字数上限.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary edit" produtyId="2">编辑</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">下架</button>
-                                        </div>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-md-4">
-                            <div class="card mb-4 box-shadow">
-                                <img class="card-img-top" src="/resources/images/product.jpg" alt="商品标题">
-                                <div class="card-body">
-                                    <h1>商品标题</h1>
-                                    <div>
-                                        <span>$ 54.00</span>
-                                    </div>
-                                    <div>
-                                        <small class="text-muted">商品上架时间 : 2018/5/30</small>
-                                    </div>
-                                    <div>
-                                        <small class="text-muted">最后编辑时间 : 2018/5/30</small>
-                                    </div>
-                                    <div>
-                                        <small class="text-muted">零食</small>
-                                    </div>
-                                    <p class="card-text">此处是商品的简单描述,为了界面美观应该设置字数上限.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary edit" produtyId="2">编辑</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">下架</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <p class="text-center">商品分类详情表</p>
+                    <hr/>
+
+                        <span class="float-right">创建新的分类 <input type="text" id="tempProductCateGoryName" placeholder="输入分类标题"/><button class="btn btn-primary " id="addProductCategroy" >提交</button></span>
+
+                    <thead>
+                    <tr>
+                        <th>分类标题</th>
+                        <th>创建时间</th>
+                        <th>选择操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody4productCategoryList">
+                    <tr>
+                        <td>甜点</td>
+                        <td>2018/5/30</td>
+                        <td>
+                            <a  class="btn btn-primary " href="#">编辑</a>
+                            <a  class="btn btn-danger " href="#">删除</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>甜点</td>
+                        <td>2018/5/30</td>
+                        <td>
+                            <a  class="btn btn-primary " href="#">编辑</a>
+                            <a  class="btn btn-danger " href="#">删除</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>甜点</td>
+                        <td>2018/5/30</td>
+                        <td>
+                            <a  class="btn btn-primary " href="#">编辑</a>
+                            <a  class="btn btn-danger " href="#">删除</a>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
             </div>
-
 
 
             <!-- FOOTER -->
@@ -237,7 +191,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="/resources/js/jquery.min.js"></script>
 <!--user-defined-js-->
-<script src="/resources/js/productManagement1.js"></script>
+<script src="/resources/js/productCategory.js"></script>
 
 <script src="/resources/js/popper.min.js"></script>
 <script src="/resources/js/bootstrap.min.js"></script>

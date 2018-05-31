@@ -27,7 +27,7 @@ public class ImgUtil {
         String extension = fileName.substring(fileName.lastIndexOf("."));
         makeDirPath(targetAddr);
         String relativeAddr = targetAddr + realFileName +extension;
-        String imgAddr = PathUtil.getImgBasePath() + relativeAddr;
+        String imgAddr = PathUtil.getImgBasePath()+ relativeAddr;
         File dest = new File (imgAddr);
 
         System.out.print(dest.getPath());
@@ -43,7 +43,7 @@ public class ImgUtil {
             imgAddr = "D:/test.jpg";
             e.printStackTrace();
         }
-        return imgAddr;
+        return relativeAddr;
     }
 
     /**

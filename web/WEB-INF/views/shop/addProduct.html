@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>编辑商品</title>
+    <title>编辑店铺</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
@@ -123,111 +123,77 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
-            <section class="jumbotron text-center" style="background-color: #ffffff">
-                <div class="container">
-                    <h1 class="jumbotron-heading">选择浏览方式</h1>
-                    <p class="lead text-left">您可以选择两种浏览方式来管理您的商品:
-                        1,使用带图片的简单预览方式(默认方式);
-                        2,使用不带图片的表格预览方式;
-                        移动端建议切到横屏浏览</p>
-                    <p>
-                        <a href="/productManagement" class="btn btn-primary my-2">使用预览方式1</a>
-                        <a href="/productManagement2" class="btn btn-secondary my-2">使用预览方式2</a>
-                    </p>
-                    <p>
-                    <h4 class="mb-3">选择商品状态</h4>
-                    <div class=" my-3 row" >
-                        <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
-                            <input id="credit" name="chooseShopState" type="radio" class="custom-control-input" checked required>
-                            <label class="custom-control-label" for="credit">全部的商品</label>
-                        </div>
-                        <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
-                            <input id="debit" name="chooseShopState" type="radio" class="custom-control-input" required>
-                            <label class="custom-control-label" for="debit">上架中商品</label>
-                        </div>
-                        <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
-                            <input id="paypal" name="chooseShopState" type="radio" class="custom-control-input" required>
-                            <label class="custom-control-label" for="paypal">已下架商品</label>
-                        </div>
-                    </div>
-                    </p>
-                </div>
-            </section>
-
-            <div class="album py-5 bg-light">
-                <div class="text-center">
-                    <a type="button" class="btn btn-sm btn-primary " href="/addProduct">新增一个商品</a>
+            <div class="container">
+                <div class="py-5 text-center">
+                    <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+                    <h2>新增商品</h2>
+                    <p class="lead">请补充新增的商品信息!</p>
                 </div>
                 <hr/>
-                <div class="container" >
-                    <div class="row" id="shopListRow">
-                        <div class="col-md-4">
-                            <div class="card mb-4 box-shadow">
-                                <img class="card-img-top" src="/resources/images/product.jpg" alt="商品标题">
-                                <div class="card-body">
-                                    <h1>商品标题</h1>
-                                    <div>
-                                        <span>$ 54.00</span>
-                                    </div>
-                                    <div>
-                                    <small class="text-muted">商品上架时间 : 2018/5/30</small>
-                                    </div>
-                                    <div>
-                                    <small class="text-muted">最后编辑时间 : 2018/5/30</small>
-                                    </div>
-                                    <div>
-                                        <small class="text-muted">零食</small>
-                                    </div>
-                                    <p class="card-text">此处是商品的简单描述,为了界面美观应该设置字数上限.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary edit" produtyId="2">编辑</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">下架</button>
-                                        </div>
 
+                <div class="row">
+                    <div class="col-md-8 order-md-1">
+                        <h4 class="mb-3">新增商品</h4>
+                        <div class="needs-validation" id="editProductForm"  novalidate>
+                            <div class="mb-3">
+                                <label for="productName">商品名字</label>
+                                <input type="text" class="form-control" id="productName" name="productName"  required>
+                                <div class="invalid-feedback">
+                                    请输入一个商品名字.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="productDesc">商品描述</label>
+                                <textarea  class="form-control" id="productDesc" name="productDesc" required></textarea>
+                                <div class="invalid-feedback">
+                                    请输入商品描述.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="normalPrice">商品价格</label>
+                                <input type="text" class="form-control" id="normalPrice" name="normalPrice" >
+                                <div class="invalid-feedback">
+                                    请输入正确的商品价格.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="productCategorySel">选择商品分类</label>
+                                    <select class="custom-select d-block w-100" id="productCategorySel" name="productCategorySel"required>
+                                        <option value="">选择商品分类</option>
+                                        <option>商品分类1</option>
+                                        <option>商品分类2</option>
+                                        <option>商品分类3</option>
+                                        <option>商品分类4</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        请选择商品分类;
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-4">
-                            <div class="card mb-4 box-shadow">
-                                <img class="card-img-top" src="/resources/images/product.jpg" alt="商品标题">
-                                <div class="card-body">
-                                    <h1>商品标题</h1>
-                                    <div>
-                                        <span>$ 54.00</span>
-                                    </div>
-                                    <div>
-                                        <small class="text-muted">商品上架时间 : 2018/5/30</small>
-                                    </div>
-                                    <div>
-                                        <small class="text-muted">最后编辑时间 : 2018/5/30</small>
-                                    </div>
-                                    <div>
-                                        <small class="text-muted">零食</small>
-                                    </div>
-                                    <p class="card-text">此处是商品的简单描述,为了界面美观应该设置字数上限.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary edit" produtyId="2">编辑</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">下架</button>
-                                        </div>
-                                    </div>
-                                </div>
+                            <hr class="mb-4">
+                            <div class="form-group">
+                                <label for="inputFile">上传一张商品主页图片</label>
+                                <input type="file" id="inputFile" >
+                                <p class="help-block">必须选择一张商品图片上传!</p>
                             </div>
+                            <hr class="mb-4">
+
                         </div>
+                            <button class="btn btn-primary btn-lg btn-block "  id="submit_addProduct">提交表单</button>
                     </div>
                 </div>
-            </div>
 
 
-
-            <!-- FOOTER -->
+                <!-- FOOTER -->
                 <footer class="container">
                     <p class="float-right"><a href="#">Back to top</a></p>
                     <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="https://getbootstrap.com/docs/4.1/examples/carousel/#">Terms</a></p>
                 </footer>
+            </div>
         </main>
     </div>
 </div>
@@ -237,7 +203,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="/resources/js/jquery.min.js"></script>
 <!--user-defined-js-->
-<script src="/resources/js/productManagement1.js"></script>
+<script src="/resources/js/addProduct.js" charset="UTF-8"></script>
 
 <script src="/resources/js/popper.min.js"></script>
 <script src="/resources/js/bootstrap.min.js"></script>

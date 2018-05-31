@@ -77,10 +77,16 @@ public class ProductServiceImpl implements ProductService {
         return i;
     }
 
+    @Override
+    public Integer removeProduct(Integer productId) {
+        int i = productMapper.deleteByPrimaryKey(productId);
+        return i;
+    }
+
     private String addproductImg(Product product, InputStream productImgInputStream, String fileName) {
         String productImagePath = PathUtil.getProductImagePath(product.getProductId());
         String productImgAddr = ImgUtil.generateThumbnail(productImgInputStream,productImagePath,fileName);
         product.setImgAddr(productImgAddr);
-        return productImgAddr;
+        return productImagePath;
     }
 }

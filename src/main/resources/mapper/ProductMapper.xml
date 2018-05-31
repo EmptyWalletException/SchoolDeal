@@ -109,7 +109,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.kingguanzhang.pojo.Product">
+  <insert id="insert" parameterType="com.kingguanzhang.pojo.Product" useGeneratedKeys="true" keyColumn="product_id" keyProperty="productId">
     insert into tb_product (product_id, product_name, product_category_id, 
       product_desc, img_addr, normal_price, 
       priority, create_time, edit_time, 
@@ -121,7 +121,7 @@
       #{enableStatus,jdbcType=INTEGER}, #{productImgListId,jdbcType=INTEGER}, #{productCategory,jdbcType=INTEGER}, 
       #{shopId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.kingguanzhang.pojo.Product">
+  <insert id="insertSelective" parameterType="com.kingguanzhang.pojo.Product" useGeneratedKeys="true" keyColumn="product_id" keyProperty="productId">
     insert into tb_product
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="productId != null">

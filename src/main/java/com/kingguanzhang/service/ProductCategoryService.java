@@ -7,4 +7,6 @@ import java.util.List;
 public interface ProductCategoryService {
 
     List<ProductCategory> getCategory();
+
+    Integer addProductCategroy(ProductCategory productCategory);
 }

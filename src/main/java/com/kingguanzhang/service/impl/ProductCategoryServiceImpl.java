@@ -20,4 +20,9 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
         List<ProductCategory> productCategoryList = productCategoryMapper.selectByExample(null);
         return productCategoryList;
     }
+
+    @Override
+    public Integer addProductCategroy(ProductCategory productCategory) {
+        return productCategoryMapper.insert(productCategory);
+    }
 }

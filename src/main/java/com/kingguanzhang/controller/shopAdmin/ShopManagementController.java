@@ -17,37 +17,13 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Controller
-/*@RequestMapping("/shopadmin")*/
 public class ShopManagementController {
 
     @Autowired
     private ShopService shopService;
 
 
-    @RequestMapping("/index")
-    public String showIndex(){
-        return "/shop/index";
-    }
 
-    @RequestMapping("/register")
-    public String showRegister(){
-        return "/shop/registerShop";
-    }
-
-    @RequestMapping("/login")
-    public String showLogin(){
-        return "/shop/login";
-    }
-
-    @RequestMapping("/editShop")
-    public String showEditShop(){
-        return "/shop/editShop";
-    }
-
-    @RequestMapping("/shopManagement")
-    public String showShopManagement(){
-        return "/shop/shopManagement";
-    }
 
 
     @RequestMapping(value = "/getShop",method = RequestMethod.POST)//这里的shopId严格来说不能通过url传递,防止用户修改;后期需要修改成通过session中用户id来查询绑定的商店id

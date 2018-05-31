@@ -14,4 +14,6 @@ public interface ProductService {
     void addProduct(Product product, InputStream inputStream, String originalFilename);
 
     int updateProduct(Product product);
+
+    Integer removeProduct(Integer productId);
 }
