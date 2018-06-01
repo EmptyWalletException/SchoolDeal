@@ -336,4 +336,11 @@
       shop_id = #{shopId,jdbcType=INTEGER}
     where product_id = #{productId,jdbcType=INTEGER}
   </update>
+  <update id="updateProductCategoryIdToNullByProductCategoryId" parameterType="java.lang.Integer">
+    update tb_product
+    set
+      product_category_id = null,
+      product_category = null
+    where product_category_id = #{productCategoryId,jdbcType=INTEGER}
+  </update>
 </mapper>

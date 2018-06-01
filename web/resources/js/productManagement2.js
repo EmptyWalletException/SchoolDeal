@@ -41,7 +41,7 @@ function getProductList(productCategoryList){
                     });
                     $("#tbody4productList").append(
                         "<tr>"+
-                        "<td id='productName'>"+product.productName+"</td>"+
+                        "<td class='productName'>"+product.productName+"</td>"+
                         "<td>$ "+product.normalPrice+"</td>"+
                         "<td>"+createTime.toLocaleDateString()+"</td>"+
                         "<td>"+editTime.toLocaleDateString()+"</td>"+
@@ -49,7 +49,7 @@ function getProductList(productCategoryList){
                         "<td>"+product.productDesc+"</td>"+
                         "<td>"+
                         " <a  class=\"btn btn-primary \" href=\"/editProduct/"+product.productId+"\""+"\">编辑</a>"+
-                        " <button  class=\"btn btn-danger \" id='btn_removeProduct' productId=\""+product.productId+"\""+"\">下架</button>"+
+                        " <button  class=\"btn btn-danger btn_removeProduct\"  productId=\""+product.productId+"\""+"\">下架</button>"+
                         "</td>"+
                         "</tr>"
                     )
@@ -62,8 +62,8 @@ function getProductList(productCategoryList){
 }
 
 //绑定按钮删除商品的方法
-$("#tbody4productList").on('click','#btn_removeProduct',function () {
-    var productName = $(this).parent().prevAll("#productName").text();
+$("#tbody4productList").on('click','.btn_removeProduct',function () {
+    var productName = $(this).parent().prevAll(".productName").text();
     var confirmRemove = confirm("确认要下架商品:"+productName+"?");
     var productId = $(this).attr("productId");
     if (true == confirmRemove){

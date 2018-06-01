@@ -9,4 +9,8 @@ public interface ProductCategoryService {
     List<ProductCategory> getCategory();
 
     Integer addProductCategroy(ProductCategory productCategory);
+
+    Integer editProductCategroy(ProductCategory productCategory);
+
+    Integer deleteProductCategroy(Integer id);
 }

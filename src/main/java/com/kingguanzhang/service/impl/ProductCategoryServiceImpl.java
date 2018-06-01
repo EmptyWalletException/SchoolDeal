@@ -1,7 +1,9 @@
 package com.kingguanzhang.service.impl;
 
 import com.kingguanzhang.dao.ProductCategoryMapper;
+import com.kingguanzhang.dao.ProductMapper;
 import com.kingguanzhang.pojo.ProductCategory;
+import com.kingguanzhang.pojo.ProductExample;
 import com.kingguanzhang.service.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,11 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Autowired
     private ProductCategoryMapper productCategoryMapper;
 
+    @Autowired
+    private ProductMapper productMapper;
+
+
+
 
     @Override
     public List<ProductCategory> getCategory() {
@@ -24,5 +31,17 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Override
     public Integer addProductCategroy(ProductCategory productCategory) {
         return productCategoryMapper.insert(productCategory);
+    }
+
+    @Override
+    public Integer editProductCategroy(ProductCategory productCategory) {
+        return productCategoryMapper.updateByPrimaryKeySelective(productCategory);
+    }
+
+    @Override
+    public Integer deleteProductCategroy(Integer id) {
+        //删除分类之前先将分类关联的所有商品的分类设置成NULL;
+        productMapper.updateProductCategoryIdToNullByProductCategoryId(id);
+        return productCategoryMapper.deleteByPrimaryKey(id);
     }
 }

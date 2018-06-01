@@ -49,4 +49,27 @@ public class ProductCategoryController {
         return Msg.fail().setMsg("创建分类失败");
     }
 
+    @RequestMapping("/ajax/editProductCategory")
+    @ResponseBody
+    public Msg editProductCategory(@RequestParam("productCategoryId") Integer Id,@RequestParam("productCategoryName") String name){
+        ProductCategory productCategory = new ProductCategory();
+        productCategory.setProductCategoryName(name);
+        productCategory.setProductCategoryId(Id);
+        Integer integer = productCategoryService.editProductCategroy(productCategory);
+        if (integer >0){
+            return  Msg.success().setMsg("修改分类成功");
+        }
+        return Msg.fail().setMsg("修改分类失败");
+    }
+
+    @RequestMapping("/ajax/deleteProductCategory")
+    @ResponseBody
+    public Msg editProductCategory(@RequestParam("productCategoryId") Integer Id){
+        Integer integer = productCategoryService.deleteProductCategroy(Id);
+        if (integer >0){
+            return  Msg.success().setMsg("删除分类成功");
+        }
+        return Msg.fail().setMsg("删除分类失败");
+    }
+
 }

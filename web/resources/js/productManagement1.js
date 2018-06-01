@@ -60,8 +60,8 @@ function getProductList(productCategoryList){
                         "<p class=\"card-text\">" +product.productDesc + "</p>" +
                         "<div class=\"d-flex justify-content-between align-items-center\">" +
                         "<div class=\"btn-group\">" +
-                        "<a type=\"button\" class=\"btn btn-sm btn-outline-secondary edit\" id='btn_edit' href=\"/showEditProduct/"+product.productId+"\""+"\">编辑</a>" +
-                        "<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\" id='btn_removeProduct' productId='"+product.productId+"'>下架</button>" +
+                        "<a type=\"button\" class=\"btn btn-sm btn-outline-secondary edit btn_edit\"  href=\"/showEditProduct/"+product.productId+"\""+"\">编辑</a>" +
+                        "<button type=\"button\" class=\"btn btn-sm btn-outline-secondary btn_removeProduct\"  productId='"+product.productId+"'>下架</button>" +
                         "</div>" +
                         "</div>" +
                         "</div>"+
@@ -75,7 +75,7 @@ function getProductList(productCategoryList){
     });
 }
 
-$("#shopListRow").on('click','#btn_removeProduct',function () {
+$("#shopListRow").on('click','.btn_removeProduct',function () {
 
     var productName = $(this).parent().parent().prevAll("h1").text();
    var confirmRemove = confirm("确认要下架商品:"+productName+"?");
