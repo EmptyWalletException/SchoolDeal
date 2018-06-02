@@ -8,10 +8,10 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>笑乐购首页</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap-4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/resources/css/dashboard.css" rel="stylesheet">
@@ -40,43 +40,37 @@
                         <div class="carousel-item">
                             <img class="first-slide" src="/resources/images/1.jpg" alt="First slide">
                             <div class="container">
-                                <div class="carousel-caption text-left">
+                               <%-- <div class="carousel-caption text-left">
                                     <h1>Example headline.</h1>
                                     <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                                     <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-                                </div>
+                                </div>--%>
                             </div>
                         </div>
                         <div class="carousel-item active">
                             <img class="second-slide" src="/resources/images/2.jpg" alt="Second slide">
                             <div class="container">
-                                <div class="carousel-caption">
-                                    <h1>Another example headline.</h1>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-                                </div>
+
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img class="third-slide" src="/resources/images/3.jpg" alt="Third slide">
                             <div class="container">
-                                <div class="carousel-caption text-right">
-                                    <h1>One more for good measure.</h1>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-                                </div>
+
                             </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#" role="button" data-slide="next">
+                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+
+
 
 
                 <!-- Marketing messaging and featurettes
@@ -167,7 +161,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="/resources/js/jquery.min.js"></script>
 <script src="/resources/js/popper.min.js"></script>
-<script src="/resources/js/bootstrap.min.js"></script>
+<script src="/resources/css/bootstrap-4.1.1/dist/js/bootstrap.min.js"></script>
 <script src="/resources/js/holder.min.js"></script>
 
 <!-- Icons -->

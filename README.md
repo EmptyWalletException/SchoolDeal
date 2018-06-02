@@ -1,6 +1,8 @@
 # SchoolDeal
 使用SSM框架开发的校园交易平台
 
+2018/6/3 解决了bootstrap 4 版本不支持字体图标的文件问题,主要方法就是将3版本中bootstrap.min.css里有关font-face字体和glyphicon图标的css复制过来并将font文件夹拷贝过来
+
 2018/6/2 优化了一下前端的页面和js代码,将页面上重复利用的布局部分抽取出来使用jsp的动态引入利用,之后发现从html改成jsp页面后文档没有声明导致布局有点错乱,需要在文档<html>标签上面一行添加声明<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">,注意此声明里的dtd其实是html而不是jsp的;
 
 2018/5/31 完成了商品添加和删除 分类添加和编辑,实现了商品图片上传后保存在本地磁盘,方式项目重新部署时图片丢失的问题:

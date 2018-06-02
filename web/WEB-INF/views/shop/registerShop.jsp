@@ -8,10 +8,10 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>注册店铺</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap-4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/resources/css/dashboard.css" rel="stylesheet">
@@ -29,17 +29,11 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
-            <div class="container">
-                <div class="py-5 text-center">
-                    <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-                    <h2>注册你的店铺</h2>
-                    <p class="lead">想加入卖家阵营吗,现在就来开通一个店铺吧!</p>
-                </div>
-                <hr/>
+            <jsp:include page="fastJump.jsp"></jsp:include>
 
                 <div class="row">
                     <div class="col-md-8 order-md-1">
-                        <h4 class="mb-3">注册店铺</h4>
+                        <h3>注册店铺</h3>
 
                         <div class="needs-validation" id="registerShopForm"  novalidate>
                             <div class="mb-3">
@@ -122,7 +116,6 @@
                     <p class="float-right"><a href="#">Back to top</a></p>
                     <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="https://getbootstrap.com/docs/4.1/examples/carousel/#">Terms</a></p>
                 </footer>
-            </div>
         </main>
     </div>
 </div>
@@ -135,7 +128,7 @@
 <script src="/resources/js/registerShop.js" charset="UTF-8"></script>
 
 <script src="/resources/js/popper.min.js"></script>
-<script src="/resources/js/bootstrap.min.js"></script>
+<script src="/resources/css/bootstrap-4.1.1/dist/js/bootstrap.min.js"></script>
 <script src="/resources/js/holder.min.js"></script>
 
 <!-- Icons -->

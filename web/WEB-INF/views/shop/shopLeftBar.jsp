@@ -9,71 +9,69 @@
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="#/shopManagement">
-                    <span data-feather="home"></span>
+                <a class="nav-link active" href="/shopManagement">
+                    <span class="glyphicon glyphicon-home"></span>
                     店铺管理 <span class="sr-only">(current)</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/productManagement">
-                    <span data-feather="shopping-cart"></span>
+                    <span class="glyphicon glyphicon-glass"></span>
                     商品管理
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/productCategory">
-                    <span data-feather="file"></span>
+                    <span class="glyphicon glyphicon-th-list"></span>
                     分类管理
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span data-feather="gift"></span>
-                    快递状态
+                    <span class="glyphicon glyphicon-plane"></span>
+                    帐户管理
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span data-feather="users"></span>
-                    帐户详情
+                    <span class="glyphicon glyphicon-user"></span>
+                    快递管理
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span data-feather="bell"></span>
-                    消息通知
+                    <span class="glyphicon glyphicon-bell"></span>
+                    消息管理
                 </a>
             </li>
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>客户服务</span>
-            <a class="d-flex align-items-center text-muted" href="#">
-                <span data-feather="plus-circle"></span>
-            </a>
+
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span data-feather="info"></span>
+                    <span class="glyphicon glyphicon-zoom-in"></span>
                     自助服务
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span data-feather="mail"></span>
+                    <span class="glyphicon glyphicon-envelope"></span>
                     投诉建议
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span data-feather="phone-incoming"></span>
+                    <span class="glyphicon glyphicon-phone-alt"></span>
                     联系客服
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span data-feather="flag"></span>
+                    <span class="glyphicon glyphicon-flag"></span>
                     关于我们
                 </a>
             </li>

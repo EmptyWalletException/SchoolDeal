@@ -8,10 +8,10 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>编辑商品</title>
+    <title>分类管理</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap-4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/resources/css/dashboard.css" rel="stylesheet">
@@ -29,9 +29,11 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
+            <jsp:include page="fastJump.jsp"></jsp:include>
+
             <section class="jumbotron text-center" style="background-color: #ffffff">
                 <div class="container">
-                    <h1 class="jumbotron-heading">商品分类管理</h1>
+                    <h3>商品分类管理</h3>
                     <p class="lead text-center">请选择您需要编辑的商品分类进行管理</p>
                 </div>
             </section>
@@ -100,7 +102,7 @@
 <script src="/resources/js/productCategory.js"></script>
 
 <script src="/resources/js/popper.min.js"></script>
-<script src="/resources/js/bootstrap.min.js"></script>
+<script src="/resources/css/bootstrap-4.1.1/dist/js/bootstrap.min.js"></script>
 <script src="/resources/js/holder.min.js"></script>
 
 <!-- Icons -->

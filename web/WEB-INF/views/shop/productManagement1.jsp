@@ -8,10 +8,10 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>编辑商品</title>
+    <title>商品管理</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap-4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/resources/css/dashboard.css" rel="stylesheet">
@@ -29,9 +29,11 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
+            <jsp:include page="fastJump.jsp"></jsp:include>
+
             <section class="jumbotron text-center" style="background-color: #ffffff">
                 <div class="container">
-                    <h1 class="jumbotron-heading">选择浏览方式</h1>
+                    <h3 >选择浏览方式</h3>
                     <p class="lead text-left">您可以选择两种浏览方式来管理您的商品:
                         1,使用带图片的简单预览方式(默认方式);
                         2,使用不带图片的表格预览方式;
@@ -41,7 +43,7 @@
                         <a href="/productManagement2" class="btn btn-secondary my-2">使用预览方式2</a>
                     </p>
                     <p>
-                    <h4 class="mb-3">选择商品状态</h4>
+                    <h3>选择商品状态</h3>
                     <div class=" my-3 row" >
                         <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
                             <input id="credit" name="chooseShopState" type="radio" class="custom-control-input" checked required>
@@ -146,7 +148,7 @@
 <script src="/resources/js/productManagement1.js"></script>
 
 <script src="/resources/js/popper.min.js"></script>
-<script src="/resources/js/bootstrap.min.js"></script>
+<script src="/resources/css/bootstrap-4.1.1/dist/js/bootstrap.min.js"></script>
 <script src="/resources/js/holder.min.js"></script>
 
 <!-- Icons -->

@@ -11,7 +11,7 @@
     <title>编辑店铺</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap-4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/resources/css/dashboard.css" rel="stylesheet">
@@ -29,17 +29,11 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
-            <div class="container">
-                <div class="py-5 text-center">
-                    <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-                    <h2>新增商品</h2>
-                    <p class="lead">请补充新增的商品信息!</p>
-                </div>
-                <hr/>
+            <jsp:include page="fastJump.jsp"></jsp:include>
 
                 <div class="row">
                     <div class="col-md-8 order-md-1">
-                        <h4 class="mb-3">新增商品</h4>
+                        <h3 >新增商品</h3>
                         <div class="needs-validation" id="editProductForm"  novalidate>
                             <div class="mb-3">
                                 <label for="productName">商品名字</label>
@@ -99,7 +93,7 @@
                     <p class="float-right"><a href="#">Back to top</a></p>
                     <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="https://getbootstrap.com/docs/4.1/examples/carousel/#">Terms</a></p>
                 </footer>
-            </div>
+
         </main>
     </div>
 </div>
@@ -112,7 +106,7 @@
 <script src="/resources/js/addProduct.js" charset="UTF-8"></script>
 
 <script src="/resources/js/popper.min.js"></script>
-<script src="/resources/js/bootstrap.min.js"></script>
+<script src="/resources/css/bootstrap-4.1.1/dist/js/bootstrap.min.js"></script>
 <script src="/resources/js/holder.min.js"></script>
 
 <!-- Icons -->

@@ -11,7 +11,7 @@
     <title>Dashboard Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap-4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/resources/css/dashboard.css" rel="stylesheet">
@@ -29,18 +29,11 @@
 
         <main role="main" class="col-md-auto ml-sm-auto col-lg-10 px-4">
 
-            <div class="container">
-                <div class="py-5 text-center">
-                    <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-                    <h2>注册你的店铺</h2>
-                    <p class="lead">想加入卖家阵营吗,现在就来开通一个店铺吧!</p>
-                </div>
-                <hr/>
-            </div>
+            <jsp:include page="fastJump.jsp"></jsp:include>
 
                     <div class="col-md-auto order-md-1">
                         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-                            <h1 class="display-4">管理您的店铺</h1>
+                            <h3 >管理您的店铺</h3>
                             <p class="lead">您可以在下方的功能选择框里预览您可以执行的操作,然后根据需要选择操作.</p>
                         </div>
 
@@ -113,7 +106,7 @@
 <!--user-defined-js-->
 
 <script src="/resources/js/popper.min.js"></script>
-<script src="/resources/js/bootstrap.min.js"></script>
+<script src="/resources/css/bootstrap-4.1.1/dist/js/bootstrap.min.js"></script>
 <script src="/resources/js/holder.min.js"></script>
 
 <!-- Icons -->
