@@ -6,13 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
 
-</head>
 <body>
+
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">校乐购 'ᴗ' </a>
+    <a class="navbar-brand" href="/index">校乐购 'ᴗ' </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
                 <a class="nav-link" href="/index">网站首页 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">跳蚤市场 </a>
+                <a class="nav-link" href="#">测试应用页面 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="/shopManagement">卖家板块 </a>
@@ -35,5 +35,7 @@
         </form>
     </div>
 </nav>
+
+
 </body>
 </html>
