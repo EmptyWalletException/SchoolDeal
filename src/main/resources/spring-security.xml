@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+    <!-- 不需要权限的资源 -->
+    <http pattern="/login.jsp" security="none"></http>
+    <http pattern="/login" security="none"></http>
+    <http pattern="/index" security="none"></http>
+    <http pattern="/index.jsp" security="none"></http>
+    <http pattern="/resources/**" security="none"></http>
+    <http pattern="/**/*.jpg" security="none"></http>
+    <http pattern="/**/*.css" security="none"></http>
+    <http pattern="/**/*.js" security="none"></http>
+    <http pattern="/**/*.png" security="none"></http>
+    <http pattern="/**/*.svg" security="none"></http>
+    <http pattern="/**/*.gif" security="none"></http>
+
+
+    <http auto-config="true"  use-expressions="true">
+        <!--
+            form-login属性详解 <http auto-config="true"  use-expressions="true">
+                form-login是spring security命名空间配置登录相关信息的标签,它包含如下属性：
+                1. login-page 自定义登录页url,默认为/login
+                2. login-processing-url 登录请求拦截的url,也就是form表单提交时指定的action
+                3. default-target-url 默认登录成功后跳转的url
+                4. always-use-default-target 是否总是使用默认的登录成功后跳转url
+                5. authentication-failure-url 登录失败后跳转的url
+                6. username-parameter 用户名的请求字段 默认为userName
+                7. password-parameter 密码的请求字段 默认为password
+                8. authentication-success-handler-ref 指向一个AuthenticationSuccessHandler用于处理认证成功的请求,不能和default-target-url还有always-use-default-target同时使用
+                9. authentication-success-forward-url 用于authentication-failure-handler-ref
+                10. authentication-failure-handler-ref 指向一个AuthenticationFailureHandler用于处理失败的认证请求
+                11. authentication-failure-forward-url 用于authentication-failure-handler-ref
+                12. authentication-details-source-ref 指向一个AuthenticationDetailsSource,在认证过滤器中使用
+         -->
+        <form-login login-page="/login"
+                    login-processing-url="/loginform"
+                    default-target-url="/shopManagement"
+                    authentication-failure-url="/login?error=error"
+                    username-parameter="username"
+                    password-parameter="password"
+        />
+        <!-- 认证成功用自定义类myAuthenticationSuccessHandler处理 -->
+
+        <!--
+        logout 属性详解
+           logout-url LogoutFilter要读取的url,也就是指定spring security拦截的注销url
+           logout-success-url 用户退出后要被重定向的url
+           invalidate-session 默认为true,用户在退出后Http session失效
+           success-handler-ref 对一个LogoutSuccessHandler的引用,用来自定义退出成功后的操作
+           这里需要注意的一点是,spring security 3.x默认的注销拦截url为/j_spring_security_logout,而4.x则默认使用/logout
+         -->
+        <logout logout-url="/logout"
+                logout-success-url="/login"
+                invalidate-session="true"
+                delete-cookies="JSESSIONID"/>
+
+        <intercept-url pattern="/shopManagement" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+
+        <csrf disabled="true" />
+        <!-- <remember-me token-validity-seconds="1"/> -->
+    </http>
+
+    <authentication-manager>
+    <authentication-provider>
+        <user-service>
+            <user name="admin" password="admin" authorities="ROLE_ADMIN,ROLE_USER" />
+            <user name="admin2" password="admin" authorities="ROLE_USER" />
+        </user-service>
+    </authentication-provider>
+    </authentication-manager>
+
+
+    <!-- 使用自定义类myUserDetailsService从数据库获取用户信息 -->
+   <!-- <authentication-manager>
+        <authentication-provider user-service-ref="myUserDetailsService">
+            &lt;!&ndash; 加密 &ndash;&gt;
+            <password-encoder hash="md5">
+                &lt;!&ndash; 在md5的基础上使用盐值加密 &ndash;&gt;
+                <salt-source user-property="username"/>
+            </password-encoder>
+        </authentication-provider>
+    </authentication-manager>-->
+
+    <!--自定义的处理类,假设 form-login 中 authentication-success-handler-ref 指向 AuthenticationSuccessHandler 用于处理认证成功的请求,
+    那么在 myUserDetailsService 验证用户成功后会交由这个包下的 MyAuthenticationSuccessHandler.java来处理-->
+    <!--<context:component-scan base-package=""></context:component-scan>-->
+</beans:beans>

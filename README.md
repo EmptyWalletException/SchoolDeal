@@ -1,7 +1,8 @@
 # SchoolDeal
 使用SSM框架开发的校园交易平台
 
-2018/6/3 解决了bootstrap 4 版本不支持字体图标的文件问题,主要方法就是将3版本中bootstrap.min.css里有关font-face字体和glyphicon图标的css复制过来并将font文件夹拷贝过来
+2018/6/3 1.解决了bootstrap 4 版本不支持字体图标的文件问题,主要方法就是将3版本中bootstrap.min.css里有关font-face字体和glyphicon图标的css复制过来并将font文件夹拷贝过来;
+         2.整合了security权限管理组件,已测试成功,遇到的问题是似乎我的组件不能自动往session里写入登录用户的信息,导致一直跳登录界面,需要验证角色的链接一直被拦截,后来自定义了一个controller往session里写入了登录表单的用户名和密码才解决这个问题,而从网上搜索到的教程则是自动写入的,我的配置文件开启了自动配置但是似乎并没有自动配置,并且测试security也不会自动生成登录表单,但是配置文件中的其它标签配置生效了,证明了此配置文件是已经被容器加载了的;    
 
 2018/6/2 优化了一下前端的页面和js代码,将页面上重复利用的布局部分抽取出来使用jsp的动态引入利用,之后发现从html改成jsp页面后文档没有声明导致布局有点错乱,需要在文档<html>标签上面一行添加声明<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">,注意此声明里的dtd其实是html而不是jsp的;
 

@@ -30,6 +30,8 @@
         <property name="password" value="${jdbc.password}" />
     </bean>
 
+    <!--&lt;!&ndash;导入spring-security配置文件&ndash;&gt;
+    <import resource="classpath:spring-security.xml"/>-->
 
 
     <!-- spring 与 mybatis 的整合=============开始 -->
