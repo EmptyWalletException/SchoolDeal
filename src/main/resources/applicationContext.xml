@@ -20,7 +20,17 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     <!-- 配置 jdbc 配置文件路径 -->
-    <context:property-placeholder location="classpath:dbconfig.properties"/>
+    <!--<context:property-placeholder location="classpath:dbconfig.properties"/>
+-->
+    <!--将上面的jdbc配置db文件的字段更改成加密字段-->
+    <bean class="com.kingguanzhang.util.EncryptPropertyPlaceholderConfigurer">
+        <property name="locations"><!--locations是固定用法,表示下面将引入文件位置信息-->
+            <list>
+                <value>classpath:dbconfig.properties</value>
+            </list>
+        </property>
+        <property name="fileEncoding" value="UTF-8"></property>
+    </bean>
 
     <!-- 配置数据源连接池 -->
     <bean id="pooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">

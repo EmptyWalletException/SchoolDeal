@@ -19,20 +19,20 @@
 </head>
 
 <body class="text-center">
-<form class="form-signin" action="/loginform" method="post">
+<form class="form-signin col-sm-2 offset-5" action="/loginform" method="post">
     <img class="mb-4" src="" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputText" class="sr-only">Email address</label>
-    <input type="text" id="inputText" class="form-control" placeholder="User name" name="username" value="admin" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" value="admin" required>
-    <div class="checkbox mb-3">
+    <h1 class="h3 mb-3 font-weight-normal">请先登录</h1>
+    <label for="inputText" class="sr-only">账号</label>
+    <input type="text" id="inputText" class="form-control" placeholder="请输入账号" name="username" value="admin" required autofocus>
+    <label for="inputPassword" class="sr-only">密码</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="请输入密码" name="password" value="admin" required>
+    <%--<div class="checkbox mb-3">
         <label>
             <input type="checkbox" value="remember-me"> Remember me
         </label>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </div>--%>
+    <button class="btn btn-lg btn-primary btn-block " type="submit">登录</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
 </form>
 </body>
 </html>

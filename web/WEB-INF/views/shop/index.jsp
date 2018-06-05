@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="">
 
-    <title>笑乐购首页</title>
+    <title>校乐购首页</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/resources/css/bootstrap-4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -79,28 +79,143 @@
 
                 <div class="container marketing">
 
-                    <!-- Three columns of text below the carousel -->
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                            <h2>Heading</h2>
-                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-                            <p><a class="btn btn-secondary" href="https://getbootstrap.com/docs/4.1/examples/carousel/#" role="button">View details »</a></p>
-                        </div><!-- /.col-lg-4 -->
-                        <div class="col-lg-4">
-                            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                            <h2>Heading</h2>
-                            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-                            <p><a class="btn btn-secondary" href="https://getbootstrap.com/docs/4.1/examples/carousel/#" role="button">View details »</a></p>
-                        </div><!-- /.col-lg-4 -->
-                        <div class="col-lg-4">
-                            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                            <h2>Heading</h2>
-                            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                            <p><a class="btn btn-secondary" href="https://getbootstrap.com/docs/4.1/examples/carousel/#" role="button">View details »</a></p>
-                        </div><!-- /.col-lg-4 -->
-                    </div><!-- /.row -->
+                    <div class="album py-5 bg-light">
+                        <div >
+                            <h3><a href="#" style="color: #040505">热门商品:</a></h3>
+                        </div>
+                        <hr/>
+                        <div class="container" >
+                            <div class="row" id="shopListRow">
 
+                                <div class="col-md-4">
+                                    <div class="card mb-4 box-shadow">
+                                        <img class="card-img-top" src="/resources/images/product.jpg" alt="商品标题">
+                                        <div class="card-body">
+                                            <h1>商品标题</h1>
+                                            <div>
+                                                <span>$ 54.00</span>
+                                            </div>
+
+                                            <div>
+                                                <small class="text-muted">零食</small>
+                                            </div>
+                                            <p class="card-text">此处是商品的简单描述,为了界面美观应该设置字数上限.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card mb-4 box-shadow">
+                                        <img class="card-img-top" src="/resources/images/product.jpg" alt="商品标题">
+                                        <div class="card-body">
+                                            <h1>商品标题</h1>
+                                            <div>
+                                                <span>$ 54.00</span>
+                                            </div>
+
+                                            <div>
+                                                <small class="text-muted">零食</small>
+                                            </div>
+                                            <p class="card-text">此处是商品的简单描述,为了界面美观应该设置字数上限.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card mb-4 box-shadow">
+                                        <img class="card-img-top" src="/resources/images/product.jpg" alt="商品标题">
+                                        <div class="card-body">
+                                            <h1>商品标题</h1>
+                                            <div>
+                                                <span>$ 54.00</span>
+                                            </div>
+
+                                            <div>
+                                                <small class="text-muted">零食</small>
+                                            </div>
+                                            <p class="card-text">此处是商品的简单描述,为了界面美观应该设置字数上限.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card mb-4 box-shadow">
+                                        <img class="card-img-top" src="/resources/images/product.jpg" alt="商品标题">
+                                        <div class="card-body">
+                                            <h1>商品标题</h1>
+                                            <div>
+                                                <span>$ 54.00</span>
+                                            </div>
+
+                                            <div>
+                                                <small class="text-muted">零食</small>
+                                            </div>
+                                            <p class="card-text">此处是商品的简单描述,为了界面美观应该设置字数上限.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card mb-4 box-shadow">
+                                        <img class="card-img-top" src="/resources/images/product.jpg" alt="商品标题">
+                                        <div class="card-body">
+                                            <h1>商品标题</h1>
+                                            <div>
+                                                <span>$ 54.00</span>
+                                            </div>
+
+                                            <div>
+                                                <small class="text-muted">零食</small>
+                                            </div>
+                                            <p class="card-text">此处是商品的简单描述,为了界面美观应该设置字数上限.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card mb-4 box-shadow">
+                                        <img class="card-img-top" src="/resources/images/product.jpg" alt="商品标题">
+                                        <div class="card-body">
+                                            <h1>商品标题</h1>
+                                            <div>
+                                                <span>$ 54.00</span>
+                                            </div>
+
+                                            <div>
+                                                <small class="text-muted">零食</small>
+                                            </div>
+                                            <p class="card-text">此处是商品的简单描述,为了界面美观应该设置字数上限.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card mb-4 box-shadow">
+                                        <img class="card-img-top" src="/resources/images/product.jpg" alt="商品标题">
+                                        <div class="card-body">
+                                            <h1>商品标题</h1>
+                                            <div>
+                                                <span>$ 54.00</span>
+                                            </div>
+
+                                            <div>
+                                                <small class="text-muted">零食</small>
+                                            </div>
+                                            <p class="card-text">此处是商品的简单描述,为了界面美观应该设置字数上限.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- START THE FEATURETTES -->
 
@@ -108,11 +223,11 @@
 
                     <div class="row featurette">
                         <div class="col-md-7">
-                            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-                            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                            <h4 class="featurette-heading">月度最热店铺: <span class="text-muted">一堂和其正</span></h4>
+                            <p class="lead">恭喜和掌柜夺得了本月的最热店铺光荣称号,我们勤劳的刘掌柜起得比鸡早睡得比鸡晚,再累再苦也不会忘了当一名奸商的职责和本分--希望他退休归乡的梦想能尽早实现.</p>
                         </div>
                         <div class="col-md-5">
-                            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 500px; height: 500px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_163a4806440%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_163a4806440%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22186.5%22%20y%3D%22261.4%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+                            <img class="featurette-image img-fluid mx-auto" data-src="" alt="300x300" style="width: 300px; height: 300px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_163a4806440%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_163a4806440%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22186.5%22%20y%3D%22261.4%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
                         </div>
                     </div>
 
@@ -120,23 +235,23 @@
 
                     <div class="row featurette">
                         <div class="col-md-7 order-md-2">
-                            <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-                            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                            <h4 class="featurette-heading">最佳新晋店铺: <span class="text-muted">祖传西医</span></h4>
+                            <p class="lead">据说我们的贾大夫世家早在他爷爷的爷爷的时候就是一名赤脚老西医了,虽然历史已无法考证,但是胡大夫快准狠的手艺是得到了大家的认可的--尤其是在他收钱的时候.</p>
                         </div>
                         <div class="col-md-5 order-md-1">
-                            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 500px; height: 500px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_163a4806443%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_163a4806443%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22186.5%22%20y%3D%22261.4%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+                            <img class="featurette-image img-fluid mx-auto" data-src="" alt="300x300" style="width: 300px; height: 300px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_163a4806443%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_163a4806443%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22186.5%22%20y%3D%22261.4%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
                         </div>
                     </div>
 
                     <hr class="featurette-divider">
 
-                    <div class="row featurette">
+                    <div class="row ">
                         <div class="col-md-7">
-                            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                            <h4 class="featurette-heading">最受好评店铺: <span class="text-muted">西施臭豆腐</span></h4>
+                            <p class="lead">为什么是西街的赛掌柜拿到了这个奖呢?我猜是她做出了的臭豆腐一点都不正宗的原因--不然西街就没法住人了.</p>
                         </div>
                         <div class="col-md-5">
-                            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 500px; height: 500px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_163a4806445%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_163a4806445%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22186.5%22%20y%3D%22261.4%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+                            <img class=" img-fluid mx-auto" data-src="" alt="300x300" style="width: 300px; height: 300px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_163a4806445%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_163a4806445%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22186.5%22%20y%3D%22261.4%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
                         </div>
                     </div>
 
