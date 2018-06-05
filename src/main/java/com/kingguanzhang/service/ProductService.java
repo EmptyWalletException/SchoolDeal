@@ -16,4 +16,12 @@ public interface ProductService {
     int updateProduct(Product product);
 
     Integer removeProduct(Integer productId);
+
+    Integer shelveProduct(Integer productId);
+
+    Integer unShelveProduct(Integer productId);
+
+    List<Product> getShelveProductList(Integer shopId);
+
+    List<Product> getUnShelveProduct(Integer shopId);
 }

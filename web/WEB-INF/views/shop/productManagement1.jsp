@@ -46,16 +46,16 @@
                     <h3>选择商品状态</h3>
                     <div class=" my-3 row" >
                         <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
-                            <input id="credit" name="chooseShopState" type="radio" class="custom-control-input" checked required>
-                            <label class="custom-control-label" for="credit">全部的商品</label>
+                            <input id="allProduct" name="chooseShopState" type="radio" class="custom-control-input" checked required>
+                            <label class="custom-control-label" for="allProduct">全部的商品</label>
                         </div>
                         <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
-                            <input id="debit" name="chooseShopState" type="radio" class="custom-control-input" required>
-                            <label class="custom-control-label" for="debit">上架中商品</label>
+                            <input id="shelveProduct" name="chooseShopState" type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label" for="shelveProduct">上架中商品</label>
                         </div>
                         <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
-                            <input id="paypal" name="chooseShopState" type="radio" class="custom-control-input" required>
-                            <label class="custom-control-label" for="paypal">已下架商品</label>
+                            <input id="unShelveProduct" name="chooseShopState" type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label" for="unShelveProduct">已下架商品</label>
                         </div>
                     </div>
                     </p>
@@ -78,7 +78,10 @@
                                         <span>$ 54.00</span>
                                     </div>
                                     <div>
-                                    <small class="text-muted">商品上架时间 : 2018/5/30</small>
+                                        <small class="text-muted">商品状态 : 上架中</small>
+                                    </div>
+                                    <div>
+                                    <small class="text-muted">商品创建时间 : 2018/5/30</small>
                                     </div>
                                     <div>
                                     <small class="text-muted">最后编辑时间 : 2018/5/30</small>
@@ -91,6 +94,7 @@
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-sm btn-outline-secondary edit" produtyId="2">编辑</button>
                                             <button type="button" class="btn btn-sm btn-outline-secondary">下架</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">上架</button>
                                         </div>
 
                                     </div>
@@ -107,7 +111,10 @@
                                         <span>$ 54.00</span>
                                     </div>
                                     <div>
-                                        <small class="text-muted">商品上架时间 : 2018/5/30</small>
+                                        <small class="text-muted">商品状态 : 上架中</small>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted">商品创建时间 : 2018/5/30</small>
                                     </div>
                                     <div>
                                         <small class="text-muted">最后编辑时间 : 2018/5/30</small>
@@ -120,6 +127,7 @@
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-sm btn-outline-secondary edit" produtyId="2">编辑</button>
                                             <button type="button" class="btn btn-sm btn-outline-secondary">下架</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">上架</button>
                                         </div>
                                     </div>
                                 </div>

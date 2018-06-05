@@ -21,7 +21,7 @@ public class Product {
 
     private Date editTime;
 
-    private Integer enableStatus;
+    private Integer enableStatus;//商品状态,0表示上架中,1表示已下架;
 
     private Integer productImgListId;
 

@@ -47,7 +47,44 @@ public class ProductManagementController {
         return Msg.fail().setMsg("删除失败");
     }
 
-    @RequestMapping(value = "/getProductList")
+    /**
+     * 通过ajax调用的上架商品的方法;
+     *
+     * @param productId
+     * @return
+     */
+    @RequestMapping(value = "/shelveProduct", method = RequestMethod.POST)
+    @ResponseBody
+    public Msg shelveProduct(@RequestParam("productId") Integer productId) {
+        Integer i = productService.shelveProduct(productId);
+        if (0 < i) {
+            return Msg.success().setMsg("上架成功!");
+        }
+        return Msg.fail().setMsg("上架失败");
+    }
+
+    /**
+     * 通过ajax调用的下架商品的方法;
+     *
+     * @param productId
+     * @return
+     */
+    @RequestMapping(value = "/unShelveProduct", method = RequestMethod.POST)
+    @ResponseBody
+    public Msg unShelveProduct(@RequestParam("productId") Integer productId) {
+        Integer i = productService.unShelveProduct(productId);
+        if (0 < i) {
+            return Msg.success().setMsg("下架成功!");
+        }
+        return Msg.fail().setMsg("下架失败");
+    }
+
+    /**
+     * 查询所有的商品列表;
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/getProductList",method = RequestMethod.GET)
     @ResponseBody
     public Msg getProductList(HttpServletRequest request) {
         Integer shopId = (Integer) request.getSession().getAttribute("shopId");
@@ -55,6 +92,37 @@ public class ProductManagementController {
         return Msg.success().setMsg("获取商品集合成功").add("productList", productList);
     }
 
+    /**
+     * 查询所有上架中的商品列表;
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/getShelveProduct",method = RequestMethod.GET)
+    @ResponseBody
+    public Msg getShelveProductList(HttpServletRequest request) {
+        Integer shopId = (Integer) request.getSession().getAttribute("shopId");
+        List<Product> productList = productService.getShelveProductList(shopId);
+        return Msg.success().setMsg("获取商品集合成功").add("productList", productList);
+    }
+
+    /**
+     * 查询所有下架中的商品列表;
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/getUnShelveProduct",method = RequestMethod.GET)
+    @ResponseBody
+    public Msg getUnShelveProduct(HttpServletRequest request) {
+        Integer shopId = (Integer) request.getSession().getAttribute("shopId");
+        List<Product> productList = productService.getUnShelveProduct(shopId);
+        return Msg.success().setMsg("获取商品集合成功").add("productList", productList);
+    }
+
+    /**
+     * 查询单个商品详情
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/getProduct")
     @ResponseBody
     public Msg getProduct(HttpServletRequest request) {

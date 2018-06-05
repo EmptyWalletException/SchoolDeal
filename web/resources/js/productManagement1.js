@@ -4,8 +4,8 @@
 * */
 
 
-/*获取商品分类信息*/
-function getProductCategoryList(){
+/*获取商品分类信息,需要传入一个url字符串以调用控制层不同的查询方法*/
+function getProductCategoryList(url){
     $.ajax({
         url:"/ajax/productCategory",
         type:"get",
@@ -13,16 +13,16 @@ function getProductCategoryList(){
             /* 这里要检查一下后端是否返回了错误报告信息 */
             if(100 == result.code){
                  var productCategoryList = result.extend.productCategoryList;
-                getProductList(productCategoryList);
+                getProductList(url,productCategoryList);
             }
         }
     });
 }
 
-/*获取商品信息并回显*/
-function getProductList(productCategoryList){
+/*获取商品信息并回显,需要传入一个url字符串以调用控制层不同的查询方法*/
+function getProductList(url,productCategoryList){
     $.ajax({
-        url:"/getProductList",
+        url:url,
         type:"get",
         success:function(result){
             if(100 == result.code){
@@ -48,8 +48,11 @@ function getProductList(productCategoryList){
                         "<div>" +
                         "<span>$ " +product.normalPrice + "</span>"+
                         "</div>" +
+                        "<div class='status'>" +
+                        "<small class=\"text-muted\" enableStatus='"+ product.enableStatus+"'>商品状态 : " +(0 == product.enableStatus?'上架中':'已下架') +"</small>" +
+                        "</div>" +
                         "<div>" +
-                        "<small class=\"text-muted\">商品上架时间 : " +createTime.toLocaleDateString() +"</small>" +
+                        "<small class=\"text-muted\">商品创建时间 : " +createTime.toLocaleDateString() +"</small>" +
                         "</div>" +
                         "<div>" +
                         "<small class=\"text-muted\">最后编辑时间 : " +editTime.toLocaleDateString()+ "</small>" +
@@ -61,7 +64,8 @@ function getProductList(productCategoryList){
                         "<div class=\"d-flex justify-content-between align-items-center\">" +
                         "<div class=\"btn-group\">" +
                         "<a type=\"button\" class=\"btn btn-sm btn-outline-secondary edit btn_edit\"  href=\"/showEditProduct/"+product.productId+"\""+"\">编辑</a>" +
-                        "<button type=\"button\" class=\"btn btn-sm btn-outline-secondary btn_removeProduct\"  productId='"+product.productId+"'>下架</button>" +
+                        "<button type=\"button\" class=\"btn btn-sm btn-outline-secondary btn_switchStatus\"  productId='"+product.productId+"'>"+(product.enableStatus == 0?'下架':'上架')+"</button>" +
+                        "<button type=\"button\" class=\"btn btn-sm btn-outline-secondary btn_removeProduct\"  productId='"+product.productId+"'>删除</button>" +
                         "</div>" +
                         "</div>" +
                         "</div>"+
@@ -75,28 +79,79 @@ function getProductList(productCategoryList){
     });
 }
 
-$("#shopListRow").on('click','.btn_removeProduct',function () {
-
+//上架和下架商品
+$("#shopListRow").on('click','.btn_switchStatus',function () {
+    var enableStatus = $(this).parent().parent().prevAll(".status").children("small").attr("enableStatus");
     var productName = $(this).parent().parent().prevAll("h1").text();
-   var confirmRemove = confirm("确认要下架商品:"+productName+"?");
-   var productId = $(this).attr("productId");
-   if (true == confirmRemove){
-       $.ajax({
-            url:"/removeProduct",
-            type:'POST',
-           data:{'productId':productId},
-           success:function (result) {
-               alert(result.msg);
-               getProductCategoryList();
-           }
-       });
-   } else{
-       return;
+    var productId = $(this).attr("productId");
+    if(0 == enableStatus){
+        var confirmRemove = confirm("确认要下架商品:"+productName+"?");
+        if (true == confirmRemove){
+            $.ajax({
+                url:"/unShelveProduct",
+                type:'POST',
+                data:{'productId':productId},
+                success:function (result) {
+                    alert(result.msg);
+                    getProductCategoryList();
+                }
+            });
+        }else {
+            return;
+        }
+    }else{
+        var confirmRemove = confirm("确认要上架商品:"+productName+"?");
+        if (true == confirmRemove){
+            $.ajax({
+                url:"/shelveProduct",
+                type:'POST',
+                data:{'productId':productId},
+                success:function (result) {
+                    alert(result.msg);
+                    getProductCategoryList();
+                }
+            });
+        }else {
+            return;
+        }
    }
 })
 
+//删除商品
+$("#shopListRow").on('click','.btn_removeProduct',function () {
+
+    var productName = $(this).parent().parent().prevAll("h1").text();
+    var confirmRemove = confirm("确认要删除商品:"+productName+"?");
+    var productId = $(this).attr("productId");
+    if (true == confirmRemove){
+        $.ajax({
+            url:"/removeProduct",
+            type:'POST',
+            data:{'productId':productId},
+            success:function (result) {
+                alert(result.msg);
+                getProductCategoryList();
+            }
+        });
+    } else{
+        return;
+    }
+})
+
+$("#allProduct").click(function () {
+    getProductCategoryList("/getProductList");
+})
+
+$("#shelveProduct").click(function () {
+    getProductCategoryList("/getShelveProduct");
+})
+
+$("#unShelveProduct").click(function () {
+    getProductCategoryList("/getUnShelveProduct");
+})
+
 $(function () {
-    getProductCategoryList();
+    getProductCategoryList("/getProductList");
 
 })
 

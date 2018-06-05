@@ -46,16 +46,16 @@
                     <h3>选择商品状态</h3>
                     <div class=" my-3 row" >
                         <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
-                            <input id="credit" name="chooseShopState" type="radio" class="custom-control-input" checked required>
-                            <label class="custom-control-label" for="credit">全部的商品</label>
+                            <input id="allProduct" name="chooseShopState" type="radio" class="custom-control-input" checked required>
+                            <label class="custom-control-label" for="allProduct">全部的商品</label>
                         </div>
                         <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
-                            <input id="debit" name="chooseShopState" type="radio" class="custom-control-input" required>
-                            <label class="custom-control-label" for="debit">上架中商品</label>
+                            <input id="shelveProduct" name="chooseShopState" type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label" for="shelveProduct">上架中商品</label>
                         </div>
                         <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
-                            <input id="paypal" name="chooseShopState" type="radio" class="custom-control-input" required>
-                            <label class="custom-control-label" for="paypal">已下架商品</label>
+                            <input id="unShelveProduct" name="chooseShopState" type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label" for="unShelveProduct">已下架商品</label>
                         </div>
                     </div>
                     </p>
@@ -74,6 +74,7 @@
                     <tr>
                         <th>商品标题</th>
                         <th>商品价格</th>
+                        <th>商品状态</th>
                         <th>上架时间</th>
                         <th>编辑时间</th>
                         <th>所属分类</th>
@@ -85,6 +86,7 @@
                     <tr>
                         <td>蛋糕</td>
                         <td>$ 5.00</td>
+                        <td>上架中</td>
                         <td>2018/5/30</td>
                         <td>2018/5/31</td>
                         <td>零食</td>
@@ -92,11 +94,13 @@
                         <td>
                             <a  class="btn btn-primary " href="#">编辑</a>
                             <a  class="btn btn-danger " href="#">下架</a>
+                            <a  class="btn btn-danger " href="#">上架</a>
                         </td>
                     </tr>
                     <tr>
                         <td>蛋糕</td>
                         <td>$ 5.00</td>
+                        <td>上架中</td>
                         <td>2018/5/30</td>
                         <td>2018/5/31</td>
                         <td>零食</td>
@@ -104,128 +108,10 @@
                         <td>
                             <a  class="btn btn-primary " href="#">编辑</a>
                             <a  class="btn btn-danger " href="#">下架</a>
+                            <a  class="btn btn-danger " href="#">上架</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>蛋糕</td>
-                        <td>$ 5.00</td>
-                        <td>2018/5/30</td>
-                        <td>2018/5/31</td>
-                        <td>零食</td>
-                        <td>这里需要控制显示字数</td>
-                        <td>
-                            <a  class="btn btn-primary " href="#">编辑</a>
-                            <a  class="btn btn-danger " href="#">下架</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>蛋糕</td>
-                        <td>$ 5.00</td>
-                        <td>2018/5/30</td>
-                        <td>2018/5/31</td>
-                        <td>零食</td>
-                        <td>这里需要控制显示字数</td>
-                        <td>
-                            <a  class="btn btn-primary " href="#">编辑</a>
-                            <a  class="btn btn-danger " href="#">下架</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>蛋糕</td>
-                        <td>$ 5.00</td>
-                        <td>2018/5/30</td>
-                        <td>2018/5/31</td>
-                        <td>零食</td>
-                        <td>这里需要控制显示字数</td>
-                        <td>
-                            <a  class="btn btn-primary " href="#">编辑</a>
-                            <a  class="btn btn-danger " href="#">下架</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>蛋糕</td>
-                        <td>$ 5.00</td>
-                        <td>2018/5/30</td>
-                        <td>2018/5/31</td>
-                        <td>零食</td>
-                        <td>这里需要控制显示字数</td>
-                        <td>
-                            <a  class="btn btn-primary " href="#">编辑</a>
-                            <a  class="btn btn-danger " href="#">下架</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>蛋糕</td>
-                        <td>$ 5.00</td>
-                        <td>2018/5/30</td>
-                        <td>2018/5/31</td>
-                        <td>零食</td>
-                        <td>这里需要控制显示字数</td>
-                        <td>
-                            <a  class="btn btn-primary " href="#">编辑</a>
-                            <a  class="btn btn-danger " href="#">下架</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>蛋糕</td>
-                        <td>$ 5.00</td>
-                        <td>2018/5/30</td>
-                        <td>2018/5/31</td>
-                        <td>零食</td>
-                        <td>这里需要控制显示字数</td>
-                        <td>
-                            <a  class="btn btn-primary " href="#">编辑</a>
-                            <a  class="btn btn-danger " href="#">下架</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>蛋糕</td>
-                        <td>$ 5.00</td>
-                        <td>2018/5/30</td>
-                        <td>2018/5/31</td>
-                        <td>零食</td>
-                        <td>这里需要控制显示字数</td>
-                        <td>
-                            <a  class="btn btn-primary " href="#">编辑</a>
-                            <a  class="btn btn-danger " href="#">下架</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>蛋糕</td>
-                        <td>$ 5.00</td>
-                        <td>2018/5/30</td>
-                        <td>2018/5/31</td>
-                        <td>零食</td>
-                        <td>这里需要控制显示字数</td>
-                        <td>
-                            <a  class="btn btn-primary " href="#">编辑</a>
-                            <a  class="btn btn-danger " href="#">下架</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>蛋糕</td>
-                        <td>$ 5.00</td>
-                        <td>2018/5/30</td>
-                        <td>2018/5/31</td>
-                        <td>零食</td>
-                        <td>这里需要控制显示字数</td>
-                        <td>
-                            <a  class="btn btn-primary " href="#">编辑</a>
-                            <a  class="btn btn-danger " href="#">下架</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>蛋糕</td>
-                        <td>$ 5.00</td>
-                        <td>2018/5/30</td>
-                        <td>2018/5/31</td>
-                        <td>零食</td>
-                        <td>这里需要控制显示字数</td>
-                        <td>
-                            <a  class="btn btn-primary " href="#">编辑</a>
-                            <a  class="btn btn-danger " href="#">下架</a>
-                        </td>
-                    </tr>
+
                     </tbody>
                 </table>
             </div>

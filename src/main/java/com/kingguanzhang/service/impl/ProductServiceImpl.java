@@ -19,6 +19,11 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductMapper productMapper;
 
+    /**
+     * 查询所有商品
+     * @param shopId
+     * @return
+     */
     @Override
     public List<Product> getProductList(Integer shopId) {
         ProductExample productExample = new ProductExample();
@@ -41,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
         }
 
         try {
-            product.setEnableStatus(0);
+            product.setEnableStatus(1);//0代表上架,1代表下架
             product.setCreateTime(new Date());
             product.setEditTime(new Date());
             int effectedNum = productMapper.insert(product);
@@ -81,6 +86,54 @@ public class ProductServiceImpl implements ProductService {
     public Integer removeProduct(Integer productId) {
         int i = productMapper.deleteByPrimaryKey(productId);
         return i;
+    }
+
+    @Override
+    public Integer shelveProduct(Integer productId) {
+        Product product = new Product();
+        product.setProductId(productId);
+        product.setEnableStatus(0);
+        int i = productMapper.updateByPrimaryKeySelective(product);
+        return i;
+    }
+
+    @Override
+    public Integer unShelveProduct(Integer productId) {
+        Product product = new Product();
+        product.setProductId(productId);
+        product.setEnableStatus(1);
+        int i = productMapper.updateByPrimaryKeySelective(product);
+        return i;
+    }
+
+    /**
+     * 查询所有上架中的商品
+     * @param shopId
+     * @return
+     */
+    @Override
+    public List<Product> getShelveProductList(Integer shopId) {
+        ProductExample productExample = new ProductExample();
+        ProductExample.Criteria criteria = productExample.createCriteria();
+        criteria.andShopIdEqualTo(shopId);
+        criteria.andEnableStatusEqualTo(0);
+        List<Product> productList = productMapper.selectByExample(productExample);
+        return productList;
+    }
+
+    /**
+     * 查询所有下架中的商品
+     * @param shopId
+     * @return
+     */
+    @Override
+    public List<Product> getUnShelveProduct(Integer shopId) {
+        ProductExample productExample = new ProductExample();
+        ProductExample.Criteria criteria = productExample.createCriteria();
+        criteria.andShopIdEqualTo(shopId);
+        criteria.andEnableStatusEqualTo(1);
+        List<Product> productList = productMapper.selectByExample(productExample);
+        return productList;
     }
 
     private String addproductImg(Product product, InputStream productImgInputStream, String fileName) {

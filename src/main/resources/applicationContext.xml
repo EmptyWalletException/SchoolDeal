@@ -40,7 +40,7 @@
         <property name="password" value="${jdbc.password}" />
     </bean>
 
-    <!--&lt;!&ndash;导入spring-security配置文件&ndash;&gt;
+    <!--导入spring-security配置文件,这里废弃掉,采用了别的导入方式
     <import resource="classpath:spring-security.xml"/>-->
 
 
