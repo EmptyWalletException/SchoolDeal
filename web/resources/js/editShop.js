@@ -54,13 +54,12 @@ function getShop(){
     //TO-DO
     $.ajax({
         url:"/getShop",
-        type:"POST",
-        data:{"shopId":2},//这里先写死id,后期再实现后端直接从session中的用户id来查询出店铺id,而前端就不要暴露商店id
+        type:"GET",
         success:function(result){
 
             /* 这里要检查一下后端是否返回了错误报告信息 */
             if(100 == result.code){
-                alert(result.msg);
+
                 var shop = result.extend.shop;
                 $("#shopName").val(shop.shopName);
                 $("#shopDesc").val(shop.shopDesc);

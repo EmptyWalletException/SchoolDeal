@@ -8,7 +8,9 @@ import com.kingguanzhang.service.ShopService;
 import com.kingguanzhang.util.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -23,16 +25,17 @@ public class ShopManagementController {
     private ShopService shopService;
 
 
-
-
-
-    @RequestMapping(value = "/getShop",method = RequestMethod.POST)//这里的shopId严格来说不能通过url传递,防止用户修改;后期需要修改成通过session中用户id来查询绑定的商店id
+    @RequestMapping(value = "/getShop",method = RequestMethod.GET)//这里的shopId需要修改成通过session中用户id来查询绑定的商店id
     @ResponseBody
-    public Msg getShop(@RequestParam("shopId") Integer shopId, HttpServletRequest request){
+    public Msg getShop(HttpServletRequest request){
 
+        Integer shopId = (Integer) request.getSession().getAttribute("shopId");
+
+        //将shopId直接写入session,方便后续网页内容的查询;
+        if (null == shopId){
+            return Msg.fail().setMsg("获取商店信息失败!");
+        }
         Shop shop = shopService.getShop(shopId);
-        //将商店id写入到session而不是url,页面和js中也不要暴露商店id,防止用户修改id
-        request.getSession().setAttribute("shopId",shop.getShopId());
         return Msg.success().add("shop",shop);
     }
 

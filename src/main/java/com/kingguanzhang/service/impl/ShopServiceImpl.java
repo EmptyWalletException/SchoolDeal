@@ -5,6 +5,7 @@ import com.kingguanzhang.dto.ShopExecution;
 import com.kingguanzhang.enums.ShopSateEnum;
 import com.kingguanzhang.pojo.Shop;
 import com.kingguanzhang.pojo.ShopCategory;
+import com.kingguanzhang.pojo.ShopExample;
 import com.kingguanzhang.service.ShopService;
 import com.kingguanzhang.util.ImgUtil;
 import com.kingguanzhang.util.PathUtil;
@@ -73,6 +74,17 @@ public class ShopServiceImpl implements ShopService {
     public int updateShop(Shop shop) {
         int i = shopMapper.updateByPrimaryKeySelective(shop);
         return i;
+    }
+
+    @Override
+    public Shop getShopByUserId(Integer userId) {
+        ShopExample shopExample = new ShopExample();
+        ShopExample.Criteria criteria = shopExample.createCriteria();
+        criteria.andOwnerIdEqualTo(userId);
+        //实际上肯定之后查询到一个值
+        List<Shop> shops = shopMapper.selectByExample(shopExample);
+        Shop shop = shops.get(0);
+        return shop;
     }
 
 

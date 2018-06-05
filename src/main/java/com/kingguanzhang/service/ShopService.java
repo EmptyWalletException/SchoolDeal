@@ -17,4 +17,6 @@ public interface ShopService {
     public Shop getShop(Integer shopId);
 
     public int updateShop(Shop shop);
+
+    Shop getShopByUserId(Integer userId);
 }

@@ -41,7 +41,7 @@
         <form-login login-page="/login"
                     login-processing-url="/loginform"
                     default-target-url="/shopManagement"
-                    authentication-failure-url="/login?error=error"
+                    authentication-failure-url="/login"
                     username-parameter="username"
                     password-parameter="password"
         />
@@ -61,22 +61,30 @@
                 delete-cookies="JSESSIONID"/>
 
         <!--remember-me配置了但是无效,只能采用自定义controller的方法来实现-->
-        <!--<remember-me remember-me-parameter="remember-me"></remember-me>
-  -->    <intercept-url pattern="/shopManagement" access="hasRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+        <remember-me remember-me-parameter="remember-me" ></remember-me>
+        <intercept-url pattern="/shopManagement" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 
         <csrf disabled="true" />
         <!-- <remember-me token-validity-seconds="1"/> -->
     </http>
 
+
+
     <authentication-manager>
     <authentication-provider>
-        <user-service>
+        <jdbc-user-service data-source-ref="pooledDataSource" users-by-username-query="select username,password,1 as enabled from tb_local_auth WHERE username=?"
+                           authorities-by-username-query="select l.username, r.role_name as role from tb_local_auth l,tb_role r, tb_role_localauth rl where l.local_auth_id=rl.localauth_id and r.role_id = rl.role_id and l.username=?"/>
+        <!--<user-service>
             <user name="admin" password="admin" authorities="ROLE_ADMIN,ROLE_USER" />
             <user name="admin2" password="admin" authorities="ROLE_USER" />
-        </user-service>
+        </user-service>-->
     </authentication-provider>
     </authentication-manager>
+
+
+
+
 
 
     <!-- 使用自定义类myUserDetailsService从数据库获取用户信息 -->

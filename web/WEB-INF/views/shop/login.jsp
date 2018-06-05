@@ -16,23 +16,48 @@
     <!-- Custom styles for this template -->
     <link href="/resources/css/dashboard.css" rel="stylesheet">
 <!--    <link href="/resources/css/carousel.css" rel="stylesheet">-->
+
+    <style type="text/css">
+        /*下面两个css用于控制登录表单显示在页面正中间*/
+        html, body {
+            height: 100%;
+        }
+        body{
+            display: flex;
+        }
+    </style>
 </head>
 
-<body class="text-center">
-<form class="form-signin col-sm-2 offset-5" action="/loginform" method="post">
+
+<body class="text-center" >
+<form class="form-signin" id="form-signin" action="/loginform" method="POST">
     <img class="mb-4" src="" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">请先登录</h1>
-    <label for="inputText" class="sr-only">账号</label>
-    <input type="text" id="inputText" class="form-control" placeholder="请输入账号" name="username" value="admin" required autofocus>
+    <h1 class="h3 mb-3 font-weight-normal">请先登录再执行操作</h1>
+    <label  style="color: red" id="msg">${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message }</label>
+    <label for="inputUserName" class="sr-only">账号</label>
+    <input type="text" id="inputUserName" class="form-control" name="username" placeholder="请出入账号" required autofocus>
     <label for="inputPassword" class="sr-only">密码</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="请输入密码" name="password" value="admin" required>
-    <%--<div class="checkbox mb-3">
+    <input type="password" id="inputPassword" class="form-control" name="password" placeholder="请输入密码" required>
+    <div class="checkbox mb-3">
         <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" name="remember-me" checked="checked"/> 记住我
         </label>
-    </div>--%>
-    <button class="btn btn-lg btn-primary btn-block " type="submit">登录</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
+        <br/>
+        <label>
+            <a href="/registUser">还没有账号?来注册一个吧!</a>
+        </label>
+    </div>
+    <a class="btn btn-lg btn-primary btn-block " id="btn_login" >登录</a>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
 </form>
+
+<script src="/resources/js/jquery.min.js"></script>
+<script src="/resources/js/popper.min.js"></script>
+<script src="/resources/js/login.js"></script>
+<script src="/resources/css/bootstrap-4.1.1/dist/js/bootstrap.min.js"></script>
+<script src="/resources/js/holder.min.js"></script>
+
+<!-- Icons -->
+<script src="/resources/js/feather.min.js"></script>
 </body>
 </html>
