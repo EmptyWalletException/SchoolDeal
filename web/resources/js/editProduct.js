@@ -36,7 +36,6 @@ function getProduct(){
 
             /* 这里要检查一下后端是否返回了错误报告信息 */
             if(100 == result.code){
-                alert(result.msg);
                 var product = result.extend.product;
                 $("#productName").val(product.productName);
                 $("#productDesc").val(product.productDesc);
@@ -78,7 +77,6 @@ $("#submit_EditProduct").click(function(){
         success:function(result){
             /* 这里要检查一下后端是否返回了错误报告信息 */
             if(100 == result.code){
-                alert(result.msg);
             }else{
                 alert(result.msg);
             }

@@ -35,14 +35,14 @@
         <!-- 指定sql映射文件生成的位置 -->
         <sqlMapGenerator
                 targetPackage="mapper"
-                targetProject=".\src\main\resources">
+                targetProject=".\src\test">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
         <!-- 指定Dao接口生成的位置 -->
         <javaClientGenerator type="XMLMAPPER"
                              targetPackage="com.kingguanzhang.dao"
-                             targetProject=".\src\main\java">
+                             targetProject=".\src\test">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
@@ -75,6 +75,12 @@
         </table>
 
         <table  tableName="tb_wechat_auth" domainObjectName="WechatAuth" >
+        </table>
+
+        <table  tableName="tb_role" domainObjectName="Role" >
+        </table>
+
+        <table  tableName="tb_role_localauth" domainObjectName="RoleLocalauth" >
         </table>
 
 

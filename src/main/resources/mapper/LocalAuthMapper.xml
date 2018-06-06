@@ -100,7 +100,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.kingguanzhang.pojo.LocalAuth">
+  <insert id="insert" parameterType="com.kingguanzhang.pojo.LocalAuth" useGeneratedKeys="true" keyColumn="local_auth_id" keyProperty="localAuthId">
     insert into tb_local_auth (local_auth_id, username, password, 
       create_time, edit_time, user_id
       )
@@ -108,7 +108,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{editTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.kingguanzhang.pojo.LocalAuth">
+  <insert id="insertSelective" parameterType="com.kingguanzhang.pojo.LocalAuth" useGeneratedKeys="true" keyColumn="local_auth_id" keyProperty="localAuthId">
     insert into tb_local_auth
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="localAuthId != null">

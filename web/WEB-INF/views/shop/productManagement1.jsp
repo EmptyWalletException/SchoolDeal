@@ -44,7 +44,7 @@
                     </p>
                     <p>
                     <h3>选择商品状态</h3>
-                    <div class=" my-3 row" >
+                    <div class=" my-3 row" id="chooseShopStateGroup">
                         <div class="custom-control custom-radio" style="margin-left: auto;margin-right: auto;">
                             <input id="allProduct" name="chooseShopState" type="radio" class="custom-control-input" checked required>
                             <label class="custom-control-label" for="allProduct">全部的商品</label>

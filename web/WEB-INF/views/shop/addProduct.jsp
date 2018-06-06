@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="">
 
-    <title>编辑店铺</title>
+    <title>新增商品</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/resources/css/bootstrap-4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -31,12 +31,15 @@
 
             <jsp:include page="fastJump.jsp"></jsp:include>
 
-                <div class="row">
-                    <div class="col-md-8 order-md-1">
-                        <h3 >新增商品</h3>
+            <hr/>
+            <br/>
+
+            <div class="row col-lg-6 offset-lg-3">
+                <div class="col-lg-12 ">
+                        <h3 class="text-center">新增商品</h3>
                         <div class="needs-validation" id="editProductForm"  novalidate>
                             <div class="mb-3">
-                                <label for="productName">商品名字</label>
+                                <label for="productName">商品名字:</label>
                                 <input type="text" class="form-control" id="productName" name="productName"  required>
                                 <div class="invalid-feedback">
                                     请输入一个商品名字.
@@ -44,7 +47,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="productDesc">商品描述</label>
+                                <label for="productDesc">商品描述:</label>
                                 <textarea  class="form-control" id="productDesc" name="productDesc" required></textarea>
                                 <div class="invalid-feedback">
                                     请输入商品描述.
@@ -52,7 +55,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="normalPrice">商品价格</label>
+                                <label for="normalPrice">商品价格:</label>
                                 <input type="text" class="form-control" id="normalPrice" name="normalPrice" >
                                 <div class="invalid-feedback">
                                     请输入正确的商品价格.
@@ -60,7 +63,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="productCategorySel">选择商品分类</label>
+                                    <label for="productCategorySel">选择商品分类:</label>
                                     <select class="custom-select d-block w-100" id="productCategorySel" name="productCategorySel"required>
                                         <option value="">选择商品分类</option>
                                         <option>商品分类1</option>
@@ -76,7 +79,7 @@
 
                             <hr class="mb-4">
                             <div class="form-group">
-                                <label for="inputFile">上传一张商品主页图片</label>
+                                <label for="inputFile">上传一张商品主页图片:</label>
                                 <input type="file" id="inputFile" >
                                 <p class="help-block">必须选择一张商品图片上传!</p>
                             </div>

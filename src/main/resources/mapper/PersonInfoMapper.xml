@@ -104,7 +104,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.kingguanzhang.pojo.PersonInfo">
+  <insert id="insert" parameterType="com.kingguanzhang.pojo.PersonInfo" useGeneratedKeys="true" keyColumn="user_id" keyProperty="userId">
     insert into tb_person_info (user_id, name, profile_img, 
       email, gender, enable_status, 
       user_type, create_time, edit_time
@@ -114,7 +114,7 @@
       #{userType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{editTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.kingguanzhang.pojo.PersonInfo">
+  <insert id="insertSelective" parameterType="com.kingguanzhang.pojo.PersonInfo" useGeneratedKeys="true" keyColumn="user_id" keyProperty="userId">
     insert into tb_person_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">

@@ -61,7 +61,6 @@ $("#submit_RegisterShop").click(function(){
     var formData = new FormData($("#inputFile")[0]);
     formData.append("shopStr",JSON.stringify(shop));
     formData.append("shopImg",shopImg);
-    formData.append("test","test");
 
     $.ajax({
         url:"/addShop",

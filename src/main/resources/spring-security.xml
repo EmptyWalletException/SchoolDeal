@@ -10,6 +10,8 @@
     <!-- 不需要权限的资源 -->
     <http pattern="/login.jsp" security="none"></http>
     <http pattern="/login" security="none"></http>
+    <http pattern="/registerUser" security="none"></http>
+    <http pattern="/registerUser.jsp" security="none"></http>
     <http pattern="/index" security="none"></http>
     <http pattern="/index.jsp" security="none"></http>
     <http pattern="/resources/**" security="none"></http>
@@ -62,7 +64,7 @@
 
         <!--remember-me配置了但是无效,只能采用自定义controller的方法来实现-->
         <remember-me remember-me-parameter="remember-me" ></remember-me>
-        <intercept-url pattern="/shopManagement" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/shopManagement" access="hasAnyRole('ROLE_USER','ROLE_USER')"/>
         <intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 
         <csrf disabled="true" />

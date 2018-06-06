@@ -31,12 +31,15 @@
 
             <jsp:include page="fastJump.jsp"></jsp:include>
 
-                <div class="row">
-                    <div class="col-md-8 order-md-1">
-                        <h3>编辑店铺</h3>
+            <hr/>
+            <br/>
+
+            <div class="row col-lg-6 offset-lg-3">
+                <div class="col-lg-12 ">
+                        <h3 class="text-center">编辑店铺</h3>
                         <div class="needs-validation" id="registerShopForm"  novalidate>
                             <div class="mb-3">
-                                <label for="shopName">招牌名字</label>
+                                <label for="shopName">招牌名字:</label>
                                 <input type="text" class="form-control" id="shopName" name="shopName"  required>
                                 <div class="invalid-feedback">
                                     请输入一个可使用的店铺名字.
@@ -44,7 +47,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="shopDesc">店铺描述</label>
+                                <label for="shopDesc">店铺描述:</label>
                                 <textarea  class="form-control" id="shopDesc" name="shopDesc" required></textarea>
                                 <div class="invalid-feedback">
                                     请输入店铺描述.
@@ -52,7 +55,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="phone">手机号码</label>
+                                <label for="phone">手机号码:</label>
                                 <input type="text" class="form-control" id="phone" name="phone" >
                                 <div class="invalid-feedback">
                                     请输入正确的手机号码.
@@ -60,7 +63,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="shopAddr">店铺地址</label>
+                                <label for="shopAddr">店铺地址:</label>
                                 <input type="text" class="form-control" id="shopAddr" name="shopAddr"  required>
                                 <div class="invalid-feedback">
                                     请输入您的店铺地址.
@@ -69,7 +72,7 @@
 
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="areaSel">选择店铺区域</label>
+                                    <label for="areaSel">选择店铺区域:</label>
                                     <select class="custom-select d-block w-100" id="areaSel" name="areaId"required>
                                         <option value="">选择店铺区域</option>
                                         <option>华东</option>
@@ -82,7 +85,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="shopCategorySel">选择店铺分类</label>
+                                    <label for="shopCategorySel">选择店铺分类:</label>
                                     <select class="custom-select d-block w-100" id="shopCategorySel" name="shopCategoryId" required>
                                         <option value="">选择店铺分类</option>
                                         <option>私人店铺</option>
@@ -98,7 +101,7 @@
 
                             <hr class="mb-4">
                             <div class="form-group">
-                                <label for="inputFile">上传一张店铺主页图片</label>
+                                <label for="inputFile">上传一张店铺主页图片:</label>
                                 <input type="file" id="inputFile" >
                                 <p class="help-block">如果您不需要重新更换店铺图片,请跳过上传图片的步骤.</p>
                             </div>

@@ -44,7 +44,7 @@
         </label>
         <br/>
         <label>
-            <a href="/registUser">还没有账号?来注册一个吧!</a>
+            <a href="/registerUser">还没有账号?来注册一个吧!</a>
         </label>
     </div>
     <a class="btn btn-lg btn-primary btn-block " id="btn_login" >登录</a>

@@ -7,6 +7,7 @@ import com.kingguanzhang.service.LocalAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -22,5 +23,17 @@ public class LocalAuthServiceImpl implements LocalAuthService {
         List<LocalAuth> localAuths = localAuthMapper.selectByExample(localAuthExample);
 
         return localAuths;
+    }
+
+    @Override
+    public int addLocalAuth(LocalAuth localAuth) {
+        localAuth.setCreateTime(new Date(System.currentTimeMillis()));
+        localAuth.setEditTime(new Date(System.currentTimeMillis()));
+
+        int i = localAuthMapper.insertSelective(localAuth);
+        if (0 > i){
+            throw new RuntimeException("账户信息保存失败!");
+        }
+        return i;
     }
 }

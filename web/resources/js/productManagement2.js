@@ -43,19 +43,20 @@ function getProductList(url,productCategoryList){
                         "<tr>"+
                         "<td class='productName'>"+product.productName+"</td>"+
                         "<td>$ "+product.normalPrice+"</td>"+
-                        "<td class='status' enableStatus='\"+ product.enableStatus+\"' >"+(0 == enableStatus?'上架中':'已下架')+"</td>"+
+                        "<td class='status' enableStatus='"+ product.enableStatus+"' >"+(0 == enableStatus?'上架中':'已下架')+"</td>"+
                         "<td>"+createTime.toLocaleDateString()+"</td>"+
                         "<td>"+editTime.toLocaleDateString()+"</td>"+
                         "<td>"+productCategoryName+"</td>"+
                         "<td>"+product.productDesc+"</td>"+
                         "<td>"+
-                        " <a  class=\"btn btn-sm btn-outline-secondary \" href=\"/editProduct/"+product.productId+"\""+"\">编辑</a>"+
-                        "<button type=\"button\" class=\"btn btn-sm btn-outline-secondary btn_switchStatus\"  productId='"+product.productId+"'>"+(product.enableStatus == 0?'下架':'上架')+"</button>" +
-                        "<button type=\"button\" class=\"btn btn-sm btn-outline-secondary btn_removeProduct\"  productId='"+product.productId+"'>删除</button>" +
+                        " <a  class='btn btn-sm btn-outline-secondary ' href=\"/showEditProduct/"+product.productId+"\""+"\">编辑</a>"+
+                        "<button type='button' class='btn btn-sm btn-outline-secondary btn_switchStatus'  productId='"+product.productId+"'>"+(product.enableStatus == 0?'下架':'上架')+"</button>" +
+                        "<button type='button' class='btn btn-sm btn-outline-secondary btn_removeProduct'  productId='"+product.productId+"'>删除</button>" +
                         "</td>"+
                         "</tr>"
                     )
                 })
+
             }else{
                 alert(result.msg);
             }
@@ -75,7 +76,7 @@ $("#tbody4productList").on('click','.btn_removeProduct',function () {
             data:{'productId':productId},
             success:function (result) {
                 alert(result.msg);
-                getProductCategoryList();
+                checkStateChoose();
             }
         });
     } else{
@@ -84,7 +85,7 @@ $("#tbody4productList").on('click','.btn_removeProduct',function () {
 })
 
 //上架和下架商品
-$("#shopListRow").on('click','.btn_switchStatus',function () {
+$("#tbody4productList").on('click','.btn_switchStatus',function () {
     var enableStatus = $(this).parent().prevAll(".status").attr("enableStatus");
     var productName = $(this).parent().prevAll(".productName").text();
     var productId = $(this).attr("productId");
@@ -97,7 +98,7 @@ $("#shopListRow").on('click','.btn_switchStatus',function () {
                 data:{'productId':productId},
                 success:function (result) {
                     alert(result.msg);
-                    getProductCategoryList();
+                    checkStateChoose();
                 }
             });
         }else {
@@ -112,7 +113,7 @@ $("#shopListRow").on('click','.btn_switchStatus',function () {
                 data:{'productId':productId},
                 success:function (result) {
                     alert(result.msg);
-                    getProductCategoryList();
+                    checkStateChoose();
                 }
             });
         }else {
@@ -120,6 +121,22 @@ $("#shopListRow").on('click','.btn_switchStatus',function () {
         }
     }
 })
+
+/*页面上需要根据当前选择的筛选方式来控制ajax发送的请求是需要获取哪些商品,否则在点击上架下架时会出现逻辑错误
+* 每次点击上下架和删除时,都会调用一次此方法以显示正确的数据;
+* */
+function checkStateChoose(){
+    var checkedInput = $("input:checked").attr("id");
+    if ("shelveProduct" == checkedInput){
+        getProductCategoryList("/getShelveProduct");
+    } else if ("unShelveProduct" == checkedInput){
+        getProductCategoryList("/getUnShelveProduct");
+    } else {
+        getProductCategoryList("/getProductList");
+    }
+}
+
+
 
 //页面上的三个筛选商品状态的选择按钮
 $("#allProduct").click(function () {

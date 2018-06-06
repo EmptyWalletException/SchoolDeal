@@ -93,7 +93,7 @@ $("#shopListRow").on('click','.btn_switchStatus',function () {
                 data:{'productId':productId},
                 success:function (result) {
                     alert(result.msg);
-                    getProductCategoryList();
+                    checkStateChoose();
                 }
             });
         }else {
@@ -108,7 +108,7 @@ $("#shopListRow").on('click','.btn_switchStatus',function () {
                 data:{'productId':productId},
                 success:function (result) {
                     alert(result.msg);
-                    getProductCategoryList();
+                    checkStateChoose();
                 }
             });
         }else {
@@ -130,13 +130,27 @@ $("#shopListRow").on('click','.btn_removeProduct',function () {
             data:{'productId':productId},
             success:function (result) {
                 alert(result.msg);
-                getProductCategoryList();
+                checkStateChoose();
             }
         });
     } else{
         return;
     }
 })
+
+/*页面上需要根据当前选择的筛选方式来控制ajax发送的请求是需要获取哪些商品,否则在点击上架下架时会出现逻辑错误
+* 每次点击上下架和删除时,都会调用一次此方法以显示正确的数据;
+* */
+function checkStateChoose(){
+    var checkedInput = $("input:checked").attr("id");
+    if ("shelveProduct" == checkedInput){
+        getProductCategoryList("/getShelveProduct");
+    } else if ("unShelveProduct" == checkedInput){
+        getProductCategoryList("/getUnShelveProduct");
+    } else {
+        getProductCategoryList("/getProductList");
+    }
+}
 
 $("#allProduct").click(function () {
     getProductCategoryList("/getProductList");

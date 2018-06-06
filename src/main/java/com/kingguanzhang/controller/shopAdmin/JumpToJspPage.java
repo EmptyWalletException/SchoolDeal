@@ -41,6 +41,11 @@ public class JumpToJspPage {
         return "/shop/editShop";
     }
 
+    @RequestMapping("/registerUser")
+    public String showRegisterUser(){
+        return "/shop/registerUser";
+    }
+
     /**
      * 跳转到后台管理首页的方法,需要在此时就在session中写入shopId,后期会改到登录时写入;
      * @param request
