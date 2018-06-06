@@ -42,49 +42,37 @@
                             <div class="mb-3">
                                 <label for="username">输入账号:</label>
                                 <input type="text" class="form-control" id="username" name="username" placeholder="请输入5~10位数字账号" required>
-                                <div class="invalid-feedback">
-                                    请输入一个可使用的账号.
-                                </div>
+                                <span  class="help-block"></span>
                             </div>
 
                             <div class="mb-3">
                                 <label for="password">输入密码:</label>
                                 <input type="password"  class="form-control" id="password" name="password" placeholder="请输入5~20位数的密码" required></input>
-                                <div class="invalid-feedback">
-                                    请输入密码.
-                                </div>
+                                <span  class="help-block"></span>
                             </div>
 
                             <div class="mb-3">
                                 <label for="passwordCheck">校对密码:</label>
-                                <input type="password"  class="form-control" id="passwordCheck" name="passwordCheck" placeholder="请输入5~20位数的密码" required></input>
-                                <div class="invalid-feedback">
-                                    请输入密码.
-                                </div>
+                                <input type="password"  class="form-control " id="passwordCheck" name="passwordCheck" placeholder="请输入5~20位数的密码" required></input>
+                                <span  class="help-block"></span>
                             </div>
 
                             <div class="mb-3">
-                                <label for="petName">输入昵称:</label>
-                                <input type="text"  class="form-control" id="petName" name="petName" placeholder="请输入2~10位字符,只能出现数字或英文或汉字" required></input>
-                                <div class="invalid-feedback">
-                                    请输入合法的昵称.
-                                </div>
+                                <label for="petname">输入昵称:</label>
+                                <input type="text"  class="form-control" id="petname" name="petname" placeholder="请输入2~10位字符,只能出现数字或英文或汉字" required></input>
+                                <span  class="help-block"></span>
                             </div>
 
                             <div class="mb-3">
                                 <label for="email">输入邮箱:</label>
                                 <input type="text"  class="form-control" id="email" name="email" placeholder="请输入您的邮箱" required></input>
-                                <div class="invalid-feedback">
-                                    请输入合法的邮箱.
-                                </div>
+                                <span  class="help-block"></span>
                             </div>
 
                             <div class="mb-3">
                                 <label for="phone">手机号码:</label>
                                 <input type="text" class="form-control" id="phone" name="phone" placeholder="请输入您的手机号码">
-                                <div class="invalid-feedback">
-                                    请输入您的手机号码.
-                                </div>
+                                <span  class="help-block"></span>
                             </div>
 
 

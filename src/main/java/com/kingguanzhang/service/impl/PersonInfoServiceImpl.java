@@ -2,11 +2,13 @@ package com.kingguanzhang.service.impl;
 
 import com.kingguanzhang.dao.PersonInfoMapper;
 import com.kingguanzhang.pojo.PersonInfo;
+import com.kingguanzhang.pojo.PersonInfoExample;
 import com.kingguanzhang.service.PersonInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class PersonInfoServiceImpl implements PersonInfoService {
@@ -25,5 +27,14 @@ public class PersonInfoServiceImpl implements PersonInfoService {
             throw new RuntimeException("用户信息保存失败!");
         }
         return personInfoId;
+    }
+
+    @Override
+    public List<PersonInfo> getByName(String inputValue) {
+        PersonInfoExample personInfoExample = new PersonInfoExample();
+        PersonInfoExample.Criteria criteria = personInfoExample.createCriteria();
+        criteria.andNameEqualTo(inputValue);
+        List<PersonInfo> personInfoList = personInfoMapper.selectByExample(personInfoExample);
+        return personInfoList;
     }
 }

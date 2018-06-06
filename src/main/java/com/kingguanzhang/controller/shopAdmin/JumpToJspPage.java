@@ -41,7 +41,7 @@ public class JumpToJspPage {
         return "/shop/editShop";
     }
 
-    @RequestMapping("/registerUser")
+    @RequestMapping("/register/registerUser")
     public String showRegisterUser(){
         return "/shop/registerUser";
     }

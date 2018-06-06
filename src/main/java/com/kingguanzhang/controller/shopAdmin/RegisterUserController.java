@@ -13,12 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
+@RequestMapping("/register")//增加这个注解是为了防止相关url被security拦截
 @Controller
-public class PersonInfoController {
+public class RegisterUserController {
 
     @Autowired
     private LocalAuthService localAuthService;
@@ -29,6 +32,39 @@ public class PersonInfoController {
     @Autowired
     private RoleLocalauthService roleLocalauthService;
 
+    /**
+     * ajax检查账号是否已经被占用
+     * @param inputValue
+     * @return
+     */
+    @RequestMapping(value = "/checkUsername")
+    @ResponseBody
+    public Msg checkUsername(@RequestParam("inputValue") String inputValue){
+        List<LocalAuth> localAuthList = localAuthService.getLocalAuthByLoginUsername(inputValue);
+        if (0 == localAuthList.size()){
+            return Msg.success().setMsg("账号未被占用");
+        }
+        return Msg.fail().setMsg("账号已经被占用");
+    }
+
+    /**
+     * ajax检查昵称是否已经被占用
+     * @param inputValue
+     * @return
+     */
+    @RequestMapping(value = "/checkPetname",method = RequestMethod.POST)
+    @ResponseBody
+    public Msg checkPetname(@RequestParam("inputValue") String inputValue){
+       List<PersonInfo> personInfoList = personInfoService.getByName(inputValue);
+        if (0 == personInfoList.size()){
+            return Msg.success().setMsg("昵称未被占用");
+        }
+        return Msg.fail().setMsg("昵称已经被占用");
+    }
+
+    /**
+     *  注册用户;
+     */
     @RequestMapping(value = "/registerUser",method = RequestMethod.POST)
     @ResponseBody
     public Msg registerUser(HttpServletRequest request){
