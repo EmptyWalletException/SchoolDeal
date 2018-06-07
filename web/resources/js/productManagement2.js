@@ -1,33 +1,39 @@
 /*
 * 自定义的js代码,用于获取店铺内所有的商品
 *
-* */
-/*获取商品分类信息,需要传入一个url字符串以调用控制层不同的查询方法*/
-function getProductCategoryList(url){
+/* 定义一个全局变量用于记录末页的页码,服务于页面自动跳转到最后一页 */
+var maxPage;
+var currentPage;
+$(function(){
+    to_page("/getProductList",1);
+})
+
+
+/* 抽取出来的跳转到指定页码页面的方法 */
+function to_page(url,pn){
     $.ajax({
-        url:"/ajax/productCategory",
-        type:"get",
+        url:url,
+        data:"pn="+pn,
+        type:"post",
         success:function(result){
-            /* 这里要检查一下后端是否返回了错误报告信息 */
-            if(100 == result.code){
-                var productCategoryList = result.extend.productCategoryList;
-                getProductList(url,productCategoryList);
-            }
+            maxPage = result.extend.pageInfo.pages;
+            currentPage = result.extend.pageInfo.pageNum;
+            build_product_table(result);
+            build_page_info(result);
+            build_page_nav(result);
+            /*     /!* 重新检查页面上需要发生状态改变的按钮,以免逻辑性bug *!/
+                 changeAllCheckedButton();
+                 changeBatchDeleteButton();*/
         }
     });
 }
 
 
 /*获取商品信息并回显,需要传入一个url字符串以调用控制层不同的查询方法*/
-function getProductList(url,productCategoryList){
-    $.ajax({
-        url:url,
-        type:"get",
-        success:function(result){
+function build_product_table(result){
 
-            /* 这里要检查一下后端是否返回了错误报告信息 */
-            if(100 == result.code){
-                var productList = result.extend.productList;
+                var productCategoryList = result.extend.productCategoryList;
+                var productList = result.extend.pageInfo.list;
                 $("#tbody4productList").empty();
                 $.each(productList,function (index,product) {
                     var createTime = new Date(product.createTime);
@@ -57,11 +63,6 @@ function getProductList(url,productCategoryList){
                     )
                 })
 
-            }else{
-                alert(result.msg);
-            }
-        }
-    });
 }
 
 //绑定按钮删除商品的方法
@@ -76,7 +77,7 @@ $("#tbody4productList").on('click','.btn_removeProduct',function () {
             data:{'productId':productId},
             success:function (result) {
                 alert(result.msg);
-                checkStateChoose();
+                checkStateChoose(currentPage);
             }
         });
     } else{
@@ -98,7 +99,7 @@ $("#tbody4productList").on('click','.btn_switchStatus',function () {
                 data:{'productId':productId},
                 success:function (result) {
                     alert(result.msg);
-                    checkStateChoose();
+                    checkStateChoose(currentPage);
                 }
             });
         }else {
@@ -113,7 +114,7 @@ $("#tbody4productList").on('click','.btn_switchStatus',function () {
                 data:{'productId':productId},
                 success:function (result) {
                     alert(result.msg);
-                    checkStateChoose();
+                    checkStateChoose(currentPage);
                 }
             });
         }else {
@@ -125,34 +126,117 @@ $("#tbody4productList").on('click','.btn_switchStatus',function () {
 /*页面上需要根据当前选择的筛选方式来控制ajax发送的请求是需要获取哪些商品,否则在点击上架下架时会出现逻辑错误
 * 每次点击上下架和删除时,都会调用一次此方法以显示正确的数据;
 * */
-function checkStateChoose(){
+function checkStateChoose(pn){
     var checkedInput = $("input:checked").attr("id");
     if ("shelveProduct" == checkedInput){
-        getProductCategoryList("/getShelveProduct");
+        to_page("/getShelveProduct",pn);
     } else if ("unShelveProduct" == checkedInput){
-        getProductCategoryList("/getUnShelveProduct");
+        to_page("/getUnShelveProduct",pn);
     } else {
-        getProductCategoryList("/getProductList");
+        to_page("/getProductList",pn);
     }
 }
 
 
 
+
 //页面上的三个筛选商品状态的选择按钮
 $("#allProduct").click(function () {
-    getProductCategoryList("/getProductList");
+    to_page("/getProductList",1);
 })
 
 $("#shelveProduct").click(function () {
-    getProductCategoryList("/getShelveProduct");
+    to_page("/getShelveProduct",1);
 })
 
 $("#unShelveProduct").click(function () {
-    getProductCategoryList("/getUnShelveProduct");
+    to_page("/getUnShelveProduct",1);
 })
 
-//页面加载的时候默认的初始化方法
-$(function () {
-    getProductCategoryList("/getProductList");
-})
+/*分页功能部分*/
+/*  当前第${pageInfo.pageNum }/${pageInfo.pages }页,当前页记录数:${pageInfo.size }条;总记录数:${pageInfo.total }条; */
+function build_page_info(result){
+    /* 生成新的元素前一定要先清空掉以前的数据,否则会累加到页面上 */
+    $("#page_info").empty();
+    $("#page_info").append("当前第"+result.extend.pageInfo.pageNum+"/"+result.extend.pageInfo.pages+"页,当前页记录数:"+result.extend.pageInfo.size+"条;总记录数:"+result.extend.pageInfo.total+"条");
+}
+
+/* 显示分页条 */
+function build_page_nav(result){
+    /* 生成新的元素前一定要先清空掉以前的数据,否则会累加到页面上 */
+    $("#page_nav").empty();
+    var ul = $("<ul></ul>").addClass("pagination");
+
+    /* 生成首页按钮 */
+    var li_frist = $("<li class='page-item'></li>").append($("<a class='page-link'></a>").attr("href","#").append("首页"));
+
+    ul.append(li_frist);
+
+    /* 生成上一页按钮 */
+    var li_pre = $("<li class='page-item'></li>").append($("<a class='page-link'></a>").attr("href","#").append("&laquo;"));
+
+    ul.append(li_pre);
+
+    /* 当没有上一页时则按钮不可点击,否则可以点击 */
+    if(result.extend.pageInfo.hasPreviousPage == false){
+        li_frist.addClass("disabled");
+        li_pre.addClass("disabled");
+    }else{
+        /* 为首页按钮添加一个点击跳转到首页的绑定事件 */
+        li_frist.click(function(){
+            checkStateChoose(1);
+        });
+        /* 为上一页按钮添加一个点击跳转到上一页的绑定事件 */
+        li_pre.click(function(){
+            checkStateChoose(result.extend.pageInfo.prePage);
+        });
+    }
+
+    /* 遍历分页信息中是否有12345等页码数 */
+    $.each(result.extend.pageInfo.navigatepageNums,function(index,nums){
+        var a_nums = $("<a class='page-link'></a>").attr("href","#").append(nums)
+        var li_nums = $("<li class='page-item'></li>").append(a_nums);
+
+        if(result.extend.pageInfo.pageNum == nums){
+            /* 当前页码高亮显示 ,如果不是当前页码,则会在else里添加点击功能*/
+            li_nums.addClass("active");
+        }else{
+            /* 为每一个遍历后生成出来的li_nums添加一个点击跳转的绑定事件 */
+            li_nums.click(function(){
+                checkStateChoose(nums);
+            });
+        }
+        ul.append(li_nums);
+    });
+
+    /* 生成下一页按钮 */
+    var li_next = $("<li class='page-item'></li>").append($("<a class='page-link'></a>").attr("href","#").append("&raquo;"));
+
+    ul.append(li_next);
+
+    /* 生成末页按钮 */
+    var li_last = $("<li class='page-item'></li>").append($("<a class='page-link'></a>").attr("href","#").append("末页"));
+
+    ul.append(li_last);
+
+    /* 当没有下一页时按钮不可点击,否则可以点击 */
+    if(result.extend.pageInfo.hasNextPage == false){
+        li_next.addClass("disabled");
+        li_last.addClass("disabled");
+    }else{
+        /* 为下一页按钮添加一个点击跳转到下一页的绑定事件 */
+        li_next.click(function(){
+            checkStateChoose(result.extend.pageInfo.nextPage);
+        });
+        /* 为末页按钮添加一个点击跳转到末页的绑定事件 */
+        li_last.click(function(){
+            checkStateChoose(result.extend.pageInfo.pages);
+        });
+    }
+
+    var nav = $("<nav></nav>").attr("aria-label","Page navigation").append(ul);
+    $("#page_nav").append(nav);
+}
+
+
 

@@ -1,9 +1,13 @@
 package com.kingguanzhang.controller.shopAdmin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.kingguanzhang.dto.Msg;
 import com.kingguanzhang.pojo.Product;
 
+import com.kingguanzhang.pojo.ProductCategory;
+import com.kingguanzhang.service.ProductCategoryService;
 import com.kingguanzhang.service.ProductService;
 import com.kingguanzhang.util.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +28,8 @@ public class ProductManagementController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private ProductCategoryService productCategoryService;
 
     @RequestMapping("/showEditProduct/{productId}")
     public String showEditProduct(@PathVariable("productId") Integer productId, HttpServletRequest request) {
@@ -84,12 +90,19 @@ public class ProductManagementController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/getProductList",method = RequestMethod.GET)
+    @RequestMapping(value = "/getProductList",method = RequestMethod.POST)
     @ResponseBody
-    public Msg getProductList(HttpServletRequest request) {
+    public Msg getProductList(@RequestParam(value = "pn",defaultValue = "1")Integer pn,HttpServletRequest request) {
         Integer shopId = (Integer) request.getSession().getAttribute("shopId");
+        //使用分页插件官方推荐的第二种方式开启分页查询;
+        PageHelper.startPage(pn, 6);
+        //然后紧跟的查询就是分页查询;
         List<Product> productList = productService.getProductList(shopId);
-        return Msg.success().setMsg("获取商品集合成功").add("productList", productList);
+        //查询之后使用PageInfo来包装,方便在页面视图中处理页码,下面用的构造器第二个参数是页面底部可供点击的连续页码数;
+        PageInfo pageInfo = new PageInfo(productList,5);
+        //这还需要获取一下商品的分类信息;
+        List<ProductCategory> productCategoryList = productCategoryService.getCategory();
+        return Msg.success().setMsg("获取商品集合成功").add("pageInfo", pageInfo).add("productCategoryList",productCategoryList);
     }
 
     /**
@@ -97,12 +110,19 @@ public class ProductManagementController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/getShelveProduct",method = RequestMethod.GET)
+    @RequestMapping(value = "/getShelveProduct",method = RequestMethod.POST)
     @ResponseBody
-    public Msg getShelveProductList(HttpServletRequest request) {
+    public Msg getShelveProductList(@RequestParam(value = "pn",defaultValue = "1")Integer pn,HttpServletRequest request) {
         Integer shopId = (Integer) request.getSession().getAttribute("shopId");
+        //使用分页插件官方推荐的第二种方式开启分页查询;
+        PageHelper.startPage(pn, 6);
+        //然后紧跟的查询就是分页查询;
         List<Product> productList = productService.getShelveProductList(shopId);
-        return Msg.success().setMsg("获取商品集合成功").add("productList", productList);
+        //查询之后使用PageInfo来包装,方便在页面视图中处理页码,下面用的构造器第二个参数是页面底部可供点击的连续页码数;
+        PageInfo pageInfo = new PageInfo(productList,5);
+        //这还需要获取一下商品的分类信息;
+        List<ProductCategory> productCategoryList = productCategoryService.getCategory();
+        return Msg.success().setMsg("获取商品集合成功").add("pageInfo", pageInfo).add("productCategoryList",productCategoryList);
     }
 
     /**
@@ -110,12 +130,19 @@ public class ProductManagementController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/getUnShelveProduct",method = RequestMethod.GET)
+    @RequestMapping(value = "/getUnShelveProduct",method = RequestMethod.POST)
     @ResponseBody
-    public Msg getUnShelveProduct(HttpServletRequest request) {
+    public Msg getUnShelveProduct(@RequestParam(value = "pn",defaultValue = "1")Integer pn,HttpServletRequest request) {
         Integer shopId = (Integer) request.getSession().getAttribute("shopId");
+        //使用分页插件官方推荐的第二种方式开启分页查询;
+        PageHelper.startPage(pn, 6);
+        //然后紧跟的查询就是分页查询;
         List<Product> productList = productService.getUnShelveProduct(shopId);
-        return Msg.success().setMsg("获取商品集合成功").add("productList", productList);
+        //查询之后使用PageInfo来包装,方便在页面视图中处理页码,下面用的构造器第二个参数是页面底部可供点击的连续页码数;
+        PageInfo pageInfo = new PageInfo(productList,5);
+        //这还需要获取一下商品的分类信息;
+        List<ProductCategory> productCategoryList = productCategoryService.getCategory();
+        return Msg.success().setMsg("获取商品集合成功").add("pageInfo", pageInfo).add("productCategoryList",productCategoryList);
     }
 
     /**
