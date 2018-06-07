@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="">
 
     <title>注册账号</title>
 
@@ -38,41 +38,41 @@
                     <div class="col-lg-12 ">
                         <h3 class="text-center">注册账号</h3>
 
-                        <div class="needs-validation" id="registerShopForm"  novalidate>
-                            <div class="mb-3">
-                                <label for="username">输入账号:</label>
-                                <input type="text" class="form-control" id="username" name="username" placeholder="请输入5~10位数字账号" required>
-                                <span  class="help-block"></span>
+                        <div id="registerShopForm" >
+                            <div class="mb-3 form-group ">
+                                <label for="username" class="control-label">输入账号:</label>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="请输入5~10位数字账号" aria-describedby="helpBlock1">
+                                <span  class=""></span>
                             </div>
 
-                            <div class="mb-3">
+                            <div class="mb-3 form-group">
                                 <label for="password">输入密码:</label>
                                 <input type="password"  class="form-control" id="password" name="password" placeholder="请输入5~20位数的密码" required></input>
-                                <span  class="help-block"></span>
+                                <span  class=""></span>
                             </div>
 
-                            <div class="mb-3">
+                            <div class="mb-3 form-group">
                                 <label for="passwordCheck">校对密码:</label>
                                 <input type="password"  class="form-control " id="passwordCheck" name="passwordCheck" placeholder="请输入5~20位数的密码" required></input>
-                                <span  class="help-block"></span>
+                                <span  class=""></span>
                             </div>
 
-                            <div class="mb-3">
+                            <div class="mb-3 form-group">
                                 <label for="petname">输入昵称:</label>
                                 <input type="text"  class="form-control" id="petname" name="petname" placeholder="请输入2~10位字符,只能出现数字或英文或汉字" required></input>
-                                <span  class="help-block"></span>
+                                <span  class=""></span>
                             </div>
 
-                            <div class="mb-3">
+                            <div class="mb-3 form-group">
                                 <label for="email">输入邮箱:</label>
                                 <input type="text"  class="form-control" id="email" name="email" placeholder="请输入您的邮箱" required></input>
-                                <span  class="help-block"></span>
+                                <span  class=""></span>
                             </div>
 
-                            <div class="mb-3">
+                            <div class="mb-3 form-group">
                                 <label for="phone">手机号码:</label>
                                 <input type="text" class="form-control" id="phone" name="phone" placeholder="请输入您的手机号码">
-                                <span  class="help-block"></span>
+                                <span  class=""></span>
                             </div>
 
 
