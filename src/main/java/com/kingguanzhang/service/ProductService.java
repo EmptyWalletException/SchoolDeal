@@ -30,4 +30,10 @@ public interface ProductService {
     Integer putawayProducts(List<Integer> productIdList);
 
     Integer soldoutProducts(List<Integer> productIdList);
+
+    List<Product> getAllProductList();
+
+    List<Product> getAllPutawayProductList();
+
+    List<Product> getAllSoldoutProduct();
 }

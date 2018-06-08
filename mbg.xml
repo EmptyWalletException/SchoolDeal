@@ -47,7 +47,7 @@
         </javaClientGenerator>
 
         <!-- 指定每个表的生成策略 -->
-        <table  tableName="tb_area" domainObjectName="Area" >
+        <!--<table  tableName="tb_area" domainObjectName="Area" >
         </table>
 
         <table  tableName="tb_head_line" domainObjectName="HeadLine" >
@@ -81,9 +81,10 @@
         </table>
 
         <table  tableName="tb_role_localauth" domainObjectName="RoleLocalauth" >
+        </table>-->
+
+        <table  tableName="tb_product_category" domainObjectName="ProductCategory" >
         </table>
-
-
 
     </context>
 </generatorConfiguration>

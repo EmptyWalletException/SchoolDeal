@@ -4,6 +4,7 @@ import com.kingguanzhang.dto.Msg;
 import com.kingguanzhang.pojo.Shop;
 
 import java.io.InputStream;
+import java.util.List;
 
 
 public interface ShopService {
@@ -12,7 +13,9 @@ public interface ShopService {
 
     public Shop getShop(Integer shopId);
 
-    public int updateShop(Shop shop);
+    public Msg updateShop(Shop shop, InputStream shopImgInputStream, String fileName);
 
     Shop getShopByUserId(Integer userId);
+
+    List<Shop> getAllShop();
 }

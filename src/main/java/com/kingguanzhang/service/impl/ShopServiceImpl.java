@@ -48,7 +48,7 @@ public class ShopServiceImpl implements ShopService {
                     
                 }
             }
-            int en = shopMapper.updateByPrimaryKey(shop);
+            int en = shopMapper.updateByPrimaryKeySelective(shop);
             System.out.println("执行更新店铺返回的结果值是 : " + en);
             if (en <= 0){
                 throw new RuntimeException("更新店铺图片信息失败");
@@ -68,10 +68,39 @@ public class ShopServiceImpl implements ShopService {
     }
 
     @Override
-    public int updateShop(Shop shop) {
-        int i = shopMapper.updateByPrimaryKeySelective(shop);
-        return i;
+    public Msg updateShop(Shop shop, InputStream shopImgInputStream, String fileName) {
+        if (null == shop){
+            return Msg.fail().setMsg("添加商店失败,店铺信息不能为空!");
+        }
+
+        try {
+            shop.setEnableStatus(0);
+            shop.setCreateTime(new Date());
+            shop.setEditTime(new Date());
+
+            if (null != shopImgInputStream){
+                try{
+                    String shopImgAddr = addShopImg(shop, shopImgInputStream,fileName);
+                }catch (Exception e){
+                    throw new RuntimeException("设置图片地址错误 : " + e.getMessage());
+
+                }
+
+            }
+
+            int en = shopMapper.updateByPrimaryKeySelective(shop);
+            System.out.println("执行更新店铺返回的结果值是 : " + en);
+            if (en <= 0){
+                throw new RuntimeException("更新店铺图片信息失败");
+            }
+        }catch (Exception e){
+            throw new RuntimeException("添加店铺异常 : " + e.getMessage());
+        }
+
+        //在所有操作都执行完成之后,返回提示;
+        return Msg.success().setMsg("添加店铺成功,请等待审核");
     }
+
 
     @Override
     public Shop getShopByUserId(Integer userId) {
@@ -82,6 +111,16 @@ public class ShopServiceImpl implements ShopService {
         List<Shop> shops = shopMapper.selectByExample(shopExample);
         Shop shop = shops.get(0);
         return shop;
+    }
+
+    /**
+     * 获取所有商店;
+     * @return
+     */
+    @Override
+    public List<Shop> getAllShop() {
+        List<Shop> shopList = shopMapper.selectByExample(null);
+        return shopList;
     }
 
 

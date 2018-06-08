@@ -63,7 +63,8 @@
 
         <!--remember-me配置了但是无效,只能采用自定义controller的方法来实现-->
         <remember-me remember-me-parameter="remember-me" ></remember-me>
-        <intercept-url pattern="/shopManagement" access="hasAnyRole('ROLE_USER','ROLE_USER')"/>
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/shopManagement" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"/>
         <intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 
         <csrf disabled="true" />

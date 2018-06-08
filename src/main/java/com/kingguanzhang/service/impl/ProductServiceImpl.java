@@ -182,6 +182,42 @@ public class ProductServiceImpl implements ProductService {
         return i;
     }
 
+    /**
+     * 查询所有店铺的所有商品
+     * @return
+     */
+    @Override
+    public List<Product> getAllProductList() {
+        List<Product> productList = productMapper.selectByExample(null);
+        return productList;
+    }
+
+    /**
+     * 查询所有店铺的所有上架中商品
+     * @return
+     */
+    @Override
+    public List<Product> getAllPutawayProductList() {
+        ProductExample productExample = new ProductExample();
+        ProductExample.Criteria criteria = productExample.createCriteria();
+        criteria.andEnableStatusEqualTo(0);
+        List<Product> products = productMapper.selectByExample(productExample);
+        return products;
+    }
+
+    /**
+     * 查询所有店铺的所有下架中商品
+     * @return
+     */
+    @Override
+    public List<Product> getAllSoldoutProduct() {
+        ProductExample productExample = new ProductExample();
+        ProductExample.Criteria criteria = productExample.createCriteria();
+        criteria.andEnableStatusEqualTo(1);
+        List<Product> products = productMapper.selectByExample(productExample);
+        return products;
+    }
+
     private String addproductImg(Product product, InputStream productImgInputStream, String fileName) {
         String productImagePath = PathUtil.getProductImagePath(product.getProductId());
         String productImgAddr = ImgUtil.generateThumbnail(productImgInputStream,productImagePath,fileName);
