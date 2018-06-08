@@ -8,6 +8,7 @@ var maxPage;
 var currentPage;
 $(function(){
     to_page("/getProductList",1);
+    changeBatchDeleteButton();
 })
 
 
@@ -23,9 +24,10 @@ function to_page(url,pn){
             build_product_table(result);
             build_page_info(result);
             build_page_nav(result);
-       /*     /!* 重新检查页面上需要发生状态改变的按钮,以免逻辑性bug *!/
+            /*重新检查页面上需要发生状态改变的按钮,以免逻辑性bug */
             changeAllCheckedButton();
-            changeBatchDeleteButton();*/
+            changeBatchDeleteButton();
+
         }
     });
 }
@@ -50,38 +52,42 @@ function build_product_table(result){
                     var editTime = new Date(product.editTime);
                     $("#shopListRow").append(
                         "<div class=\"col-md-4\">" +
-                        "<div class=\"card mb-4 box-shadow\">" +
-                        "<img class=\"card-img-top\" src=\"" +product.imgAddr +"\" alt=\"商品标题\">" +
-                        "<div class=\"card-body\">" +
+                            "<div class=\"card mb-4 box-shadow\">" +
+                                "<img class=\"card-img-top\" src=\"" +product.imgAddr +"\" alt=\"商品标题\">" +
+                            "<div class=\"card-body\">" +
 
-                        "<h1>" +product.productName + "</h1>" +
-                        "<div>" +
-                        "<span>$ " +product.normalPrice + "</span>"+
-                        "</div>" +
-                        "<div class='status'>" +
-                        "<small class=\"text-muted\" enableStatus='"+ product.enableStatus+"'>商品状态 : " +(0 == product.enableStatus?'上架中':'已下架') +"</small>" +
-                        "</div>" +
-                        "<div>" +
-                        "<small class=\"text-muted\">商品创建时间 : " +createTime.toLocaleDateString() +"</small>" +
-                        "</div>" +
-                        "<div>" +
-                        "<small class=\"text-muted\">最后编辑时间 : " +editTime.toLocaleDateString()+ "</small>" +
-                        "</div>" +
-                        "<div>" +
-                        "<small class=\"text-muted\">商品分类 : "+productCategoryName+ "</small>" +
-                        "</div>" +
-                        "<p class=\"card-text\">" +product.productDesc + "</p>" +
-                        "<div class=\"d-flex justify-content-between align-items-center\">" +
-                        "<div class=\"btn-group\">" +
-                        "<a type=\"button\" class=\"btn btn-sm btn-outline-secondary edit btn_edit\"  href=\"/showEditProduct/"+product.productId+"\""+"\">编辑</a>" +
-                        "<button type=\"button\" class=\"btn btn-sm btn-outline-secondary btn_switchStatus\"  productId='"+product.productId+"'>"+(product.enableStatus == 0?'下架':'上架')+"</button>" +
-                        "<button type=\"button\" class=\"btn btn-sm btn-outline-secondary btn_removeProduct\"  productId='"+product.productId+"'>删除</button>" +
-                        "</div>" +
-                        "</div>" +
-                        "</div>"+
+                                "<h1>" +product.productName + "</h1>" +
+                                "<div>" +
+                                    "<span>$ " +product.normalPrice + "</span>"+
+                                "</div>" +
+                                "<div class='status'>" +
+                                    "<small class=\"text-muted\" enableStatus='"+ product.enableStatus+"'>商品状态 : " +(0 == product.enableStatus?'上架中':'已下架') +"</small>" +
+                                "</div>" +
+                                "<div>" +
+                                    "<small class=\"text-muted\">商品创建时间 : " +createTime.toLocaleDateString() +"</small>" +
+                                "</div>" +
+                                "<div>" +
+                                    "<small class=\"text-muted\">最后编辑时间 : " +editTime.toLocaleDateString()+ "</small>" +
+                                "</div>" +
+                                "<div>" +
+                                    "<small class=\"text-muted\">商品分类 : "+productCategoryName+ "</small>" +
+                                "</div>" +
+                                "<p class=\"card-text\">" +product.productDesc + "</p>" +
+                                "<div class=\"\">" +
+                                    "<div class=\"btn-group\">" +
+                                        "<a type=\"button\" class=\"btn btn-sm btn-outline-secondary edit btn_edit\"  href=\"/showEditProduct/"+product.productId+"\""+"\">编辑</a>" +
+                                        "<button type=\"button\" class=\"btn btn-sm btn-outline-secondary btn_switchStatus\"  productId='"+product.productId+"'>"+(product.enableStatus == 0?'下架':'上架')+"</button>" +
+                                        "<button type=\"button\" class=\"btn btn-sm btn-outline-secondary btn_removeProduct\"  productId='"+product.productId+"'>删除</button>" +
+                                    "</div>" +
+                                    "<span class='float-right '>"+
+                                        "<input type='checkbox' class='check_one' productId='"+product.productId+"' />选中"+
+                                    "</span>"+
+                                "</div>" +
+                            "</div>"+
                         "</div>"
                     );
                 })
+                changeAllCheckedButton();
 
 }
 
@@ -257,6 +263,124 @@ function build_page_nav(result){
     $("#page_nav").append(nav);
 }
 
+
+/*批量操作的模块*/
+
+/* 用于控制页面上的批量操作按钮组是否可用 ,此方法最好在页面发生任何事件时都调用一次,否则会出现逻辑bug,
+		目前只在点击选择框时和页面加载后重新检查一次*/
+function changeBatchDeleteButton(){
+    var checked_length = $(".check_one:checked").length;
+    if(0 == checked_length){
+        $("#button_delete_batch").prop("disabled","disabled");
+        $("#btn_putaway_batch").prop("disabled","disabled");
+        $("#btn_soldout_batch").prop("disabled","disabled");
+    }else{
+        $("#button_delete_batch").prop("disabled","");
+        $("#btn_putaway_batch").prop("disabled","");
+        $("#btn_soldout_batch").prop("disabled","");
+    }
+}
+
+/* 用于控制全选按钮是否被勾选 ,此方法最好在页面发生任何事件时都调用一次,否则会出现逻辑bug,
+目前只在点击选择框时重新检查一次,页面重载时不要检查,
+因为此时check_one元素还没生成,解决方法时将此方法放在build_product_table方法内最下面*/
+function changeAllCheckedButton(){
+    var checked_length = $(".check_one:checked").length;
+    var checkBox_length = $(".check_one").length;
+    if(checkBox_length == checked_length){
+        $(".check_all").prop("checked","checked");
+    }else{
+        $(".check_all").prop("checked","");
+    }
+}
+
+/* 全选和全不选的功能 */
+$(".check_all").click(function(){
+    /* .attr()方法只能适用用自定义的值,prop方法适用于原生的属性 */
+    $(".check_one").prop("checked",$(this).prop("checked"));
+    changeBatchDeleteButton();
+});
+
+/* 当检测到手动点满所有单个选择按钮时,则自动勾选上全选按钮 */
+$(document).on("click",".check_one",function(){
+    /* .check_one:checked 是一类筛选器,筛选所有属性值有checked的check_one元素   .length代表筛选出来的个数*/
+    /* 检查选中的个数是否等于页面上所有选择框的总数 */
+    changeBatchDeleteButton();
+    changeAllCheckedButton();
+});
+
+/*批量删除商品 */
+$(document).on("click","#button_delete_batch",function(){
+    /* 注意这里的变量初始化时一定要设置为空字符,否则就会是默认保存了一个undefined */
+    var products = "";
+    var productIds ="";
+    $.each($(".check_one:checked"),function(){
+        products += $(this).parent().parent().prevAll("h1").text() +",";
+        productIds += $(this).attr("productId")+",";
+    });
+    products = products.substring(0,products.length-1);
+    productIds = productIds.substring(0,products.length-1);
+    if(confirm("确定要删除选中的 : "+ products+" 商品吗?")){
+        $.ajax({
+            url:"/deleteProducts",
+            type:"POST",
+            data:{"productIds":productIds},
+            success:function(result){
+                alert(result.msg);
+                checkStateChoose(currentPage);
+            }
+        });
+    }
+});
+
+/*点击按钮后批量上架商品 */
+$(document).on("click","#btn_putaway_batch",function(){
+    /* 注意这里的变量初始化时一定要设置为空字符,否则就会是默认保存了一个undefined */
+    var products = "";
+    var productIds ="";
+    $.each($(".check_one:checked"),function(){
+        products += $(this).parent().parent().prevAll("h1").text() +",";
+        productIds += $(this).attr("productId")+",";
+    });
+    products = products.substring(0,products.length-1);
+    productIds = productIds.substring(0,products.length-1);
+    if(confirm("确定要上架选中的 : "+ products+" 商品吗?")){
+        $.ajax({
+            url:"/putawayProducts",
+            type:"POST",
+            data:{"productIds":productIds},
+            success:function(result){
+                alert(result.msg);
+                checkStateChoose(currentPage);
+            }
+        });
+    }
+});
+
+/*点击按钮后批量下架商品 */
+$(document).on("click","#btn_soldout_batch",function(){
+    /* 注意这里的变量初始化时一定要设置为空字符,否则就会是默认保存了一个undefined */
+    var products = "";
+    var productIds ="";
+    $.each($(".check_one:checked"),function(){
+        products += $(this).parent().parent().prevAll("h1").text() +",";
+        productIds += $(this).attr("productId")+",";
+    });
+    products = products.substring(0,products.length-1);
+    productIds = productIds.substring(0,products.length-1);
+    if(confirm("确定要下架选中的 : "+ products+" 商品吗?")){
+        $.ajax({
+            url:"/soldoutProducts",
+            type:"POST",
+            data:{"productIds":productIds},
+            success:function(result){
+                alert(result.msg);
+                //注意这里需要调用根据筛选状态刷新本页的方法
+                checkStateChoose(currentPage);
+            }
+        });
+    }
+});
 
 
 

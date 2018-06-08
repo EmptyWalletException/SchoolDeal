@@ -24,4 +24,10 @@ public interface ProductService {
     List<Product> getShelveProductList(Integer shopId);
 
     List<Product> getUnShelveProduct(Integer shopId);
+
+    Integer deleteProducts(List<Integer> productIdList);
+
+    Integer putawayProducts(List<Integer> productIdList);
+
+    Integer soldoutProducts(List<Integer> productIdList);
 }

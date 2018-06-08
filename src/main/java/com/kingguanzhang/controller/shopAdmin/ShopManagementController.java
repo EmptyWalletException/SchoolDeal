@@ -2,7 +2,6 @@ package com.kingguanzhang.controller.shopAdmin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kingguanzhang.dto.Msg;
-import com.kingguanzhang.dto.ShopExecution;
 import com.kingguanzhang.pojo.Shop;
 import com.kingguanzhang.service.ShopService;
 import com.kingguanzhang.util.RequestUtil;
@@ -135,7 +134,6 @@ public class ShopManagementController {
             shop.setOwnerId(1);//这个店铺主人id本应该是从前端传过来的session中获取,但是暂时还不会;
 
 
-            ShopExecution shopExecution = null;
             try {
                //使用文件.getOriginalFilename可以获取带后缀.jpg的全名;或者文件.getItem.getName也可以获取带后缀的文件名;否则只能取到不带后缀的文件名;
                 shopService.addShop(shop, shopImg.getInputStream(), shopImg.getOriginalFilename());

@@ -19,6 +19,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -35,6 +36,69 @@ public class ProductManagementController {
     public String showEditProduct(@PathVariable("productId") Integer productId, HttpServletRequest request) {
         request.getSession().setAttribute("productId", productId);
         return "shop/editProduct";
+    }
+
+    /**
+     * 通过ajax调用的批量下架商品的方法;
+     *
+     * @param productIds
+     * @return
+     */
+    @RequestMapping(value = "/soldoutProducts", method = RequestMethod.POST)
+    @ResponseBody
+    public Msg soldoutProducts(@RequestParam("productIds") String productIds) {
+        String[] productIdArray = productIds.split(",");
+        List<Integer> productIdList = new ArrayList();
+        for (String productId:productIdArray ) {
+            productIdList.add(Integer.parseInt(productId));
+        }
+        Integer i = productService.soldoutProducts(productIdList);
+        if (0 < i) {
+            return Msg.success().setMsg("下架成功!");
+        }
+        return Msg.fail().setMsg("下架失败");
+    }
+
+    /**
+     * 通过ajax调用的批量上架商品的方法;
+     *
+     * @param productIds
+     * @return
+     */
+    @RequestMapping(value = "/putawayProducts", method = RequestMethod.POST)
+    @ResponseBody
+    public Msg putawayProducts(@RequestParam("productIds") String productIds) {
+        String[] productIdArray = productIds.split(",");
+        List<Integer> productIdList = new ArrayList();
+        for (String productId:productIdArray ) {
+            productIdList.add(Integer.parseInt(productId));
+        }
+        Integer i = productService.putawayProducts(productIdList);
+        if (0 < i) {
+            return Msg.success().setMsg("上架成功!");
+        }
+        return Msg.fail().setMsg("上架失败");
+    }
+
+    /**
+     * 通过ajax调用的批量删除商品的方法;
+     *
+     * @param productIds
+     * @return
+     */
+    @RequestMapping(value = "/deleteProducts", method = RequestMethod.POST)
+    @ResponseBody
+    public Msg deleteProducts(@RequestParam("productIds") String productIds) {
+        String[] productIdArray = productIds.split(",");
+        List<Integer> productIdList = new ArrayList();
+        for (String productId:productIdArray ) {
+                productIdList.add(Integer.parseInt(productId));
+        }
+        Integer i = productService.deleteProducts(productIdList);
+        if (0 < i) {
+            return Msg.success().setMsg("删除成功!");
+        }
+        return Msg.fail().setMsg("删除失败");
     }
 
     /**

@@ -63,8 +63,14 @@
             </section>
 
             <div class="album py-5 bg-light">
-                <div class="text-center">
-                    <a type="button" class="btn btn-sm btn-primary " href="/addProduct">新增一个商品</a>
+                <div class="col">
+                    <input type="checkbox" class="check_all"/>全选/全不选
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn_putaway_batch">全部上架</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn_soldout_batch">全部下架</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="button_delete_batch">全部删除</button>
+                    </div>
+                    <a type="button" class="btn btn-sm btn-outline-secondary" href="/addProduct">新增一个商品</a>
                 </div>
                 <hr/>
                 <div class="container" >

@@ -136,6 +136,52 @@ public class ProductServiceImpl implements ProductService {
         return productList;
     }
 
+    /**
+     * 批量删除商品
+     * @param productIdList
+     * @return
+     */
+    @Override
+    public Integer deleteProducts(List<Integer> productIdList) {
+        ProductExample productExample = new ProductExample();
+        ProductExample.Criteria criteria = productExample.createCriteria();
+        criteria.andProductIdIn(productIdList);
+        int i = productMapper.deleteByExample(productExample);
+        return i;
+    }
+
+    /**
+     * 批量上架商品
+     * @param productIdList
+     * @return
+     */
+    @Override
+    public Integer putawayProducts(List<Integer> productIdList) {
+        Product product = new Product();
+        product.setEnableStatus(0);
+        ProductExample productExample = new ProductExample();
+        ProductExample.Criteria criteria = productExample.createCriteria();
+        criteria.andProductIdIn(productIdList);
+        int i = productMapper.updateByExampleSelective(product,productExample);
+        return i;
+    }
+
+    /**
+     * 批量下架商品
+     * @param productIdList
+     * @return
+     */
+    @Override
+    public Integer soldoutProducts(List<Integer> productIdList) {
+        Product product = new Product();
+        product.setEnableStatus(1);
+        ProductExample productExample = new ProductExample();
+        ProductExample.Criteria criteria = productExample.createCriteria();
+        criteria.andProductIdIn(productIdList);
+        int i = productMapper.updateByExampleSelective(product,productExample);
+        return i;
+    }
+
     private String addproductImg(Product product, InputStream productImgInputStream, String fileName) {
         String productImagePath = PathUtil.getProductImagePath(product.getProductId());
         String productImgAddr = ImgUtil.generateThumbnail(productImgInputStream,productImagePath,fileName);

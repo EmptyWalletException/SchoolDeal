@@ -64,26 +64,34 @@
 
 
             <div class="table-responsive">
-
-                <div class="text-center">
-                    <a type="button" class="btn btn-sm btn-primary " href="/addProduct">新增一个商品</a>
+                <div class="col">
+                    <input type="checkbox" class="check_all"/>全选/全不选
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn_putaway_batch">全部上架</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn_soldout_batch">全部下架</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="button_delete_batch">全部删除</button>
+                    </div>
+                    <a type="button" class="btn btn-sm btn-outline-secondary" href="/addProduct">新增一个商品</a>
                 </div>
+
                 <hr/>
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
-                        <th>商品标题</th>
-                        <th>商品价格</th>
-                        <th>商品状态</th>
+                        <th>勾选</th>
+                        <th>标题</th>
+                        <th>价格</th>
+                        <th>状态</th>
                         <th>上架时间</th>
                         <th>编辑时间</th>
-                        <th>所属分类</th>
-                        <th>简要描述</th>
-                        <th>选择操作</th>
+                        <th>分类</th>
+                        <th>描述</th>
+                        <th>操作</th>
                     </tr>
                     </thead>
                     <tbody id="tbody4productList">
                     <tr>
+                        <td><input type="checkbox" class="check_one">选中</td>
                         <td>蛋糕</td>
                         <td>$ 5.00</td>
                         <td>上架中</td>
@@ -98,6 +106,7 @@
                         </td>
                     </tr>
                     <tr>
+                        <td><input type="checkbox" class="check_one">选中</td>
                         <td>蛋糕</td>
                         <td>$ 5.00</td>
                         <td>上架中</td>

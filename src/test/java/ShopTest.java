@@ -1,14 +1,6 @@
-import com.kingguanzhang.enums.ShopSateEnum;
-import com.kingguanzhang.pojo.Area;
-import com.kingguanzhang.pojo.PersonInfo;
-import com.kingguanzhang.pojo.Shop;
-import com.kingguanzhang.pojo.ShopCategory;
 import com.kingguanzhang.service.ShopService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.io.File;
-import java.util.Date;
 
 public class ShopTest extends BaseTest {
 

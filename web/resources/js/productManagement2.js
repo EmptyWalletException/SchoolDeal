@@ -6,6 +6,7 @@ var maxPage;
 var currentPage;
 $(function(){
     to_page("/getProductList",1);
+    changeBatchDeleteButton();
 })
 
 
@@ -21,9 +22,9 @@ function to_page(url,pn){
             build_product_table(result);
             build_page_info(result);
             build_page_nav(result);
-            /*     /!* 重新检查页面上需要发生状态改变的按钮,以免逻辑性bug *!/
-                 changeAllCheckedButton();
-                 changeBatchDeleteButton();*/
+            /* 重新检查页面上需要发生状态改变的按钮,以免逻辑性bug */
+            changeAllCheckedButton();
+            changeBatchDeleteButton();
         }
     });
 }
@@ -47,6 +48,7 @@ function build_product_table(result){
                     });
                     $("#tbody4productList").append(
                         "<tr>"+
+                        "<td><input type='checkbox' class='check_one' productId='"+product.productId+"' /></td>"+
                         "<td class='productName'>"+product.productName+"</td>"+
                         "<td>$ "+product.normalPrice+"</td>"+
                         "<td class='status' enableStatus='"+ product.enableStatus+"' >"+(0 == enableStatus?'上架中':'已下架')+"</td>"+
@@ -62,6 +64,8 @@ function build_product_table(result){
                         "</tr>"
                     )
                 })
+                /*在上面的页面元素生成之后检查全选框*/
+                changeAllCheckedButton();
 
 }
 
@@ -124,7 +128,7 @@ $("#tbody4productList").on('click','.btn_switchStatus',function () {
 })
 
 /*页面上需要根据当前选择的筛选方式来控制ajax发送的请求是需要获取哪些商品,否则在点击上架下架时会出现逻辑错误
-* 每次点击上下架和删除时,都会调用一次此方法以显示正确的数据;
+* 每次点击上下架和删除时,都会调用一次此方法以显示正确的数据;这个方法本质上等于刷新本页;
 * */
 function checkStateChoose(pn){
     var checkedInput = $("input:checked").attr("id");
@@ -237,6 +241,123 @@ function build_page_nav(result){
     var nav = $("<nav></nav>").attr("aria-label","Page navigation").append(ul);
     $("#page_nav").append(nav);
 }
+
+/*批量操作的模块*/
+
+/* 用于控制页面上的批量操作按钮组是否可用 ,此方法最好在页面发生任何事件时都调用一次,否则会出现逻辑bug,
+		目前只在点击选择框时和页面加载后重新检查一次*/
+function changeBatchDeleteButton(){
+    var checked_length = $(".check_one:checked").length;
+    if(0 == checked_length){
+        $("#button_delete_batch").prop("disabled","disabled");
+        $("#btn_putaway_batch").prop("disabled","disabled");
+        $("#btn_soldout_batch").prop("disabled","disabled");
+    }else{
+        $("#button_delete_batch").prop("disabled","");
+        $("#btn_putaway_batch").prop("disabled","");
+        $("#btn_soldout_batch").prop("disabled","");
+    }
+}
+
+/* 用于控制全选按钮是否被勾选 ,此方法最好在页面发生任何事件时都调用一次,否则会出现逻辑bug,
+目前只在点击选择框时重新检查一次,页面重载时不要检查,
+因为此时check_one元素还没生成,解决方法时将此方法放在build_product_table方法内最下面*/
+function changeAllCheckedButton(){
+    var checked_length = $(".check_one:checked").length;
+    var checkBox_length = $(".check_one").length;
+    if(checkBox_length == checked_length){
+        $(".check_all").prop("checked","checked");
+    }else{
+        $(".check_all").prop("checked","");
+    }
+}
+
+/* 全选和全不选的功能 */
+$(".check_all").click(function(){
+    /* .attr()方法只能适用用自定义的值,prop方法适用于原生的属性 */
+    $(".check_one").prop("checked",$(this).prop("checked"));
+    changeBatchDeleteButton();
+});
+
+/* 当检测到手动点满所有单个选择按钮时,则自动勾选上全选按钮 */
+$(document).on("click",".check_one",function(){
+    /* .check_one:checked 是一类筛选器,筛选所有属性值有checked的check_one元素   .length代表筛选出来的个数*/
+    /* 检查选中的个数是否等于页面上所有选择框的总数 */
+    changeBatchDeleteButton();
+    changeAllCheckedButton();
+});
+
+/*批量删除商品 */
+$(document).on("click","#button_delete_batch",function(){
+    /* 注意这里的变量初始化时一定要设置为空字符,否则就会是默认保存了一个undefined */
+    var products = "";
+    var productIds ="";
+    $.each($(".check_one:checked"),function(){
+        products += $(this).parent().next().text() +",";
+        productIds += $(this).attr("productId")+",";
+    });
+    products = products.substring(0,products.length-1);
+    productIds = productIds.substring(0,products.length-1);
+    if(confirm("确定要删除选中的 : "+ products+" 商品吗?")){
+        $.ajax({
+            url:"/deleteProducts",
+            type:"POST",
+            data:{"productIds":productIds},
+            success:function(result){
+                alert(result.msg);
+                checkStateChoose(currentPage);
+            }
+        });
+    }
+});
+
+/*点击按钮后批量上架商品 */
+$(document).on("click","#btn_putaway_batch",function(){
+    /* 注意这里的变量初始化时一定要设置为空字符,否则就会是默认保存了一个undefined */
+    var products = "";
+    var productIds ="";
+    $.each($(".check_one:checked"),function(){
+        products += $(this).parent().next().text() +",";
+        productIds += $(this).attr("productId")+",";
+    });
+    products = products.substring(0,products.length-1);
+    productIds = productIds.substring(0,products.length-1);
+    if(confirm("确定要上架选中的 : "+ products+" 商品吗?")){
+        $.ajax({
+            url:"/putawayProducts",
+            type:"POST",
+            data:{"productIds":productIds},
+            success:function(result){
+                alert(result.msg);
+                checkStateChoose(currentPage);
+            }
+        });
+    }
+});
+
+/*点击按钮后批量下架商品 */
+$(document).on("click","#btn_soldout_batch",function(){
+    /* 注意这里的变量初始化时一定要设置为空字符,否则就会是默认保存了一个undefined */
+    var products = "";
+    var productIds ="";
+    $.each($(".check_one:checked"),function(){
+        products += $(this).parent().next().text() +",";
+        productIds += $(this).attr("productId")+",";
+    });
+    products = products.substring(0,products.length-1);
+    productIds = productIds.substring(0,products.length-1);
+    if(confirm("确定要下架选中的 : "+ products+" 商品吗?")){
+        $.ajax({
+            url:"/soldoutProducts",
+            type:"POST",
+            data:{"productIds":productIds},
+            success:function(result){
+                alert(result.msg);
+                checkStateChoose(currentPage);
+            }
+        });
+    }
+});
 
 
 

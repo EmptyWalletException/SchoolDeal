@@ -1,10 +1,8 @@
 package com.kingguanzhang.service.impl;
 
 import com.kingguanzhang.dao.ShopMapper;
-import com.kingguanzhang.dto.ShopExecution;
-import com.kingguanzhang.enums.ShopSateEnum;
+import com.kingguanzhang.dto.Msg;
 import com.kingguanzhang.pojo.Shop;
-import com.kingguanzhang.pojo.ShopCategory;
 import com.kingguanzhang.pojo.ShopExample;
 import com.kingguanzhang.service.ShopService;
 import com.kingguanzhang.util.ImgUtil;
@@ -13,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
@@ -26,9 +23,9 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     @Transactional
-    public ShopExecution addShop(Shop shop, InputStream shopImgInputStream,String fileName) {
+    public Msg addShop(Shop shop, InputStream shopImgInputStream, String fileName) {
         if (null == shop){
-            return new ShopExecution(ShopSateEnum.NULL_SHOP);
+            return Msg.fail().setMsg("添加商店失败,店铺信息不能为空!");
         }
 
         try {
@@ -60,8 +57,8 @@ public class ShopServiceImpl implements ShopService {
             throw new RuntimeException("添加店铺异常 : " + e.getMessage());
         }
 
-        //在所有操作都执行完成之后,返回一个店铺操作状态为正在审核的实体类,实体类中包含刚刚执行完操作的店铺;
-        return new ShopExecution(ShopSateEnum.CHECK,shop);
+        //在所有操作都执行完成之后,返回提示;
+        return Msg.success().setMsg("添加店铺成功,请等待审核");
     }
 
     @Override

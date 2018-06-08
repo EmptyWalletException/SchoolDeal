@@ -75,11 +75,7 @@ $("#submit_EditProduct").click(function(){
         processData:false,
         cache:false,
         success:function(result){
-            /* 这里要检查一下后端是否返回了错误报告信息 */
-            if(100 == result.code){
-            }else{
                 alert(result.msg);
-            }
         }
     });
 
