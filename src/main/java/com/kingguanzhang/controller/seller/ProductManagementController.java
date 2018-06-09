@@ -159,7 +159,7 @@ public class ProductManagementController {
     public Msg getProductList(@RequestParam(value = "pn",defaultValue = "1")Integer pn,HttpServletRequest request) {
         Integer shopId = (Integer) request.getSession().getAttribute("shopId");
         //使用分页插件官方推荐的第二种方式开启分页查询;
-        PageHelper.startPage(pn, 6);
+        PageHelper.startPage(pn, 8);
         //然后紧跟的查询就是分页查询;
         List<Product> productList = productService.getProductList(shopId);
         //查询之后使用PageInfo来包装,方便在页面视图中处理页码,下面用的构造器第二个参数是页面底部可供点击的连续页码数;
@@ -179,7 +179,7 @@ public class ProductManagementController {
     public Msg getShelveProductList(@RequestParam(value = "pn",defaultValue = "1")Integer pn,HttpServletRequest request) {
         Integer shopId = (Integer) request.getSession().getAttribute("shopId");
         //使用分页插件官方推荐的第二种方式开启分页查询;
-        PageHelper.startPage(pn, 6);
+        PageHelper.startPage(pn, 8);
         //然后紧跟的查询就是分页查询;
         List<Product> productList = productService.getShelveProductList(shopId);
         //查询之后使用PageInfo来包装,方便在页面视图中处理页码,下面用的构造器第二个参数是页面底部可供点击的连续页码数;
@@ -199,7 +199,7 @@ public class ProductManagementController {
     public Msg getUnShelveProduct(@RequestParam(value = "pn",defaultValue = "1")Integer pn,HttpServletRequest request) {
         Integer shopId = (Integer) request.getSession().getAttribute("shopId");
         //使用分页插件官方推荐的第二种方式开启分页查询;
-        PageHelper.startPage(pn, 6);
+        PageHelper.startPage(pn, 8);
         //然后紧跟的查询就是分页查询;
         List<Product> productList = productService.getUnShelveProduct(shopId);
         //查询之后使用PageInfo来包装,方便在页面视图中处理页码,下面用的构造器第二个参数是页面底部可供点击的连续页码数;

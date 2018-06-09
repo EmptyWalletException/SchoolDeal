@@ -27,17 +27,19 @@
 
         <jsp:include page="shopLeftBar.jsp"></jsp:include>
 
-        <main role="main" class="col-md-auto ml-sm-auto col-lg-10 px-4">
+        <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4">
 
             <jsp:include page="fastJump.jsp"></jsp:include>
 
-                    <div class="col-md-auto order-md-1">
+
+
+                    <div class="col-md-auto">
                         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
                             <h3 >管理您的店铺</h3>
                             <p class="lead">您可以在下方的功能选择框里预览您可以执行的操作,然后根据需要选择操作.</p>
                         </div>
 
-                        <div class="container">
+                        <div class="container ">
                             <div class="card-deck mb-3 text-center">
                                 <div class="card mb-4 box-shadow">
                                     <div class="card-header">
@@ -85,14 +87,15 @@
                                     </div>
                                 </div>
                             </div>
-                    </div>
-                </div>
+                        </div>
+                        <!-- FOOTER -->
+                        <footer class="container">
+                            <p class="float-right"><a href="#">Back to top</a></p>
+                            <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="https://getbootstrap.com/docs/4.1/examples/carousel/#">Terms</a></p>
+                        </footer>
 
-                <!-- FOOTER -->
-                <footer class="container">
-                    <p class="float-right"><a href="#">Back to top</a></p>
-                    <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="https://getbootstrap.com/docs/4.1/examples/carousel/#">Terms</a></p>
-                </footer>
+                    </div>
+
 
 
         </main>

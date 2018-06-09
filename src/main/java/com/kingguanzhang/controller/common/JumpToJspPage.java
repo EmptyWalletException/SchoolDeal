@@ -6,6 +6,7 @@ import com.kingguanzhang.service.LocalAuthService;
 import com.kingguanzhang.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,15 +28,32 @@ public class JumpToJspPage {
     }
 
 
-
+    /**
+     * 跳转到登录页
+     * @return
+     */
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String showLogin(){
         return "common/login";
     }
 
+    /**
+     * 跳转到注册页面
+     * @return
+     */
     @RequestMapping("/register/registerUser")
     public String showRegisterUser(){
         return "common/registerUser";
+    }
+
+    /**
+     * 跳转到店铺详情页;用get方式;
+     * @return
+     */
+    @RequestMapping("/common/shopDetails/{shopId}")
+    public String showShopDetails(@PathVariable("shopId") Integer shopId,HttpServletRequest request){
+        request.getSession().setAttribute("shopId",shopId);
+        return "common/shopDetails";
     }
 
     //以下是卖家后台管理页面跳转的方法;

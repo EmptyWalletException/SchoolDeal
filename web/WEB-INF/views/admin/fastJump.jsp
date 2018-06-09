@@ -16,10 +16,11 @@
     <div class="row col-12" style="padding-right: 0px">
         <div class="col-xs-6 col-sm-4" style="padding-right: 0px">
             <a href="/admin/shopManagement"> 店铺管理 </a>
-            <a href="/admin/productManagement"> 商品管理 </a>
+            <a href="/admin/productCategoryManagement"> 分类管理 </a>
+
         </div>
         <div class="col-xs-6 col-sm-4" style="padding-right: 0px">
-            <a href="/admin/productCategoryManagement"> 分类管理 </a>
+            <a href="#"> 商品管理 </a>
             <a href="#"> 账号管理 </a>
         </div>
         <div class="col-xs-6 col-sm-4" style="padding-right: 0px">

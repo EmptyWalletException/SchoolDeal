@@ -3,6 +3,7 @@ package com.kingguanzhang.service.impl;
 import com.kingguanzhang.dao.ProductCategoryMapper;
 import com.kingguanzhang.dao.ProductMapper;
 import com.kingguanzhang.pojo.ProductCategory;
+import com.kingguanzhang.pojo.ProductCategoryExample;
 import com.kingguanzhang.pojo.ProductExample;
 import com.kingguanzhang.service.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,10 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     @Override
     public List<ProductCategory> getCategory() {
-        List<ProductCategory> productCategoryList = productCategoryMapper.selectByExample(null);
+        //这里需要按照priority排序,这是为了方便在首页的分类列表进行划分;
+        ProductCategoryExample productCategoryExample = new ProductCategoryExample();
+        productCategoryExample.setOrderByClause("priority ASC");
+        List<ProductCategory> productCategoryList = productCategoryMapper.selectByExample(productCategoryExample);
         return productCategoryList;
     }
 

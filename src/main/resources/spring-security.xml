@@ -20,6 +20,7 @@
     <http pattern="/**/*.png" security="none"></http>
     <http pattern="/**/*.svg" security="none"></http>
     <http pattern="/**/*.gif" security="none"></http>
+    <http pattern="/ajax/**" security="none"></http>
 
 
     <http auto-config="true"  use-expressions="true">

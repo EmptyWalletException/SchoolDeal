@@ -51,9 +51,9 @@ function build_product_table(result){
                     var createTime = new Date(product.createTime);
                     var editTime = new Date(product.editTime);
                     $("#shopListRow").append(
-                        "<div class=\"col-md-4\">" +
+                        "<div class=\"col-lg-3 col-md-6 col-sm-6\">" +
                             "<div class=\"card mb-4 box-shadow\">" +
-                                "<img class=\"card-img-top\" src=\"" +product.imgAddr +"\" alt=\"商品标题\">" +
+                                "<img class=\"card-img-top\" src=\"" +product.imgAddr +"\" alt=\"商品图片\">" +
                             "<div class=\"card-body\">" +
 
                                 "<h1>" +product.productName + "</h1>" +
@@ -75,7 +75,7 @@ function build_product_table(result){
                                 "<p class=\"card-text\">" +product.productDesc + "</p>" +
                                 "<div class=\"\">" +
                                     "<div class=\"btn-group\">" +
-                                        "<a type=\"button\" class=\"btn btn-sm btn-outline-secondary edit btn_edit\"  href=\"/showEditProduct/"+product.productId+"\""+"\">编辑</a>" +
+                                        "<a type=\"button\" class=\"btn btn-sm btn-outline-secondary edit btn_edit\"  href=\"/showEditProduct/"+product.productId+"\">编辑</a>" +
                                         "<button type=\"button\" class=\"btn btn-sm btn-outline-secondary btn_switchStatus\"  productId='"+product.productId+"'>"+(product.enableStatus == 0?'下架':'上架')+"</button>" +
                                         "<button type=\"button\" class=\"btn btn-sm btn-outline-secondary btn_removeProduct\"  productId='"+product.productId+"'>删除</button>" +
                                     "</div>" +

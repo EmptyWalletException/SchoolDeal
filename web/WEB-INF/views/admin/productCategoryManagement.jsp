@@ -35,6 +35,7 @@
                 <div class="container">
                     <h3>商品分类管理</h3>
                     <p class="lead text-center">请选择您需要编辑的商品分类进行管理</p>
+                    <p>关于分类层级的说明:分类层级代表某一类的分类,可以设置任意的数字,数字越小则在首页的分类中排在前面的分隔行;例如"蛋糕""甜甜圈""奶酪"可以将层级设置成1,这样它们就在首页分类中的第一行;</p>
                 </div>
             </section>
 
@@ -45,11 +46,12 @@
                     <p class="text-center">商品分类详情表</p>
                     <hr/>
 
-                        <span class="float-right">创建新的分类 <input type="text" id="tempProductCateGoryName" placeholder="输入分类标题"/><button class="btn btn-primary " id="addProductCategroy" >提交</button></span>
+                        <span class="float-right">创建新的分类 <input type="text" id="tempProductCateGoryName" placeholder="输入分类标题"/><input type="text" id="tempPriority" placeholder="输入分类层级"/><button class="btn btn-primary " id="addProductCategroy" >提交</button></span>
 
                     <thead>
                     <tr>
                         <th>分类标题</th>
+                        <th>分类层级</th>
                         <th>创建时间</th>
                         <th>选择操作</th>
                     </tr>
@@ -57,28 +59,14 @@
                     <tbody id="tbody4productCategoryList">
                     <tr>
                         <td>甜点</td>
+                        <td>1</td>
                         <td>2018/5/30</td>
                         <td>
                             <a  class="btn btn-primary " href="#">编辑</a>
                             <a  class="btn btn-danger " href="#">删除</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>甜点</td>
-                        <td>2018/5/30</td>
-                        <td>
-                            <a  class="btn btn-primary " href="#">编辑</a>
-                            <a  class="btn btn-danger " href="#">删除</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>甜点</td>
-                        <td>2018/5/30</td>
-                        <td>
-                            <a  class="btn btn-primary " href="#">编辑</a>
-                            <a  class="btn btn-danger " href="#">删除</a>
-                        </td>
-                    </tr>
+
                     </tbody>
 
                 </table>

@@ -22,10 +22,22 @@ function getProductCategoryList(){
 
                     $("#tbody4productCategoryList").append(
                         "<tr>"+
-                        "<td class='td4Edit'>" +
+                        /*商品名字*/
+                        "<td class='nameTd4Edit'>" +
                         "<div class=\"col-lg-6\">\n" +
                         "    <div class=\"input-group\">\n" +
                         "      <input type=\"text\" class=\"form-control\" value=\""+productCategory.productCategoryName+"\" disabled>" +
+                        "      <span class=\"input-group-btn\">\n" +
+                        "      </span>\n" +
+                        "    </div>" +
+                        " </div>" +
+                        " </td>" +
+                        
+                        /*商品层级*/
+                        "<td class='levelTd4Edit'>" +
+                        "<div class=\"col-lg-6\">\n" +
+                        "    <div class=\"input-group\">\n" +
+                        "      <input type=\"text\" class=\"form-control\" value=\""+productCategory.priority+"\" disabled>" +
                         "      <span class=\"input-group-btn\">\n" +
                         "      </span>\n" +
                         "    </div>" +
@@ -48,20 +60,27 @@ function getProductCategoryList(){
 }
 
 $("#tbody4productCategoryList").on('click','.editPC',function () {
-    var inputGroup = $(this).parents().prevAll('.td4Edit').children('div').children('div');
-    inputGroup.children('input').removeAttr('disabled');
-    inputGroup.children('span').append(
-        "<button class=\"btn btn-default confirmEdit\" type=\"button\">提交</button>"
-    )
+    var inputNameGroup = $(this).parents().prevAll('.nameTd4Edit').children('div').children('div');
+    inputNameGroup.children('input').removeAttr('disabled');
+    
+
+    var inputLevelGroup = $(this).parents().prevAll('.levelTd4Edit').children('div').children('div');
+    inputLevelGroup.children('input').removeAttr('disabled');
+
+    //点击编辑按钮后将它后面的"删除"按钮改造成提交按钮;
+    $(this).parents().children(".deletePC").removeClass("deletePC btn-danger").addClass("confirmEdit btn-primary").text("提交");
+
     $(this).attr("disabled",true);
 });
 
+/*点击增加商品按钮后的行为*/
 $("#addProductCategroy").click(function () {
     var name = $("#tempProductCateGoryName").val();
+    var priority = $("#tempPriority").val();
     $.ajax({
         url:"/ajax/addProductCategory",
         type:"POST",
-        data:{productCategoryName:name},
+        data:{'productCategoryName':name,'priority':priority},
         success:function(result){
             alert(result.msg);
             getProductCategoryList();
@@ -70,14 +89,18 @@ $("#addProductCategroy").click(function () {
 });
 
 
-
+/*点击提交按钮后的行为*/
 $("#tbody4productCategoryList").on('click','.confirmEdit',function () {
-    var productCategoryId = $(this).parents(".td4Edit").nextAll(".editAndDeleteButton").children(".editPC").attr("productCategoryId");
-    var productCategoryName =$(this).parents(".td4Edit").children('div').children('div').children('input').val();
+    var productCategoryId = $(this).attr("productCategoryId");
+    var productCategoryName =$(this).parents().prevAll(".nameTd4Edit").children('div').children('div').children('input').val();
+    var productCategoryLevel =$(this).parents().prevAll(".levelTd4Edit").children('div').children('div').children('input').val();
+    //点击提交按钮后将它改造成"删除"按钮;然后恢复"编辑"按钮;
+    $(this).parents().children(".confirmEdit").removeClass("confirmEdit btn-primary").addClass("deletePC btn-danger").text("删除");
+   // $(this).parents().children(".editPC").attr("disabled",false);
     $.ajax({
         url:"/ajax/editProductCategory",
         type:"POST",
-        data:{productCategoryId:productCategoryId,productCategoryName:productCategoryName},
+        data:{'productCategoryId':productCategoryId,'productCategoryName':productCategoryName,'productCategoryLevel':productCategoryLevel},
         success:function(result){
             alert(result.msg);
             getProductCategoryList();

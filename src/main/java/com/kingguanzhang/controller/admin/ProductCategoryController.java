@@ -29,32 +29,27 @@ public class ProductCategoryController {
 
     @RequestMapping("/ajax/addProductCategory")
     @ResponseBody
-    public Msg addProductCategroy(@RequestParam("productCategoryName") String name, HttpServletRequest request){
+    public Msg addProductCategroy(@RequestParam("productCategoryName") String name, @RequestParam("priority")Integer priority){
         ProductCategory productCategory = new ProductCategory();
         productCategory.setProductCategoryName(name);
+        productCategory.setPriority(priority);
         productCategory.setCreateTime(new Date(System.currentTimeMillis()));
         //shopId为了安全只能从session中获取
-        Integer shopId = (Integer)request.getSession().getAttribute("shopId");
-        if (null == shopId) {
-           return Msg.fail().setMsg("距离上次操作已超过30分钟,或未能获取店铺信息");
-        }
-        productCategory.setShopId(shopId);
-        productCategory.setPriority(7);
         //分类id由数据库自增;
         Integer integer = productCategoryService.addProductCategroy(productCategory);
         if (integer >0){
-
         return  Msg.success().setMsg("创建分类成功");
         }
         return Msg.fail().setMsg("创建分类失败");
     }
 
     @RequestMapping("/ajax/editProductCategory")
-    @ResponseBody
-    public Msg editProductCategory(@RequestParam("productCategoryId") Integer Id,@RequestParam("productCategoryName") String name){
+    @ResponseBody//'productCategoryLevel':productCategoryLevel
+    public Msg editProductCategory(@RequestParam("productCategoryId") Integer Id,@RequestParam("productCategoryName") String name,@RequestParam("productCategoryLevel") Integer priority){
         ProductCategory productCategory = new ProductCategory();
         productCategory.setProductCategoryName(name);
         productCategory.setProductCategoryId(Id);
+        productCategory.setPriority(priority);
         Integer integer = productCategoryService.editProductCategroy(productCategory);
         if (integer >0){
             return  Msg.success().setMsg("修改分类成功");

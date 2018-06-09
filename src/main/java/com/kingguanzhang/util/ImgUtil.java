@@ -36,7 +36,7 @@ public class ImgUtil {
            // File dest2 = new File ("D:/test.jpg");
            // Thumbnails.of(dest2).size(200,200).toFile(dest);
             //Thumbnails.of(dest2).size(200,200).toFile("D:/1.jgp");
-            Thumbnails.of(shopImgInputStream).size(200,200).toFile(dest);
+            Thumbnails.of(shopImgInputStream).size(1920,1920).outputQuality(1.0D).toFile(dest);//size是将图片自动缩放成适应的最大像素,会保持长宽比;
            // Thumbnails.of(shopImgInputStream).toFile(dest);
         }catch (IOException e) {
             //如果图片文件保存失败则返回一个默认的图片路径;

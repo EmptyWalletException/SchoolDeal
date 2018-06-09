@@ -27,7 +27,7 @@ public class AdminShopManagementController {
     @RequestMapping(value = "/getAllShop",method = RequestMethod.POST)
     @ResponseBody
     public Msg getAllShop(@RequestParam(value = "pn",defaultValue = "1")Integer pn){
-        PageHelper.startPage(pn,6);
+        PageHelper.startPage(pn,8);
         List<Shop> shopList =shopService.getAllShop();
         PageInfo pageInfo = new PageInfo(shopList,5);
         List<Area> areaList = areaService.getAreas();
