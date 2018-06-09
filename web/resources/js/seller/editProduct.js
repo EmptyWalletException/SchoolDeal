@@ -37,6 +37,7 @@ function getProduct(){
             /* 这里要检查一下后端是否返回了错误报告信息 */
             if(100 == result.code){
                 var product = result.extend.product;
+                $("#productImg").attr("src",product.imgAddr);
                 $("#productName").val(product.productName);
                 $("#productDesc").val(product.productDesc);
                 $("#normalPrice").val(product.normalPrice);

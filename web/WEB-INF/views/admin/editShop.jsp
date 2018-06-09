@@ -37,7 +37,12 @@
             <div class="row col-lg-6 offset-lg-3">
                 <div class="col-lg-12 ">
                         <h3 class="text-center">编辑店铺</h3>
+
                         <div class="needs-validation" id="registerShopForm"  novalidate>
+                            <div >
+                                <img  class="card-img" src="" alt="店铺主页图片" id="shopImg">
+                            </div>
+                            <br/>
                             <div class="mb-3">
                                 <label for="shopName">招牌名字:</label>
                                 <input type="text" class="form-control" id="shopName" name="shopName"  required>
@@ -128,7 +133,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="/resources/js/common/jquery.min.js"></script>
 <!--user-defined-js-->
-<script src="/resources/js/seller/editShop.js" charset="UTF-8"></script>
+<script src="/resources/js/admin/editShop.js" charset="UTF-8"></script>
 
 <script src="/resources/js/common/popper.min.js"></script>
 <script src="/resources/css/common/bootstrap-4.1.1/dist/js/bootstrap.min.js"></script>

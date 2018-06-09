@@ -61,7 +61,7 @@ function getShop(){
             if(100 == result.code){
 
                 var shop = result.extend.shop;
-                $("#shopImg").attr("src",+shop.shopImg);
+                $("#shopImg").attr("src","../../"+shop.shopImg);
                 $("#shopName").val(shop.shopName);
                 $("#shopDesc").val(shop.shopDesc);
                 $("#phone").val(shop.phone);

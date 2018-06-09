@@ -41,6 +41,11 @@
                     <div class="col-lg-12 ">
                         <h3 class="text-center">编辑商品</h3>
                         <div class="needs-validation" id="editProductForm"  novalidate>
+                            <div >
+                                <img  class="card-img" src="" alt="商品图片" id="productImg">
+                            </div>
+                            <br/>
+
                             <div class="mb-3">
                                 <label for="productName">商品名字:</label>
                                 <input type="text" class="form-control" id="productName" name="productName"  required>

@@ -1,6 +1,7 @@
 package com.kingguanzhang.service.impl;
 
 import com.kingguanzhang.dao.ProductMapper;
+import com.kingguanzhang.dto.Msg;
 import com.kingguanzhang.pojo.Product;
 import com.kingguanzhang.pojo.ProductExample;
 import com.kingguanzhang.service.ProductService;
@@ -76,8 +77,56 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
+    /**
+     * 更新商品并更新图片的方法;
+     * @param product
+     * @param inputStream
+     * @param originalFilename
+     */
+    @Override
+    public Msg updateProductWithImg(Product product, InputStream inputStream, String originalFilename) {
+        if (null == product){
+            return Msg.fail().setMsg("添加商店失败,店铺信息不能为空!");
+        }
+
+        try {
+            //更新商品会进入下架状态;
+            product.setEnableStatus(1);
+            product.setCreateTime(new Date());
+            product.setEditTime(new Date());
+
+            if (null != inputStream){
+                try{
+                    String shopImgAddr = addproductImg(product, inputStream,originalFilename);
+                }catch (Exception e){
+                    throw new RuntimeException("设置图片地址错误 : " + e.getMessage());
+
+                }
+
+            }
+
+            int en = productMapper.updateByPrimaryKeySelective(product);
+            System.out.println("执行更新商品返回的结果值是 : " + en);
+            if (en <= 0){
+                throw new RuntimeException("更新商品图片信息失败");
+            }
+        }catch (Exception e){
+            throw new RuntimeException("更新商品异常 : " + e.getMessage());
+        }
+
+        //在所有操作都执行完成之后,返回提示;
+        return Msg.success().setMsg("更新商品成功,请重新上架");
+    }
+
+    /**
+     * 更新商品不带图片的方法;
+     * @param product
+     * @return
+     */
     @Override
     public int updateProduct(Product product) {
+        //更新商品会进入下架状态
+        product.setEnableStatus(1);
         int i = productMapper.updateByPrimaryKeySelective(product);
         return i;
     }
@@ -217,6 +266,8 @@ public class ProductServiceImpl implements ProductService {
         List<Product> products = productMapper.selectByExample(productExample);
         return products;
     }
+
+
 
     private String addproductImg(Product product, InputStream productImgInputStream, String fileName) {
         String productImagePath = PathUtil.getProductImagePath(product.getProductId());

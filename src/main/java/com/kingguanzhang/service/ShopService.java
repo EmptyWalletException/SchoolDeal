@@ -18,4 +18,5 @@ public interface ShopService {
     Shop getShopByUserId(Integer userId);
 
     List<Shop> getAllShop();
+    Msg updateShopWithoutImg(Shop shop);
 }

@@ -71,8 +71,8 @@ function build_product_table(result){
                                 "<p class=\"card-text\">" +shop.shopDesc + "</p>" +
                                 "<div class=\"\">" +
                                     "<div class=\"btn-group\">" +
-                                        "<a type=\"button\" class=\"btn btn-sm btn-outline-secondary btn_switchStatus\"  productId='"+shop.shopId+"'>详情</a>" +
-                                        "<a type=\"button\" class=\"btn btn-sm btn-outline-secondary edit btn_edit\"  href=\"/showEditShop/"+shop.shopId+"\""+"\">编辑</a>" +
+                                        "<a type=\"button\" class=\"btn btn-sm btn-outline-secondary btn_shopDetails\"  href='/admin/showShopDetails/' productId='"+shop.shopId+"'>详情</a>" +
+                                        "<a type=\"button\" class=\"btn btn-sm btn-outline-secondary edit btn_edit\"  href=\"/admin/showEditShop/"+shop.shopId+"\""+"\">编辑</a>" +
                                     "</div>" +
                                 "</div>" +
                             "</div>"+

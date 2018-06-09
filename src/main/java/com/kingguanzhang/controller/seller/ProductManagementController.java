@@ -266,7 +266,7 @@ public class ProductManagementController {
         if (null != productImg) {
             try {
                 //使用文件.getOriginalFilename可以获取带后缀.jpg的全名;或者文件.getItem.getName也可以获取带后缀的文件名;否则只能取到不带后缀的文件名;
-                productService.addProduct(product, productImg.getInputStream(), productImg.getOriginalFilename());
+                productService.updateProductWithImg(product, productImg.getInputStream(), productImg.getOriginalFilename());
             } catch (IOException e) {
                 System.out.print(e.getMessage());
                 return Msg.fail().setMsg("更新商品信息失败");

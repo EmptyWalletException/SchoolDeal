@@ -76,17 +76,18 @@ public class ShopManagementController {
             return Msg.fail().setMsg("图片文件解析失败");
         }
 
-        shop.setOwnerId(1);//这个店铺主人id本应该是从前端传过来的session中获取,但是暂时还不会;
-        //判断是否需要更新图片;
-        if (null != shopImg) {
+        if (null != shopImg){
+            //使用文件.getOriginalFilename可以获取带后缀.jpg的全名;或者文件.getItem.getName也可以获取带后缀的文件名;否则只能取到不带后缀的文件名;
             try {
-                //使用文件.getOriginalFilename可以获取带后缀.jpg的全名;或者文件.getItem.getName也可以获取带后缀的文件名;否则只能取到不带后缀的文件名;
-                 shopService.updateShop(shop, shopImg.getInputStream(), shopImg.getOriginalFilename());
+                shopService.updateShop(shop, shopImg.getInputStream(), shopImg.getOriginalFilename());
             } catch (IOException e) {
-                System.out.print(e.getMessage());
-                return Msg.fail().setMsg("更新店铺信息失败");
+                e.printStackTrace();
+                return Msg.fail().setMsg("更新店铺失败");
             }
+        }else {
+            shopService.updateShopWithoutImg(shop);
         }
+
 
         shop =shopService.getShop(shop.getShopId());
         return Msg.success().setMsg("更新店铺成功").add("shop",shop);

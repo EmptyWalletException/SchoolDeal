@@ -1,5 +1,6 @@
 package com.kingguanzhang.service;
 
+import com.kingguanzhang.dto.Msg;
 import com.kingguanzhang.pojo.Product;
 
 import java.io.InputStream;
@@ -36,4 +37,6 @@ public interface ProductService {
     List<Product> getAllPutawayProductList();
 
     List<Product> getAllSoldoutProduct();
+
+    Msg updateProductWithImg(Product product, InputStream inputStream, String originalFilename);
 }
