@@ -3,28 +3,6 @@
 *
 * */
 
-/* 抽取出来的获取店铺分类的方法 */
-function getShopCategory(shop){
-    /* alert("进入js代码");*/
-    $.ajax({
-        url:"/ajax/shopCategory",
-        type:"get",
-        success:function(result){
-            /*    alert("进入ajax代码");*/
-            var categorySel =$("#shopCategorySel");
-            var categoryArray = result.extend.shopCategorys;
-            categorySel.empty();
-            $.each(categoryArray,function (index,item) {
-                var  op4SC =$("<option></option>").attr("value",item.shopCategoryId).append(item.shopCategoryName)
-               if(shop.shopCategoryId == item.shopCategoryId){
-                   op4SC.attr("selected","selected");
-               }
-               categorySel.append(op4SC);
-            });
-        }
-    });
-};
-
 /* 抽取出来的获取区域分类的方法 */
 function getArea(shop){
     /* alert("进入js代码");*/
@@ -66,7 +44,6 @@ function getShop(){
                 $("#shopDesc").val(shop.shopDesc);
                 $("#phone").val(shop.phone);
                 $("#shopAddr").val(shop.shopAddr);
-                getShopCategory(shop);
                 getArea(shop);
             }else{
                 alert(result.msg);
@@ -88,7 +65,6 @@ $("#submit_EditShop").click(function(){
     shop.phone= $("#phone").val();
     shop.shopAddr= $("#shopAddr").val();
     shop.areaId= $("#areaSel option:selected").attr("value");
-    shop.shopCategoryId= $("#shopCategorySel option:selected").attr("value");
 
     var shopImg = $("#inputFile")[0].files[0]; //需要在控制层处理一下用户没有上传文件的情况
     var formData = new FormData($("#inputFile")[0]);

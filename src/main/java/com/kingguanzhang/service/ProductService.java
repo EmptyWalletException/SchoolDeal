@@ -40,7 +40,7 @@ public interface ProductService {
 
     Msg updateProductWithImg(Product product, InputStream inputStream, String originalFilename);
 
-    List<Product> getProductListByCategoryId(Integer categoryId);
+    List<Product> getOnSellProductListByCategoryId(Integer categoryId,Integer shopId);
 
     List<Product> getAllOnSellProductList();
 }

@@ -7,7 +7,7 @@
 var maxPage;
 var currentPage;
 $(function(){
-    to_page("/admin/getAllShop",1);
+    to_page("/ajax/admin/getAllShop",1);
 })
 
 
@@ -22,7 +22,7 @@ function to_page(url,pn){
             currentPage = result.extend.pageInfo.pageNum;
             build_product_table(result);
             build_page_info(result);
-            build_page_nav(result);
+            build_page_nav(url,result);
         }
     });
 }
@@ -31,17 +31,11 @@ function to_page(url,pn){
 /*获取商品信息并回显,需要传入一个url字符串以调用控制层不同的查询方法*/
 function build_product_table(result){
 
-                //var areaList = result.extend.areaList;
                 var shopList = result.extend.pageInfo.list;
+
 
                 $("#shopListRow").empty();
                 $.each(shopList,function (index,shop) {
-                    /*var areaName = "";
-                    $.each(areaList,function (index,area) {
-                        if(shop.areaId == area.areaId){
-                            areaName = area.areaName;
-                        }
-                    });*/
 
                     var createTime = new Date(shop.createTime);
                     var editTime = new Date(shop.editTime);
@@ -53,10 +47,10 @@ function build_product_table(result){
 
                                 "<h1>" +shop.shopName + "</h1>" +
                                 "<div>" +
-                                    "<span>店主 :  " +"ownerName"+ "</span>"+
+                                    "<span>店主 :  " +shop.personInfo.name+ "</span>"+
                                 "</div>" +
                                 "<div class='status'>" +
-                                    "<small class=\"text-muted\" >所属区域 : " +"areaName" +"</small>" +
+                                    "<small class=\"text-muted\" >所属区域 : " +shop.area.areaName +"</small>" +
                                 "</div>" +
                                 "<div>" +
                                 "<small class=\"text-muted\">店铺等级 : "+shop.priority+ "</small>" +
@@ -93,7 +87,7 @@ function build_page_info(result){
 }
 
 /* 显示分页条 */
-function build_page_nav(result){
+function build_page_nav(url,result){
     /* 生成新的元素前一定要先清空掉以前的数据,否则会累加到页面上 */
     $("#page_nav").empty();
     var ul = $("<ul></ul>").addClass("pagination");
@@ -116,12 +110,12 @@ function build_page_nav(result){
     }else{
         /* 为首页按钮添加一个点击跳转到首页的绑定事件 */
         li_frist.click(function(){
-            to_page("/admin/getAllShop",1);
+            to_page(url,1);
             return false;
         });
         /* 为上一页按钮添加一个点击跳转到上一页的绑定事件 */
         li_pre.click(function(){
-            to_page("/admin/getAllShop",result.extend.pageInfo.prePage);
+            to_page(url,result.extend.pageInfo.prePage);
             return false;
         });
     }
@@ -137,7 +131,7 @@ function build_page_nav(result){
         }else{
             /* 为每一个遍历后生成出来的li_nums添加一个点击跳转的绑定事件 */
             li_nums.click(function(){
-                to_page("/admin/getAllShop",nums);
+                to_page(url,nums);
                 return false;
             });
         }
@@ -161,12 +155,12 @@ function build_page_nav(result){
     }else{
         /* 为下一页按钮添加一个点击跳转到下一页的绑定事件 */
         li_next.click(function(){
-            to_page("/admin/getAllShop",result.extend.pageInfo.nextPage);
+            to_page(url,result.extend.pageInfo.nextPage);
             return false;
         });
         /* 为末页按钮添加一个点击跳转到末页的绑定事件 */
         li_last.click(function(){
-            to_page("/admin/getAllShop",result.extend.pageInfo.pages);
+            to_page(url,result.extend.pageInfo.pages);
             return false;
         });
     }

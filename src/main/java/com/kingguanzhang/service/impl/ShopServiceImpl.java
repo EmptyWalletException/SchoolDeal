@@ -127,7 +127,10 @@ public class ShopServiceImpl implements ShopService {
      */
     @Override
     public List<Shop> getAllShop() {
-        List<Shop> shopList = shopMapper.selectByExample(null);
+        //这里设置一个按时间最新的降序比较合理;
+        ShopExample shopExample = new ShopExample();
+        shopExample.setOrderByClause("edit_time DESC");
+        List<Shop> shopList = shopMapper.selectByExample(shopExample);
         return shopList;
     }
 

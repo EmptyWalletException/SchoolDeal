@@ -33,19 +33,13 @@ function to_page(url,pn){
 /*获取商品信息并回显,需要传入一个url字符串以调用控制层不同的查询方法*/
 function build_product_table(result){
 
-                var productCategoryList = result.extend.productCategoryList;
-                var productList = result.extend.pageInfo.list;
+                  var productList = result.extend.pageInfo.list;
                 $("#tbody4productList").empty();
                 $.each(productList,function (index,product) {
                     var createTime = new Date(product.createTime);
                     var editTime = new Date(product.editTime);
                     var enableStatus = product.enableStatus;
-                    var productCategoryName = "";
-                    $.each(productCategoryList,function (index,category) {
-                        if(product.productCategoryId == category.productCategoryId){
-                            productCategoryName = category.productCategoryName;
-                        }
-                    });
+
                     $("#tbody4productList").append(
                         "<tr>"+
                         "<td><input type='checkbox' class='check_one' productId='"+product.productId+"' /></td>"+
@@ -54,7 +48,7 @@ function build_product_table(result){
                         "<td class='status' enableStatus='"+ product.enableStatus+"' >"+(0 == enableStatus?'上架中':'已下架')+"</td>"+
                         "<td>"+createTime.toLocaleDateString()+"</td>"+
                         "<td>"+editTime.toLocaleDateString()+"</td>"+
-                        "<td>"+productCategoryName+"</td>"+
+                        "<td>"+product.productCategory.productCategoryName+"</td>"+
                         "<td>"+product.productDesc+"</td>"+
                         "<td>"+
                         " <a  class='btn btn-sm btn-outline-secondary ' href=\"/showEditProduct/"+product.productId+"\""+"\">编辑</a>"+

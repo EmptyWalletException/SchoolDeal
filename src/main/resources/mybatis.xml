@@ -12,8 +12,8 @@
         <setting name="useGeneratedKeys" value="true"/>
         <!--使用列标签替换列别名,默认就是true-->
         <setting name="useColumnLabel" value="true"/>
-        <!--开启延迟加载-->
-        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--延迟加载-->
+        <setting name="lazyLoadingEnabled" value="false"/>
         <!--设置为true时对任意延迟属性的调用会使带有延迟加载属性的对象完整加载；设置为false则每种属性将按需加载-->
         <setting name="aggressiveLazyLoading" value="false"/>
     </settings>

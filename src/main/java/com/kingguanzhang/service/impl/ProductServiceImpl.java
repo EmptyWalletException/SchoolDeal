@@ -123,10 +123,14 @@ public class ProductServiceImpl implements ProductService {
      * @return
      */
     @Override
-    public List<Product> getProductListByCategoryId(Integer categoryId) {
+    public List<Product> getOnSellProductListByCategoryId(Integer categoryId,Integer shopId) {
         ProductExample productExample = new ProductExample();
         ProductExample.Criteria criteria = productExample.createCriteria();
+        if (null != shopId){
+            criteria.andShopIdEqualTo(shopId);
+        }
         criteria.andProductCategoryIdEqualTo(categoryId);
+        criteria.andEnableStatusEqualTo(0);
         List<Product> productList = productMapper.selectByExample(productExample);
         return productList;
     }

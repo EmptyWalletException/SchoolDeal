@@ -50,7 +50,7 @@ function build_shopCategory(url) {
 $("#shopCategoryList").on('click','.shopCategory',function () {
     var categoryId = $(this).attr("categoryId");
     //这里直接使用修改后的to_page分页跳转方法;
-    to_page("/getProductListByCategoryId",categoryId,1);
+    to_page("/ajax/getOnSellProductListByCategoryId",categoryId,1);
     return false;
 })
 
@@ -73,18 +73,10 @@ function to_page(url,categoryId,pn){
 
 /*获取商品信息并回显,需要传入一个url字符串以调用控制层不同的查询方法*/
 function build_product_table(result){
-
-    var productCategoryList = result.extend.productCategoryList;
     var productList = result.extend.pageInfo.list;
 
     $("#shopListRow").empty();
     $.each(productList,function (index,product) {
-        var productCategoryName = "";
-        $.each(productCategoryList,function (index,category) {
-            if(product.productCategoryId == category.productCategoryId){
-                productCategoryName = category.productCategoryName;
-            }
-        });
 
         var createTime = new Date(product.createTime);
         var editTime = new Date(product.editTime);
@@ -105,7 +97,7 @@ function build_product_table(result){
             "<small class='text-muted'>最后编辑时间 : " +editTime.toLocaleDateString()+ "</small>" +
             "</div>" +
             "<div>" +
-            "<small class='text-muted'>商品分类 : "+productCategoryName+ "</small>" +
+            "<small class='text-muted'>商品分类 : "+product.productCategory.productCategoryName+ "</small>" +
             "</div>" +
             "<p class='card-text'>" +product.productDesc + "</p>" +
             "<div class=''>" +

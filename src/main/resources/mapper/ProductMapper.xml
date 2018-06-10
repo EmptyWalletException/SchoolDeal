@@ -15,7 +15,7 @@
     <result column="shop_id" jdbcType="INTEGER" property="shopId" />
     <!--mybatis的级联查询-->
     <association property="shop" column="shop_id" select="com.kingguanzhang.dao.ShopMapper.selectByPrimaryKey" javaType="com.kingguanzhang.pojo.Shop" />
-    <association property="productCategory" column="productCategoryId" select="com.kingguanzhang.dao.ProductCategoryMapper.selectByPrimaryKey" javaType="com.kingguanzhang.pojo.ProductCategory" />
+    <association property="productCategory" column="product_category_id" select="com.kingguanzhang.dao.ProductCategoryMapper.selectByPrimaryKey" javaType="com.kingguanzhang.pojo.ProductCategory" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -304,6 +304,13 @@
       edit_time = #{editTime,jdbcType=TIMESTAMP},
       enable_status = #{enableStatus,jdbcType=INTEGER},
       shop_id = #{shopId,jdbcType=INTEGER}
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateProductCategoryIdToNullByProductCategoryId" parameterType="java.lang.Integer">
+    update tb_product
+    set
+      product_category_id = null ,
     where product_id = #{productId,jdbcType=INTEGER}
   </update>
 </mapper>

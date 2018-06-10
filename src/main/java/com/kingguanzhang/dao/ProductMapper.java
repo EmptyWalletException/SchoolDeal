@@ -27,4 +27,6 @@ public interface ProductMapper {
     int updateByPrimaryKeySelective(Product record);
 
     int updateByPrimaryKey(Product record);
+
+    void updateProductCategoryIdToNullByProductCategoryId(Integer id);
 }
