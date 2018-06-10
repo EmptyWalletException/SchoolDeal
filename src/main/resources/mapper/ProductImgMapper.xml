@@ -100,7 +100,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.kingguanzhang.pojo.ProductImg">
+  <insert id="insert" parameterType="com.kingguanzhang.pojo.ProductImg" useGeneratedKeys="true" keyColumn="product_img_id" keyProperty="productImgId">
     insert into tb_product_img (product_img_id, img_addr, img_desc, 
       priority, create_time, product_id
       )
@@ -108,7 +108,7 @@
       #{priority,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{productId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.kingguanzhang.pojo.ProductImg">
+  <insert id="insertSelective" parameterType="com.kingguanzhang.pojo.ProductImg" useGeneratedKeys="true" keyColumn="product_img_id" keyProperty="productImgId">
     insert into tb_product_img
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="productImgId != null">

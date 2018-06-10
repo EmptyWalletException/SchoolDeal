@@ -1,11 +1,9 @@
 package com.kingguanzhang.dao;
 
-
 import com.kingguanzhang.pojo.Shop;
 import com.kingguanzhang.pojo.ShopExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface ShopMapper {
     long countByExample(ShopExample example);

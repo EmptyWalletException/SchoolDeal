@@ -21,13 +21,29 @@ public class Product {
 
     private Date editTime;
 
-    private Integer enableStatus;//商品状态,0表示上架中,1表示已下架;
-
-    private Integer productImgListId;
-
-    private Integer productCategory;
+    private Integer enableStatus;
 
     private Integer shopId;
+
+    //mybatis级联关联的实体属性
+    private Shop shop;
+    private ProductCategory productCategory;
+
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
+    }
+
+    public ProductCategory getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
+    }
 
     public Integer getProductId() {
         return productId;
@@ -107,22 +123,6 @@ public class Product {
 
     public void setEnableStatus(Integer enableStatus) {
         this.enableStatus = enableStatus;
-    }
-
-    public Integer getProductImgListId() {
-        return productImgListId;
-    }
-
-    public void setProductImgListId(Integer productImgListId) {
-        this.productImgListId = productImgListId;
-    }
-
-    public Integer getProductCategory() {
-        return productCategory;
-    }
-
-    public void setProductCategory(Integer productCategory) {
-        this.productCategory = productCategory;
     }
 
     public Integer getShopId() {

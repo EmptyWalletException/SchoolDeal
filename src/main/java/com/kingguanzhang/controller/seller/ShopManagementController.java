@@ -131,7 +131,7 @@ public class ShopManagementController {
         //注册店铺,尽可能的减少从前端获取的值;
         if (null != shop && null != shopImg) {
 
-            shop.setOwnerId(1);//这个店铺主人id本应该是从前端传过来的session中获取,但是暂时还不会;
+      //      shop.setOwnerId(1);//这个店铺主人id本应该是从前端传过来的session中获取,但是暂时还不会;
 
 
             try {

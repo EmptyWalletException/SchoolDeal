@@ -1,11 +1,9 @@
 package com.kingguanzhang.dao;
 
-
 import com.kingguanzhang.pojo.LocalAuth;
 import com.kingguanzhang.pojo.LocalAuthExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface LocalAuthMapper {
     long countByExample(LocalAuthExample example);

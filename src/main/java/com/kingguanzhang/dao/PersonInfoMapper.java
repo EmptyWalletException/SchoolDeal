@@ -1,11 +1,9 @@
 package com.kingguanzhang.dao;
 
-
 import com.kingguanzhang.pojo.PersonInfo;
 import com.kingguanzhang.pojo.PersonInfoExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface PersonInfoMapper {
     long countByExample(PersonInfoExample example);

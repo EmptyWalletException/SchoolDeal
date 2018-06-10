@@ -5,8 +5,6 @@ import java.util.Date;
 public class ProductCategory {
     private Integer productCategoryId;
 
-    private Integer shopId;
-
     private String productCategoryName;
 
     private Integer priority;
@@ -19,14 +17,6 @@ public class ProductCategory {
 
     public void setProductCategoryId(Integer productCategoryId) {
         this.productCategoryId = productCategoryId;
-    }
-
-    public Integer getShopId() {
-        return shopId;
-    }
-
-    public void setShopId(Integer shopId) {
-        this.shopId = shopId;
     }
 
     public String getProductCategoryName() {

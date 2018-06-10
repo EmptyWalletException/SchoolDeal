@@ -26,31 +26,28 @@
 
         <!-- 指定Javabean生成的位置 ,注意targetProject不需要接着写包名-->
         <javaModelGenerator
-                targetPackage="pojo"
-                targetProject=".\src\test">
+                targetPackage="com.kingguanzhang.pojo.pojo"
+                targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
         <!-- 指定sql映射文件生成的位置 -->
         <sqlMapGenerator
-                targetPackage="mapper"
-                targetProject=".\src\test">
+                targetPackage="mapper.mapper"
+                targetProject=".\src\main\resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
         <!-- 指定Dao接口生成的位置 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.kingguanzhang.dao"
-                             targetProject=".\src\test">
+                             targetPackage="com.kingguanzhang.dao.dao"
+                             targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
         <!-- 指定每个表的生成策略 -->
         <!--<table  tableName="tb_area" domainObjectName="Area" >
-        </table>
-
-        <table  tableName="tb_head_line" domainObjectName="HeadLine" >
         </table>
 
         <table  tableName="tb_local_auth" domainObjectName="LocalAuth" >
@@ -71,20 +68,20 @@
         <table  tableName="tb_shop" domainObjectName="Shop" >
         </table>
 
-        <table  tableName="tb_shop_category" domainObjectName="ShopCategory" >
-        </table>
-
-        <table  tableName="tb_wechat_auth" domainObjectName="WechatAuth" >
-        </table>
-
         <table  tableName="tb_role" domainObjectName="Role" >
         </table>
 
         <table  tableName="tb_role_localauth" domainObjectName="RoleLocalauth" >
         </table>-->
-
-        <table  tableName="tb_product_category" domainObjectName="ProductCategory" >
+        <table  tableName="tb_local_auth" domainObjectName="LocalAuth" >
         </table>
+
+        <table  tableName="tb_product" domainObjectName="Product" >
+        </table>
+
+        <table  tableName="tb_shop" domainObjectName="Shop" >
+        </table>
+
 
     </context>
 </generatorConfiguration>

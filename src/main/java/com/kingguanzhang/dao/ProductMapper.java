@@ -1,11 +1,9 @@
 package com.kingguanzhang.dao;
 
-
 import com.kingguanzhang.pojo.Product;
 import com.kingguanzhang.pojo.ProductExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface ProductMapper {
     long countByExample(ProductExample example);
@@ -29,5 +27,4 @@ public interface ProductMapper {
     int updateByPrimaryKeySelective(Product record);
 
     int updateByPrimaryKey(Product record);
-    int updateProductCategoryIdToNullByProductCategoryId(Integer productCategoryId);
 }

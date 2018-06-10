@@ -97,7 +97,7 @@ public class RegisterUserController {
                     //返回受影响的行数,同时由于修改了Mapper文件,会返回在数据库中自增的id,需要在实体类中用get方法取出来;
                     int row=personInfoService.addPersonInfo(personInfo);
                     Integer userId = personInfo.getUserId();
-                    localAuth.setUserId(userId);
+                  //  localAuth.setUserId(userId);
 
                     //返回受影响的行数,同时由于修改了Mapper文件,会返回在数据库中自增的id,需要在实体类中用get方法取出来;
                     row = localAuthService.addLocalAuth(localAuth);

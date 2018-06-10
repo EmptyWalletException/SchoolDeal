@@ -3,24 +3,7 @@
 *
 * */
 
-/* 抽取出来的获取店铺分类的方法 */
-function getShopCategory(){
-    /* alert("进入js代码");*/
-    $.ajax({
-        url:"/ajax/shopCategory",
-        type:"get",
-        success:function(result){
-            /*    alert("进入ajax代码");*/
-            var categorySel =$("#shopCategorySel");
-            var categoryArray = result.extend.shopCategorys;
-            categorySel.empty();
-            $.each(categoryArray,function (index,item) {
-                categorySel.append($("<option></option>").attr("value",item.shopCategoryId).append(item.shopCategoryName));
-            });
-        }
-    });
-    /*  alert("执行完异步请求js代码");*/
-};
+
 
 /* 抽取出来的获取区域分类的方法 */
 function getArea(){
@@ -55,7 +38,6 @@ $("#submit_RegisterShop").click(function(){
     shop.phone= $("#phone").val();
     shop.shopAddr= $("#shopAddr").val();
     shop.areaId= $("#areaSel option:selected").attr("value");
-    shop.shopCategoryId= $("#shopCategorySel option:selected").attr("value");
 
     var shopImg = $("#inputFile")[0].files[0];
     var formData = new FormData($("#inputFile")[0]);
@@ -86,7 +68,6 @@ $("#submit_RegisterShop").click(function(){
 });
 
 $(function () {
-    getShopCategory();
     getArea();
 })
 

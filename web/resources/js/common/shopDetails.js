@@ -9,9 +9,16 @@ var currentPage;
 $(function(){
     build_shopDetails("/getShop");
     build_shopCategory("/ajax/productCategory");
-    to_page("/getShelveProduct",1);
+    to_page("/getShelveProduct",1,1);
 })
 
+//点击链接"所有商品时,清除筛选的分类商品,获取所有上架中商品,相当于刷新了店铺最初的状态"
+$("#allProducts").click(function () {
+    to_page("/getShelveProduct",1,1);
+    return false;
+});
+
+//生成分类栏条目;
 function build_shopCategory(url) {
     $.ajax({
         url:url,
@@ -26,7 +33,7 @@ function build_shopCategory(url) {
                 if (categoryLevel != productCategory.priority){
                     $("#shopCategoryList").append(
                         "<hr/>" +
-                        "<a class='nav-item shopCategory' style='color: #040505' href='#'>"+productCategory.productCategoryName+"</a>"
+                        "<a class='nav-item shopCategory' style='color: #040505' href='#' categoryId='"+productCategory.productCategoryId+"'>"+productCategory.productCategoryName+"</a>"
                     )
                 }else{
                     if (0 != index){
@@ -35,7 +42,7 @@ function build_shopCategory(url) {
                         )
                     }
                     $("#shopCategoryList").append(
-                        "<a class='nav-item shopCategory' style='color: #040505' href='#'>"+productCategory.productCategoryName+"</a>"
+                        "<a class='nav-item shopCategory' style='color: #040505' href='#' categoryId='"+productCategory.productCategoryId+"'>"+productCategory.productCategoryName+"</a>"
                     )
                 }
                 
@@ -46,6 +53,7 @@ function build_shopCategory(url) {
     });
 }
 
+//生成店铺描述
 function build_shopDetails(url) {
     $.ajax({
         url:url,
@@ -63,21 +71,26 @@ function build_shopDetails(url) {
     });
 }
 
+/*页面上分类栏里的分类点击后的事件,由于链接是后生成的,所有要交给原本就存在的上级去绑定*/
+$("#shopCategoryList").on('click','.shopCategory',function () {
+    var categoryId = $(this).attr("categoryId");
+    //这里直接使用修改后的to_page分页跳转方法;
+    to_page("/getProductListByCategoryId",categoryId,1);
+    return false;
+})
 
-
-
-/* 抽取出来的跳转到指定页码页面的方法 */
-function to_page(url,pn){
+//在分类状态下的分页跳转;
+function to_page(url,categoryId,pn){
     $.ajax({
         url:url,
-        data:"pn="+pn,
+        data:{"categoryId":categoryId,"pn":pn},
         type:"post",
         success:function(result){
             maxPage = result.extend.pageInfo.pages;
             currentPage = result.extend.pageInfo.pageNum;
             build_product_table(result);
             build_page_info(result);
-            build_page_nav(result);
+            build_page_nav(url,categoryId,result);
         }
     });
 }
@@ -132,6 +145,9 @@ function build_product_table(result){
                 })
 }
 
+
+
+
 /*分页功能部分*/
 /*  当前第${pageInfo.pageNum }/${pageInfo.pages }页,当前页记录数:${pageInfo.size }条;总记录数:${pageInfo.total }条; */
 function build_page_info(result){
@@ -141,7 +157,7 @@ function build_page_info(result){
 }
 
 /* 显示分页条 */
-function build_page_nav(result){
+function build_page_nav(url,categoryId,result){
     /* 生成新的元素前一定要先清空掉以前的数据,否则会累加到页面上 */
     $("#page_nav").empty();
     var ul = $("<ul></ul>").addClass("pagination");
@@ -159,11 +175,13 @@ function build_page_nav(result){
     }else{
         /* 为首页按钮添加一个点击跳转到首页的绑定事件 */
         li_frist.click(function(){
-            to_page("/getShelveProduct",1);
+            to_page(url,categoryId,1);
+            return false;
         });
         /* 为上一页按钮添加一个点击跳转到上一页的绑定事件 */
         li_pre.click(function(){
-            to_page("/getShelveProduct",result.extend.pageInfo.prePage);
+            to_page(url,categoryId,result.extend.pageInfo.prePage);
+            return false;
         });
     }
 
@@ -178,7 +196,8 @@ function build_page_nav(result){
         }else{
             /* 为每一个遍历后生成出来的li_nums添加一个点击跳转的绑定事件 */
             li_nums.click(function(){
-                to_page("/getShelveProduct",nums);
+                to_page(url,categoryId,nums);
+                return false;
             });
         }
         ul.append(li_nums);
@@ -198,17 +217,22 @@ function build_page_nav(result){
     }else{
         /* 为下一页按钮添加一个点击跳转到下一页的绑定事件 */
         li_next.click(function(){
-            to_page("/getShelveProduct",result.extend.pageInfo.nextPage);
+            to_page(url,categoryId,result.extend.pageInfo.nextPage);
+            return false;
         });
         /* 为末页按钮添加一个点击跳转到末页的绑定事件 */
         li_last.click(function(){
-            to_page("/getShelveProduct",result.extend.pageInfo.pages);
+            to_page(url,categoryId,result.extend.pageInfo.pages);
+            return false;
         });
     }
 
     var nav = $("<nav></nav>").attr("aria-label","Page navigation").append(ul);
     $("#page_nav").append(nav);
 }
+
+
+
 
 
 

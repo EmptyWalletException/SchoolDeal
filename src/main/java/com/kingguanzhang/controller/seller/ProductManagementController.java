@@ -38,6 +38,42 @@ public class ProductManagementController {
         return "seller/editProduct";
     }
 
+
+    /**
+     * 在首页查询所有店铺内所有上架中的商品列表;
+     * @param
+     * @return
+     */
+    @RequestMapping(value = "/index/getAllOnSellProductList",method = RequestMethod.POST)
+    @ResponseBody
+    public Msg getAllOnSellProductList(@RequestParam(value = "pn",defaultValue = "1")Integer pn) {
+        //使用分页插件官方推荐的第二种方式开启分页查询;
+        PageHelper.startPage(pn, 16);
+        //然后紧跟的查询就是分页查询;
+        List<Product> productList =productService.getAllOnSellProductList();
+        //查询之后使用PageInfo来包装,方便在页面视图中处理页码,下面用的构造器第二个参数是页面底部可供点击的连续页码数;
+        PageInfo pageInfo = new PageInfo(productList,5);
+        //这还需要获取一下商品的分类信息;
+        List<ProductCategory> productCategoryList = productCategoryService.getCategory();
+        return Msg.success().setMsg("获取商品集合成功").add("pageInfo", pageInfo).add("productCategoryList",productCategoryList);
+    }
+
+     /**
+     *通过分类名获取分类下所有商品,带有分类功能;
+     * @param categoryId
+     * @param pn
+     * @return
+     */
+    @RequestMapping(value = "/getProductListByCategoryId",method = RequestMethod.POST)
+    @ResponseBody
+    public Msg getProductListByCategoryName(@RequestParam("categoryId") Integer categoryId,@RequestParam(value = "pn",defaultValue = "1") Integer pn) {
+        PageHelper.startPage(pn,8);
+        List<Product> productList = productService.getProductListByCategoryId(categoryId);
+        PageInfo pageInfo = new PageInfo(productList,5);
+        List<ProductCategory> productCategoryList = productCategoryService.getCategory();
+        return Msg.success().setMsg("获取分类下所有商品成功").add("pageInfo",pageInfo).add("productCategoryList",productCategoryList);
+    }
+
     /**
      * 通过ajax调用的批量下架商品的方法;
      *
@@ -150,7 +186,7 @@ public class ProductManagementController {
     }
 
     /**
-     * 查询所有的商品列表;
+     * 查询店铺内所有的商品列表;
      * @param request
      * @return
      */
@@ -317,7 +353,7 @@ public class ProductManagementController {
 
         //新增商品,尽可能的减少从前端获取的值;
         if (null != product && null != productImg) {
-            product.setShopId(shopId);//这个shopid必须从session中获取,这是为了安全
+          //  product.setShopId(shopId);//这个shopid必须从session中获取,这是为了安全
             try {
                 //使用文件.getOriginalFilename可以获取带后缀.jpg的全名;或者文件.getItem.getName也可以获取带后缀的文件名;否则只能取到不带后缀的文件名;
                 productService.addProduct(product, productImg.getInputStream(), productImg.getOriginalFilename());

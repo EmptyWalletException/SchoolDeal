@@ -2,7 +2,6 @@ package com.kingguanzhang.pojo;
 
 import java.util.Date;
 
-
 public class Area {
     private Integer areaId;
 

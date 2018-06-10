@@ -59,7 +59,7 @@
 
                     <div class=" py-5 bg-light ">
                         <div >
-                            <h3><a href="#" style="color: #040505">店铺内商品:</a></h3>
+                            <h3><a href="#" style="color: #040505" id="allProducts">所有商品:</a></h3>
                         </div>
                         <hr/>
 

@@ -1,11 +1,9 @@
 package com.kingguanzhang.dao;
 
-
 import com.kingguanzhang.pojo.ProductCategory;
 import com.kingguanzhang.pojo.ProductCategoryExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface ProductCategoryMapper {
     long countByExample(ProductCategoryExample example);

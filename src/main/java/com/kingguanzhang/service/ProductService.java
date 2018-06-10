@@ -39,4 +39,8 @@ public interface ProductService {
     List<Product> getAllSoldoutProduct();
 
     Msg updateProductWithImg(Product product, InputStream inputStream, String originalFilename);
+
+    List<Product> getProductListByCategoryId(Integer categoryId);
+
+    List<Product> getAllOnSellProductList();
 }

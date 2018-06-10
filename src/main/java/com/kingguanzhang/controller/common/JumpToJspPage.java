@@ -97,10 +97,10 @@ public class JumpToJspPage {
         username = "admin";//因为这里调试时发现session中没有取到值,需要后期去自定义security登录成功后的控制层实现写入session;
         //通过用户账号名得到店铺Id
         List<LocalAuth>  localAuthList= localAuthService.getLocalAuthByLoginUsername(username);
-        Integer userId = localAuthList.get(0).getUserId();
+      //  Integer userId = localAuthList.get(0).getUserId();
 
-        Shop shop = shopService.getShopByUserId(userId);
-        request.getSession().setAttribute("shopId",shop.getShopId());
+      //  Shop shop = shopService.getShopByUserId(userId);
+     //   request.getSession().setAttribute("shopId",shop.getShopId());
         return "seller/shopManagement";
     }
 

@@ -12,6 +12,7 @@
     <http pattern="/login" security="none"></http>
     <http pattern="/register/**" security="none"></http>
     <http pattern="/index" security="none"></http>
+    <http pattern="/index/**" security="none"></http>
     <http pattern="/index.jsp" security="none"></http>
     <http pattern="/resources/**" security="none"></http>
     <http pattern="/**/*.jpg" security="none"></http>

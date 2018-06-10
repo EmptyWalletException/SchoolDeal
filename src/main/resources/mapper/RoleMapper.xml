@@ -98,13 +98,13 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.kingguanzhang.pojo.Role">
+  <insert id="insert" parameterType="com.kingguanzhang.pojo.Role" useGeneratedKeys="true" keyColumn="role_id" keyProperty="roleId">
     insert into tb_role (role_id, role_name, role_pet_name, 
       role_authority_Level)
     values (#{roleId,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{rolePetName,jdbcType=VARCHAR}, 
       #{roleAuthorityLevel,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.kingguanzhang.pojo.Role">
+  <insert id="insertSelective" parameterType="com.kingguanzhang.pojo.Role" useGeneratedKeys="true" keyColumn="role_id" keyProperty="roleId">
     insert into tb_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleId != null">

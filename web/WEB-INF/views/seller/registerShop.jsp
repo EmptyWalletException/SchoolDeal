@@ -85,18 +85,7 @@
                                         请选择店铺区域.
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="shopCategorySel">选择店铺分类:</label>
-                                    <select class="custom-select d-block w-100" id="shopCategorySel" name="shopCategoryId" required>
-                                        <option value="">选择店铺分类</option>
-                                        <option>私人店铺</option>
-                                        <option>企业店铺</option>
-                                        <option>组织店铺</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        请选择店铺分类.
-                                    </div>
-                                </div>
+
 
                             </div>
 

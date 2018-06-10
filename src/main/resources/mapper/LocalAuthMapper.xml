@@ -8,6 +8,8 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="edit_time" jdbcType="TIMESTAMP" property="editTime" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <!--mybatis 的级联查询-->
+    <association property="personInfo" column="user_id" select="com.kingguanzhang.dao.PersonInfoMapper.selectByPrimaryKey" javaType="com.kingguanzhang.pojo.PersonInfo" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>

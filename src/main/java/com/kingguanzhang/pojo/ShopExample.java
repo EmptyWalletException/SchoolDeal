@@ -385,52 +385,52 @@ public class ShopExample {
             return (Criteria) this;
         }
 
-        public Criteria andPhoneEqualTo(Integer value) {
+        public Criteria andPhoneEqualTo(Long value) {
             addCriterion("phone =", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNotEqualTo(Integer value) {
+        public Criteria andPhoneNotEqualTo(Long value) {
             addCriterion("phone <>", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneGreaterThan(Integer value) {
+        public Criteria andPhoneGreaterThan(Long value) {
             addCriterion("phone >", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPhoneGreaterThanOrEqualTo(Long value) {
             addCriterion("phone >=", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneLessThan(Integer value) {
+        public Criteria andPhoneLessThan(Long value) {
             addCriterion("phone <", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneLessThanOrEqualTo(Integer value) {
+        public Criteria andPhoneLessThanOrEqualTo(Long value) {
             addCriterion("phone <=", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneIn(List<Integer> values) {
+        public Criteria andPhoneIn(List<Long> values) {
             addCriterion("phone in", values, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNotIn(List<Integer> values) {
+        public Criteria andPhoneNotIn(List<Long> values) {
             addCriterion("phone not in", values, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneBetween(Integer value1, Integer value2) {
+        public Criteria andPhoneBetween(Long value1, Long value2) {
             addCriterion("phone between", value1, value2, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNotBetween(Integer value1, Integer value2) {
+        public Criteria andPhoneNotBetween(Long value1, Long value2) {
             addCriterion("phone not between", value1, value2, "phone");
             return (Criteria) this;
         }
@@ -932,66 +932,6 @@ public class ShopExample {
 
         public Criteria andOwnerIdNotBetween(Integer value1, Integer value2) {
             addCriterion("owner_id not between", value1, value2, "ownerId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopCategoryIdIsNull() {
-            addCriterion("shop_category_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopCategoryIdIsNotNull() {
-            addCriterion("shop_category_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopCategoryIdEqualTo(Integer value) {
-            addCriterion("shop_category_id =", value, "shopCategoryId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopCategoryIdNotEqualTo(Integer value) {
-            addCriterion("shop_category_id <>", value, "shopCategoryId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopCategoryIdGreaterThan(Integer value) {
-            addCriterion("shop_category_id >", value, "shopCategoryId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopCategoryIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("shop_category_id >=", value, "shopCategoryId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopCategoryIdLessThan(Integer value) {
-            addCriterion("shop_category_id <", value, "shopCategoryId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopCategoryIdLessThanOrEqualTo(Integer value) {
-            addCriterion("shop_category_id <=", value, "shopCategoryId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopCategoryIdIn(List<Integer> values) {
-            addCriterion("shop_category_id in", values, "shopCategoryId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopCategoryIdNotIn(List<Integer> values) {
-            addCriterion("shop_category_id not in", values, "shopCategoryId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopCategoryIdBetween(Integer value1, Integer value2) {
-            addCriterion("shop_category_id between", value1, value2, "shopCategoryId");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopCategoryIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("shop_category_id not between", value1, value2, "shopCategoryId");
             return (Criteria) this;
         }
     }

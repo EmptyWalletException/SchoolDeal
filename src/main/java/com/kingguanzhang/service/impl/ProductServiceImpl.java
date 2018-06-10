@@ -119,6 +119,33 @@ public class ProductServiceImpl implements ProductService {
     }
 
     /**
+     * 获取分类下所有商品;
+     * @return
+     */
+    @Override
+    public List<Product> getProductListByCategoryId(Integer categoryId) {
+        ProductExample productExample = new ProductExample();
+        ProductExample.Criteria criteria = productExample.createCriteria();
+        criteria.andProductCategoryIdEqualTo(categoryId);
+        List<Product> productList = productMapper.selectByExample(productExample);
+        return productList;
+    }
+
+    /**
+     * 获取所有商店的所有在售商品;最好按后编辑时间倒序;
+     * @return
+     */
+    @Override
+    public List<Product> getAllOnSellProductList() {
+        ProductExample productExample = new ProductExample();
+        productExample.setOrderByClause("edit_time DESC");
+        ProductExample.Criteria criteria = productExample.createCriteria();
+        criteria.andEnableStatusEqualTo(0);
+        List<Product> productList = productMapper.selectByExample(productExample);
+        return productList;
+    }
+
+    /**
      * 更新商品不带图片的方法;
      * @param product
      * @return

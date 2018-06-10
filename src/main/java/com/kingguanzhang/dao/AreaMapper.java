@@ -1,10 +1,8 @@
 package com.kingguanzhang.dao;
 
-import java.util.List;
-
-
 import com.kingguanzhang.pojo.Area;
 import com.kingguanzhang.pojo.AreaExample;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface AreaMapper {

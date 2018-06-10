@@ -29,7 +29,25 @@ public class Shop {
 
     private Integer ownerId;
 
-    private Integer shopCategoryId;
+    //级联实体属性;
+    private Area area;
+    private PersonInfo personInfo;
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+
+    public PersonInfo getPersonInfo() {
+        return personInfo;
+    }
+
+    public void setPersonInfo(PersonInfo personInfo) {
+        this.personInfo = personInfo;
+    }
 
     public Integer getShopId() {
         return shopId;
@@ -133,13 +151,5 @@ public class Shop {
 
     public void setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
-    }
-
-    public Integer getShopCategoryId() {
-        return shopCategoryId;
-    }
-
-    public void setShopCategoryId(Integer shopCategoryId) {
-        this.shopCategoryId = shopCategoryId;
     }
 }

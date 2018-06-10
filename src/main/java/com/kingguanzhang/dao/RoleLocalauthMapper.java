@@ -2,10 +2,8 @@ package com.kingguanzhang.dao;
 
 import com.kingguanzhang.pojo.RoleLocalauth;
 import com.kingguanzhang.pojo.RoleLocalauthExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
-
+import org.apache.ibatis.annotations.Param;
 
 public interface RoleLocalauthMapper {
     long countByExample(RoleLocalauthExample example);

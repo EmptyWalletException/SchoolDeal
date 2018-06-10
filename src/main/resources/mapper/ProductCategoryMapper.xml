@@ -3,7 +3,6 @@
 <mapper namespace="com.kingguanzhang.dao.ProductCategoryMapper">
   <resultMap id="BaseResultMap" type="com.kingguanzhang.pojo.ProductCategory">
     <id column="product_category_id" jdbcType="INTEGER" property="productCategoryId" />
-    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
     <result column="product_category_name" jdbcType="VARCHAR" property="productCategoryName" />
     <result column="priority" jdbcType="INTEGER" property="priority" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -67,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    product_category_id, shop_id, product_category_name, priority, create_time
+    product_category_id, product_category_name, priority, create_time
   </sql>
   <select id="selectByExample" parameterType="com.kingguanzhang.pojo.ProductCategoryExample" resultMap="BaseResultMap">
     select
@@ -99,20 +98,17 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.kingguanzhang.pojo.ProductCategory">
-    insert into tb_product_category (product_category_id, shop_id, product_category_name, 
+  <insert id="insert" parameterType="com.kingguanzhang.pojo.ProductCategory" useGeneratedKeys="true" keyColumn="product_category_id" keyProperty="productCategoryId">
+    insert into tb_product_category (product_category_id, product_category_name, 
       priority, create_time)
-    values (#{productCategoryId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{productCategoryName,jdbcType=VARCHAR}, 
+    values (#{productCategoryId,jdbcType=INTEGER}, #{productCategoryName,jdbcType=VARCHAR}, 
       #{priority,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.kingguanzhang.pojo.ProductCategory">
+  <insert id="insertSelective" parameterType="com.kingguanzhang.pojo.ProductCategory" useGeneratedKeys="true" keyColumn="product_category_id" keyProperty="productCategoryId">
     insert into tb_product_category
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="productCategoryId != null">
         product_category_id,
-      </if>
-      <if test="shopId != null">
-        shop_id,
       </if>
       <if test="productCategoryName != null">
         product_category_name,
@@ -127,9 +123,6 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="productCategoryId != null">
         #{productCategoryId,jdbcType=INTEGER},
-      </if>
-      <if test="shopId != null">
-        #{shopId,jdbcType=INTEGER},
       </if>
       <if test="productCategoryName != null">
         #{productCategoryName,jdbcType=VARCHAR},
@@ -154,9 +147,6 @@
       <if test="record.productCategoryId != null">
         product_category_id = #{record.productCategoryId,jdbcType=INTEGER},
       </if>
-      <if test="record.shopId != null">
-        shop_id = #{record.shopId,jdbcType=INTEGER},
-      </if>
       <if test="record.productCategoryName != null">
         product_category_name = #{record.productCategoryName,jdbcType=VARCHAR},
       </if>
@@ -174,7 +164,6 @@
   <update id="updateByExample" parameterType="map">
     update tb_product_category
     set product_category_id = #{record.productCategoryId,jdbcType=INTEGER},
-      shop_id = #{record.shopId,jdbcType=INTEGER},
       product_category_name = #{record.productCategoryName,jdbcType=VARCHAR},
       priority = #{record.priority,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
@@ -185,9 +174,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.kingguanzhang.pojo.ProductCategory">
     update tb_product_category
     <set>
-      <if test="shopId != null">
-        shop_id = #{shopId,jdbcType=INTEGER},
-      </if>
       <if test="productCategoryName != null">
         product_category_name = #{productCategoryName,jdbcType=VARCHAR},
       </if>
@@ -202,8 +188,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.kingguanzhang.pojo.ProductCategory">
     update tb_product_category
-    set shop_id = #{shopId,jdbcType=INTEGER},
-      product_category_name = #{productCategoryName,jdbcType=VARCHAR},
+    set product_category_name = #{productCategoryName,jdbcType=VARCHAR},
       priority = #{priority,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where product_category_id = #{productCategoryId,jdbcType=INTEGER}

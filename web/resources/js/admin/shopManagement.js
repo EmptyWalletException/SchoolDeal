@@ -111,15 +111,18 @@ function build_page_nav(result){
     /* 当没有上一页时则按钮不可点击,否则可以点击 */
     if(result.extend.pageInfo.hasPreviousPage == false){
         li_frist.addClass("disabled");
+
         li_pre.addClass("disabled");
     }else{
         /* 为首页按钮添加一个点击跳转到首页的绑定事件 */
         li_frist.click(function(){
             to_page("/admin/getAllShop",1);
+            return false;
         });
         /* 为上一页按钮添加一个点击跳转到上一页的绑定事件 */
         li_pre.click(function(){
             to_page("/admin/getAllShop",result.extend.pageInfo.prePage);
+            return false;
         });
     }
 
@@ -135,6 +138,7 @@ function build_page_nav(result){
             /* 为每一个遍历后生成出来的li_nums添加一个点击跳转的绑定事件 */
             li_nums.click(function(){
                 to_page("/admin/getAllShop",nums);
+                return false;
             });
         }
         ul.append(li_nums);
@@ -158,10 +162,12 @@ function build_page_nav(result){
         /* 为下一页按钮添加一个点击跳转到下一页的绑定事件 */
         li_next.click(function(){
             to_page("/admin/getAllShop",result.extend.pageInfo.nextPage);
+            return false;
         });
         /* 为末页按钮添加一个点击跳转到末页的绑定事件 */
         li_last.click(function(){
             to_page("/admin/getAllShop",result.extend.pageInfo.pages);
+            return false;
         });
     }
 

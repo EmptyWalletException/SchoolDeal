@@ -134,10 +134,13 @@ function checkStateChoose(pn){
     var checkedInput = $("input:checked").attr("id");
     if ("shelveProduct" == checkedInput){
         to_page("/getShelveProduct",pn);
+        return false;
     } else if ("unShelveProduct" == checkedInput){
         to_page("/getUnShelveProduct",pn);
+        return false;
     } else {
         to_page("/getProductList",pn);
+        return false;
     }
 }
 

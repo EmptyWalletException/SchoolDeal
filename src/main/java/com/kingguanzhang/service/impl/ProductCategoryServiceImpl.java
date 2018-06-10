@@ -45,7 +45,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Override
     public Integer deleteProductCategroy(Integer id) {
         //删除分类之前先将分类关联的所有商品的分类设置成NULL;
-        productMapper.updateProductCategoryIdToNullByProductCategoryId(id);
+       // productMapper.updateProductCategoryIdToNullByProductCategoryId(id);
         return productCategoryMapper.deleteByPrimaryKey(id);
     }
 }

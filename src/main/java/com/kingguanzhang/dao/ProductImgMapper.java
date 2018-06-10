@@ -1,11 +1,9 @@
 package com.kingguanzhang.dao;
 
-
 import com.kingguanzhang.pojo.ProductImg;
 import com.kingguanzhang.pojo.ProductImgExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface ProductImgMapper {
     long countByExample(ProductImgExample example);

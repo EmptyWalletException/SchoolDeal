@@ -15,6 +15,17 @@ public class LocalAuth {
 
     private Integer userId;
 
+    //mybatis 级联实体属性
+    private PersonInfo personInfo;
+
+    public PersonInfo getPersonInfo() {
+        return personInfo;
+    }
+
+    public void setPersonInfo(PersonInfo personInfo) {
+        this.personInfo = personInfo;
+    }
+
     public Integer getLocalAuthId() {
         return localAuthId;
     }

@@ -97,13 +97,13 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.kingguanzhang.pojo.RoleLocalauth">
+  <insert id="insert" parameterType="com.kingguanzhang.pojo.RoleLocalauth" useGeneratedKeys="true" keyColumn="role_localauth_id" keyProperty="roleLocalauthId">
     insert into tb_role_localauth (role_localauth_id, role_id, localauth_id
       )
     values (#{roleLocalauthId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{localauthId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.kingguanzhang.pojo.RoleLocalauth">
+  <insert id="insertSelective" parameterType="com.kingguanzhang.pojo.RoleLocalauth" useGeneratedKeys="true" keyColumn="role_localauth_id" keyProperty="roleLocalauthId">
     insert into tb_role_localauth
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleLocalauthId != null">
