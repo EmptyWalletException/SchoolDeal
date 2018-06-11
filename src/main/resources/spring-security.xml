@@ -22,6 +22,8 @@
     <http pattern="/**/*.svg" security="none"></http>
     <http pattern="/**/*.gif" security="none"></http>
     <http pattern="/ajax/**" security="none"></http>
+    <http pattern="/exit" security="none"></http>
+    <http pattern="/logout" security="none"></http>
 
 
     <http auto-config="true"  use-expressions="true">
@@ -50,14 +52,14 @@
         />
         <!-- 认证成功用自定义类myAuthenticationSuccessHandler处理 -->
 
-        <!--
+<!--
         logout 属性详解
            logout-url LogoutFilter要读取的url,也就是指定spring security拦截的注销url
            logout-success-url 用户退出后要被重定向的url
            invalidate-session 默认为true,用户在退出后Http session失效
            success-handler-ref 对一个LogoutSuccessHandler的引用,用来自定义退出成功后的操作
            这里需要注意的一点是,spring security 3.x默认的注销拦截url为/j_spring_security_logout,而4.x则默认使用/logout
-         -->
+-->
         <logout logout-url="/logout"
                 logout-success-url="/login"
                 invalidate-session="true"

@@ -3,9 +3,7 @@ package com.kingguanzhang.controller.admin;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.kingguanzhang.dto.Msg;
-import com.kingguanzhang.pojo.Area;
 import com.kingguanzhang.pojo.Shop;
-import com.kingguanzhang.service.AreaService;
 import com.kingguanzhang.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,8 +18,6 @@ public class AdminShopManagementController {
 
     @Autowired
     private ShopService shopService;
-
-
 
     @RequestMapping(value = "/ajax/admin/getAllShop",method = RequestMethod.POST)
     @ResponseBody

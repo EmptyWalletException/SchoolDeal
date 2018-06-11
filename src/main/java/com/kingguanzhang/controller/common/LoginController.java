@@ -19,7 +19,7 @@ public class LoginController {
     @RequestMapping(value = "/loginform" ,method = RequestMethod.POST)
     public String  login(@RequestParam("username") String username,  HttpServletRequest request){
 
-        //使用security似乎无法进入此方法,需要深入了解security;
+        //使用security无法进入此方法,需要深入了解security;
         System.out.println("进入post登录方法");
         //将shopId直接写入session,方便后续网页内容的查询;
         //request.getSession().setAttribute("username",username);

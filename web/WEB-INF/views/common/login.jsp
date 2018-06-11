@@ -47,7 +47,7 @@
             <a href="/register/registerUser">还没有账号?来注册一个吧!</a>
         </label>
     </div>
-    <a class="btn btn-lg btn-primary btn-block " id="btn_login" >登录</a>
+    <button  class="btn btn-lg btn-primary btn-block " id="btn_login" type="submit" >登录</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
 </form>
 
